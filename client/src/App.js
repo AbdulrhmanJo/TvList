@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { getInitialData } from './Actions/shared'
+// getMovies()
 
-function App() {
-  return (
-    <div className="App">
-     hello world
-    </div>
-  );
+class App extends Component {
+  componentDidMount(){
+    this.props.dispatch(getInitialData())
+  }
+  render(){
+    console.log(this.props);
+    
+    return (
+      <div className="App">
+       hello world
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapStateToProps = ({movies}) => {
+  return {
+    movies
+  }
+}
+
+export default connect(mapStateToProps)(App);
