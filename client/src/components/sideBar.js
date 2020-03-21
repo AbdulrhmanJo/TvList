@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import SidebarList from "./sidebarList";
 import {
-  AiFillVideoCamera,
+  AiOutlineHome,
   AiOutlineVideoCamera,
-  AiFillPlayCircle,
   AiOutlinePlayCircle
 } from "react-icons/ai";
 class Sidebar extends Component {
@@ -11,9 +10,25 @@ class Sidebar extends Component {
     return (
       <nav className="sidebar">
         <div className="logo">
-          <h1>TV List</h1>
+          <p>Something</p>
         </div>
-        <SidebarList items={["home", "movies", "tv shows"]} />
+        <SidebarList
+          items={["home", "movies", "TV_shows"]}
+          icons={[
+            <AiOutlineHome
+              size={20}
+              className="sidebar-list_item--icon"
+            />,
+            <AiOutlineVideoCamera
+              size={20}
+              className="sidebar-list_item--icon"
+            />,
+            <AiOutlinePlayCircle
+              size={20}
+              className="sidebar-list_item--icon"
+            />]}
+          title="Discover"
+        />
       </nav>
     );
   }

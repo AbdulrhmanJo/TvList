@@ -1,18 +1,22 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 
 const SidebarList = props => {
-  const items = props.items;
+  const { items, icons, title } = props;
+  console.log(props);
+
   return (
     <ul className="sidebar-list">
-      {items.map(item => (
+      <p className="sidebar-list_title">{title}</p>
+      {items.map((item, index) => (
         <li key={item}>
           <NavLink
-            to={item === "home" ? "/" : `/${item.replace(" ", "-")}`}
+            exact to={item === "home" ? "/" : `/${item.replace("_", "").toLowerCase()}`}
             className="sidebar-list_item"
             activeClassName="sidebar-list_item--active"
           >
-            {item}
+            {icons[index]}
+            <span className="sidebar-list_item--text">{item.replace("_", " ")}</span>
           </NavLink>
         </li>
       ))}
@@ -20,4 +24,4 @@ const SidebarList = props => {
   );
 };
 
-export default SidebarList;
+export default withRouter(SidebarList);

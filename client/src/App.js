@@ -35,7 +35,10 @@ class App extends Component {
                 flex: 1
               }}
             >
-              {this.state.loading ? <h1>loading...</h1> : <h1>done</h1>}
+              <Route exact path="/" render={() => <p>home</p>} />
+              <Route path="/movies" render={() => <p>movies</p>} />
+              <Route path="/tvshows" render={() => <p>tv shows</p>} />
+              {/* {this.state.loading ? <h1>loading...</h1> : <h1>done</h1>} */}
             </div>
           </div>
         </div>
