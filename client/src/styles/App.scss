@@ -31,3 +31,23 @@ body{
     display: flex;
     flex-direction: column;
 }
+
+.btn{
+    border-radius: .2rem;
+    font-size: 2rem;
+    text-transform: capitalize;
+    border: .1rem solid #f32d58;
+
+    &-primary{
+        padding: 2rem 4rem;
+        background-color: #f32d58;
+        color: white;
+    }
+
+    &-secandry{
+        margin-left: .5rem;
+        background-color: transparent;
+        color: #f32d58;
+        // padding:  0 1rem;
+    }
+}
