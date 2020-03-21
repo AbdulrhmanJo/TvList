@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { getInitialData } from "./Actions/shared";
+import BeatLoader from "react-spinners/BeatLoader";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
-
+import MoviesPage from "./components/moviesPage.js";
 import "./styles/App.scss";
 
 class App extends Component {
@@ -35,10 +36,25 @@ class App extends Component {
                 flex: 1
               }}
             >
-              <Route exact path="/" render={() => <p>home</p>} />
-              <Route path="/movies" render={() => <p>movies</p>} />
-              <Route path="/tvshows" render={() => <p>tv shows</p>} />
-              {/* {this.state.loading ? <h1>loading...</h1> : <h1>done</h1>} */}
+              {this.state.loading ? (
+                <BeatLoader
+                  css={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%"
+                  }}
+                  loading={this.state.loading}
+                  size={45}
+                  color={"rgb(243, 45, 88)"}
+                />
+              ) : (
+                <div>
+                  <Route exact path="/" render={() => <p>home</p>} />
+                  <Route path="/movies" component={MoviesPage} />
+                  <Route path="/tvshows" render={() => <p>tv shows</p>} />
+                </div>
+              )}
             </div>
           </div>
         </div>

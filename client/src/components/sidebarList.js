@@ -3,8 +3,6 @@ import { NavLink, withRouter } from "react-router-dom";
 
 const SidebarList = props => {
   const { items, icons, title } = props;
-  console.log(props);
-
   return (
     <ul className="sidebar-list">
       <p className="sidebar-list_title">{title}</p>
