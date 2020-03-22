@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import NowPlaying from "./nowPlaying";
+import SecondarySection from "./SecondraySection";
 
 class MoviesPage extends Component {
   render() {
@@ -8,6 +9,7 @@ class MoviesPage extends Component {
     return (
       <div className="movies-content">
         <NowPlaying movies={movies.nowPlaying} genres={genres} />
+        <SecondarySection name="Trending" movies={movies.popular} />
       </div>
     );
   }

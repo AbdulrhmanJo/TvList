@@ -9,12 +9,17 @@ const SidebarList = props => {
       {items.map((item, index) => (
         <li key={item}>
           <NavLink
-            exact to={item === "home" ? "/" : `/${item.replace("_", "").toLowerCase()}`}
+            exact
+            to={
+              item === "home" ? "/" : `/${item.replace("_", "").toLowerCase()}`
+            }
             className="sidebar-list_item"
             activeClassName="sidebar-list_item--active"
           >
             {icons[index]}
-            <span className="sidebar-list_item--text">{item.replace("_", " ")}</span>
+            <span className="sidebar-list_item--text">
+              {item.replace("_", " ")}
+            </span>
           </NavLink>
         </li>
       ))}

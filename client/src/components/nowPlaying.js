@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
 import { IoIosAdd } from "react-icons/io";
 
 class NowPlaying extends Component {
@@ -10,10 +8,14 @@ class NowPlaying extends Component {
       <div key={movie.id} className="movies-content_nowPlaying--movie">
         <img
           src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-          alt=""
+          alt={`${movie.title}`}
           width="100%"
+          className="movies-content_nowPlaying--movie-img"
         />
         <div className="movies-content_nowPlaying--movie-info">
+          <p className="movies-content_nowPlaying--movie-info__section">
+            Now playing
+          </p>
           <h1 className="movies-content_nowPlaying--movie-info__title">
             {movie.title}
           </h1>
@@ -29,9 +31,11 @@ class NowPlaying extends Component {
           <p className="movies-content_nowPlaying--movie-info__overview">
             {movie.overview}
           </p>
-          <div style={{display: 'flex'}}>
+          <div style={{ display: "flex" }}>
             <button className="btn btn-primary">watch trailer</button>
-            <button className="btn btn-secandry"><IoIosAdd size={40}/></button>
+            <button className="btn btn-secandry">
+              <IoIosAdd size={35} />
+            </button>
           </div>
         </div>
       </div>
@@ -41,18 +45,21 @@ class NowPlaying extends Component {
     const { movies, genres } = this.props;
     console.log(this.props);
     const settings = {
+      fade:true,
+      lazyLoad: true,
       arrows: false,
       dots: false,
       infinite: true,
-      autoplaySpeed: 9000,
+      autoplaySpeed: 15000,
       slidesToShow: 1,
-      slidesToScroll: 1,
       autoplay: true
     };
     return (
       <div className="movies-content_nowPlaying">
         <Slider {...settings}>
-          {movies.results.map(movie => this.slide(movie, genres))}
+          {movies.results.map((movie, index) => {
+            return index < 10 && this.slide(movie, genres);
+          })}
         </Slider>
       </div>
     );

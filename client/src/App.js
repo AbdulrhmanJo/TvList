@@ -32,7 +32,7 @@ class App extends Component {
             <Navbar />
             <div
               style={{
-                backgroundColor: "#f2f2f2",
+                backgroundColor: "black",
                 flex: 1
               }}
             >

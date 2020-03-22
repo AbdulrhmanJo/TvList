@@ -1,53 +1,71 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap");
-@import 'bar';
-@import 'movies';
+@import "~slick-carousel/slick/slick-theme.css";
+@import "~slick-carousel/slick/slick.css";
+@import "bar";
+@import "movies";
 
 *,
 *::after,
-*::before{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    min-height: 0;
-    min-width: 0;
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 0;
+  min-width: 0;
 }
 
-html{
-    font-size: 62.5%; // 1rem = 10px
+html {
+  font-size: 62.5%; // 1rem = 10px
 }
 
-body{
-    font-size: inherit;
-    font-family: "Roboto", sans-serif;
+body {
+  font-size: inherit;
+  font-family: "Roboto", sans-serif;
 }
-
 
 .container {
-    display: flex;
+  display: flex;
 }
 
-.content{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.btn{
-    border-radius: .2rem;
-    font-size: 2rem;
+.btn {
+  border-radius: 0.2rem;
+  font-size: 2rem;
+  border: 0.1rem solid #f32d58;
+  cursor: pointer;
+  transition: all .2s;
+  &-primary {
     text-transform: capitalize;
-    border: .1rem solid #f32d58;
+    padding: 1.5rem 4rem;
+    background-color: #f32d58;
+    color: white;
+  }
 
-    &-primary{
-        padding: 2rem 4rem;
-        background-color: #f32d58;
-        color: white;
-    }
+  &-secandry {
+    margin-left: 0.5rem;
+    background-color: transparent;
+    color: #f32d58;
+    padding: 0 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 
-    &-secandry{
-        margin-left: .5rem;
-        background-color: transparent;
-        color: #f32d58;
-        // padding:  0 1rem;
+  &-tertiary {
+    font-size: 1.7rem;
+    background-color: transparent;
+    border: none;
+    color: #f32d58;
+
+    &:hover{
+      transform: scale(1.1)
     }
+  }
+
+ 
 }
