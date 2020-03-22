@@ -38,7 +38,7 @@ body {
   font-size: 2rem;
   border: 0.1rem solid #f32d58;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
   &-primary {
     text-transform: capitalize;
     padding: 1.5rem 4rem;
@@ -62,10 +62,8 @@ body {
     border: none;
     color: #f32d58;
 
-    &:hover{
-      transform: scale(1.1)
+    &:hover {
+      transform: scale(1.1);
     }
   }
-
- 
 }

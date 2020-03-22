@@ -6,10 +6,14 @@ import SecondarySection from "./SecondraySection";
 class MoviesPage extends Component {
   render() {
     const { movies, genres } = this.props;
+
     return (
       <div className="movies-content">
         <NowPlaying movies={movies.nowPlaying} genres={genres} />
-        <SecondarySection name="Trending" movies={movies.popular} />
+        <SecondarySection name="in theaters" movies={movies.nowPlaying} />
+        <SecondarySection name="Most popular" movies={movies.popular} />
+        <SecondarySection name="Top rated" movies={movies.topRated} />
+        <SecondarySection name="Coming soon" movies={movies.upComing} />
       </div>
     );
   }
