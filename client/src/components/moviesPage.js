@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import NowPlaying from "./nowPlaying";
 import SecondarySection from "./SecondraySection";
+import GenreSection from "./genreSection";
+import TrailerSection from './trailerSection'
 
 class MoviesPage extends Component {
   render() {
@@ -12,9 +14,10 @@ class MoviesPage extends Component {
         <NowPlaying movies={movies.nowPlaying} genres={genres} />
         <SecondarySection name="in theaters" movies={movies.nowPlaying} />
         <SecondarySection name="Trending" movies={movies.trending} />
+        <TrailerSection name="Trailers"/>
         <SecondarySection name="Top rated" movies={movies.topRated} />
         <SecondarySection name="Most popular" movies={movies.popular} />
-        {/* <SecondarySection name="Coming soon" movies={movies.upComing} /> */}
+        <GenreSection name="genres" genres={genres} />
       </div>
     );
   }

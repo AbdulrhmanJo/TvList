@@ -17,10 +17,11 @@ const slide = movie => {
 const SecondarySection = props => {
   const { name, movies } = props;
   const settings = {
+    lazyLoad: true,
     infinite: true,
-    speed: 500,
+    speed: 700,
     slidesToShow: 6,
-    slidesToScroll: 2
+    slidesToScroll: 6
   };
   return (
     <div className="movies-content_SecondarySection">
