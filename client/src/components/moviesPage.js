@@ -7,14 +7,15 @@ import TrailerSection from './trailerSection'
 
 class MoviesPage extends Component {
   render() {
-    const { movies, genres } = this.props;
-
+    const { movies, genres,videos } = this.props;
+    console.log(videos);
+    
     return (
       <div className="movies-content">
         <NowPlaying movies={movies.nowPlaying} genres={genres} />
         <SecondarySection name="in theaters" movies={movies.nowPlaying} />
         <SecondarySection name="Trending" movies={movies.trending} />
-        <TrailerSection name="Trailers"/>
+        <TrailerSection name="Trailers" videos={videos}/>
         <SecondarySection name="Top rated" movies={movies.topRated} />
         <SecondarySection name="Most popular" movies={movies.popular} />
         <GenreSection name="genres" genres={genres} />
@@ -23,10 +24,11 @@ class MoviesPage extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = state => {    
   return {
     movies: state.movies,
-    genres: state.movies.genre
+    genres: state.movies.genre,
+    videos: state.movies.trailer
   };
 };
 

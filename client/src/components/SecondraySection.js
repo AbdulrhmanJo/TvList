@@ -21,7 +21,7 @@ const SecondarySection = props => {
     infinite: true,
     speed: 700,
     slidesToShow: 6,
-    slidesToScroll: 6
+    slidesToScroll: 4
   };
   return (
     <div className="movies-content_SecondarySection">

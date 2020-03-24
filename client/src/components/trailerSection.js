@@ -3,20 +3,35 @@ import Slider from "react-slick";
 import ReactPlayer from "react-player";
 
 const slide = trailer => {
+    console.log(trailer);
+    
   return (
     <div className="movies-content_trailerSection-trailer">
       <ReactPlayer
         className="movies-content_trailerSection-trailer--player"
-        url={trailer}
+        url={`https://www.youtube.com/watch?v=${trailer[0].key}`}
         light
         width="100%"
+        controls
       />
     </div>
   );
 };
 
+const getTrailer = videos => {
+  let trailer = [];
+  videos.forEach(video => {
+    trailer.push(video.results.filter(option => option.type === "Trailer"))
+  });
+
+  return trailer;
+};
+
 const TrailerSection = props => {
-  const { name } = props;
+  const { name, videos } = props;
+
+  const trailers = getTrailer(videos);
+
   const settings = {
     lazyLoad: true,
     infinite: true,
@@ -29,13 +44,7 @@ const TrailerSection = props => {
       <div className="movies-content_trailerSection-header">
         <h1 className="movies-content_trailerSection-header--name">{name}</h1>
       </div>
-      <Slider {...settings}>
-        {[
-          "https://www.youtube.com/watch?v=F95Fk255I4M",
-          "https://www.youtube.com/watch?v=rlR4PJn8b8I",
-          "https://www.youtube.com/watch?v=WJTd1iSch94"
-        ].map(trailer => slide(trailer))}
-      </Slider>
+      <Slider {...settings}>{trailers.map(trailer => slide(trailer))}</Slider>
     </div>
   );
 };

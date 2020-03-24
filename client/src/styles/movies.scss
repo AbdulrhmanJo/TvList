@@ -142,10 +142,14 @@
           // width: 100%;
           // background-color: blue;
         }
+        &:hover{
+          // border: .5rem solid #f32d58;
+          background-color: #f32d583a;
+        }
       }
 
       &:hover {
-        transform: scale(1.1);
+        transform: scale(1.12);
       }
     }
   }

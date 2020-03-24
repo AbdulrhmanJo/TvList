@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import { getIcon } from '../utils/images'
 
 const slide = genre => {
-    console.log(genre);
     
   return (
     <div key={genre.id} className="movies-content_genreSection-genre">
@@ -29,7 +28,7 @@ const GenreSection = props => {
     infinite: true,
     speed: 500,
     slidesToShow: 7,
-    // slidesToScroll: 6,
+    slidesToScroll: 6,
     rows: 3
   };
   return (
