@@ -5,19 +5,21 @@
   display: flex;
   flex-direction: column;
   top: 0;
-
+  background-color:  rgb(12, 11, 11);
+  // box-shadow: 0rem 0 6rem black;
+  z-index: 1;
   &-list {
     list-style: none;
     &_title {
       font-size: 1.8rem;
-      color: rgb(33, 34, 39);
+      color: #82827C;
       //   font-weight: 500;
       letter-spacing: 0.1rem;
       padding: 3rem 3rem 2rem;
     }
 
     &_item {
-      color: black;
+      color: rgba(255, 255, 255, 0.788);
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -32,7 +34,7 @@
       }
 
       &--active {
-        background-color: rgba(rgb(243, 45, 88), 0.2);
+        // background-color: rgba(rgb(243, 45, 88), 0.2);
         color: rgb(243, 45, 88);
         border-left: 0.3rem solid rgb(243, 45, 88);
         border-top-left-radius: 0.1rem;
@@ -44,13 +46,13 @@
 }
 
 .logo {
+  color: white;
   font-size: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 7rem;
-  border-bottom: 0.1rem solid #f2f2f2;
-  border-right: 0.1rem solid #f2f2f2;
+
   font-weight: 500;
 }
 
