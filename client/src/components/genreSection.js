@@ -1,10 +1,24 @@
 import React from "react";
 import Slider from "react-slick";
+import { getIcon } from '../utils/images'
 
 const slide = genre => {
+    console.log(genre);
+    
   return (
     <div key={genre.id} className="movies-content_genreSection-genre">
-      <p className="movies-content_genreSection-genre--text">{genre.name}</p>
+      <div className="movies-content_genreSection-genre-box">
+        <div className="movies-content_genreSection-genre-box--img">
+          <img
+            src={getIcon(genre.name)}
+            alt="come"
+            width="100%"
+          />
+        </div>
+        <p className="movies-content_genreSection-genre-box--text">
+          {genre.name}
+        </p>
+      </div>
     </div>
   );
 };
