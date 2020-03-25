@@ -3,10 +3,8 @@ import Slider from "react-slick";
 import ReactPlayer from "react-player";
 
 const slide = trailer => {
-    console.log(trailer);
-    
   return (
-    <div className="movies-content_trailerSection-trailer">
+    <div key={trailer[0].id} className="movies-content_trailerSection-trailer">
       <ReactPlayer
         className="movies-content_trailerSection-trailer--player"
         url={`https://www.youtube.com/watch?v=${trailer[0].key}`}
@@ -21,7 +19,7 @@ const slide = trailer => {
 const getTrailer = videos => {
   let trailer = [];
   videos.forEach(video => {
-    trailer.push(video.results.filter(option => option.type === "Trailer"))
+    trailer.push(video.results.filter(option => option.type === "Trailer"));
   });
 
   return trailer;

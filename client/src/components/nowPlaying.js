@@ -43,9 +43,8 @@ class NowPlaying extends Component {
   };
   render() {
     const { movies, genres } = this.props;
-    console.log(this.props);
     const settings = {
-      fade:true,
+      fade: true,
       lazyLoad: true,
       arrows: false,
       dots: false,

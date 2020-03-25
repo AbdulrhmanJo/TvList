@@ -91,7 +91,6 @@
       }
     }
   }
-
   &_genreSection {
     padding: 0 5rem;
     width: 100%;
@@ -149,16 +148,14 @@
       }
 
       &:hover {
-        transform: scale(1.12);
+        transform: scale(1.05);
       }
     }
   }
-
   &_trailerSection {
     padding: 0 5rem;
     width: 100%;
     margin-bottom: 1rem;
-
     &-header {
       display: flex;
       align-items: flex-end;
@@ -173,14 +170,13 @@
     }
     &-trailer {
       padding: 0.5rem 0.5rem;
-
       // position: relative;
       // padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
-      &--player {
-        // position: absolute;
-        // top: 0;
-        // left: 0;
-      }
+      // &--player {
+      //   // position: absolute;
+      //   // top: 0;
+      //   // left: 0;
+      // }
     }
   }
 }

@@ -10,8 +10,10 @@ import "./styles/App.scss";
 
 class App extends Component {
   state = {
-    loading: true
+    loading: true,
+    input: ""
   };
+
 
   componentDidMount() {
     this.props.dispatch(getInitialData());
@@ -51,6 +53,7 @@ class App extends Component {
               ) : (
                 <div>
                   <Route exact path="/" render={() => <p>home</p>} />
+                  <Route path="/search" render={() => <p>search</p>} />
                   <Route path="/movies" component={MoviesPage} />
                   <Route path="/tvshows" render={() => <p>tv shows</p>} />
                 </div>

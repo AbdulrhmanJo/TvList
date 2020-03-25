@@ -17,7 +17,7 @@ const SecondarySection = props => {
         <h1 className="movies-content_SecondarySection-header--name">{name}</h1>
         <button className="btn btn-tertiary">See all</button>
       </div>
-      <Slider {...settings}>{movies.results.map(movie => <Movie movie={movie}/>)}</Slider>
+      <Slider {...settings}>{movies.results.map(movie => <Movie key={movie.id} movie={movie}/>)}</Slider>
     </div>
   );
 };
