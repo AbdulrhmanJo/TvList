@@ -1,7 +1,6 @@
 .movies-content {
-  display: flex;
-  flex-direction: column;
   padding-bottom: 7rem;
+  height: 100%;
   &_nowPlaying {
     &--movie {
       position: relative;

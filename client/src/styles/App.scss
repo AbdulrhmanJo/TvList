@@ -3,6 +3,7 @@
 @import "~slick-carousel/slick/slick.css";
 @import "bar";
 @import "movies";
+@import "SectionPage";
 
 *,
 *::after,
@@ -21,6 +22,8 @@ html {
 body {
   font-size: inherit;
   font-family: "Roboto", sans-serif;
+  height: 100vh;
+
 }
 
 .container {
