@@ -53,9 +53,9 @@ class App extends Component {
               ) : (
                 <div>
                   <Route exact path="/" render={() => <p>home</p>} />
-                  <Route path="/search" render={() => <p>search</p>} />
-                  <Route path="/movies" component={MoviesPage} />
-                  <Route path="/tvshows" render={() => <p>tv shows</p>} />
+                  <Route exact path="/movies" component={MoviesPage} />
+                  <Route exact path="/tvshows" render={() => <p>tv shows</p>} />
+                  <Route path="/movies/:name" render={() => <p>category</p>} />
                 </div>
               )}
             </div>

@@ -12,10 +12,10 @@ class MoviesPage extends Component {
       <div className="movies-content">
         <NowPlaying movies={movies.nowPlaying} genres={genres} />
         <SecondarySection name="in theaters" movies={movies.nowPlaying} />
-        <SecondarySection name="Trending" movies={movies.trending} />
-        <TrailerSection name="Trailers" videos={videos} />
-        <SecondarySection name="Top rated" movies={movies.topRated} />
-        <SecondarySection name="Most popular" movies={movies.popular} />
+        <SecondarySection name="trending" movies={movies.trending} />
+        <TrailerSection name="trailers" videos={videos} />
+        <SecondarySection name="top rated" movies={movies.topRated} />
+        <SecondarySection name="most popular" movies={movies.popular} />
         <GenreSection name="genres" genres={genres} />
       </div>
     );
