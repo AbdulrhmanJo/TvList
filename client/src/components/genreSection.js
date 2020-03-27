@@ -1,24 +1,21 @@
 import React from "react";
 import Slider from "react-slick";
-import { getIcon } from '../utils/images'
+import { getIcon } from "../utils/images";
+import { Link } from "react-router-dom";
 
 const slide = genre => {
-    
   return (
-    <div key={genre.id} className="movies-content_genreSection-genre">
+    <Link to={`/movies/${genre.name.replace(" ","-").toLowerCase()}`}
+    key={genre.id} className="movies-content_genreSection-genre">
       <div className="movies-content_genreSection-genre-box">
         <div className="movies-content_genreSection-genre-box--img">
-          <img
-            src={getIcon(genre.name)}
-            alt="come"
-            width="100%"
-          />
+          <img src={getIcon(genre.name)} alt="come" width="100%" />
         </div>
         <p className="movies-content_genreSection-genre-box--text">
           {genre.name}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 
