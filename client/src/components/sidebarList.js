@@ -2,8 +2,6 @@ import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 
 const SidebarList = props => {
-  console.log(props);
-
   const { items, icons, title } = props;
   return (
     <ul className="sidebar-list">

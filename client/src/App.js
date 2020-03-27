@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import BeatLoader from "react-spinners/BeatLoader";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
@@ -22,7 +21,7 @@ class App extends Component {
                 flex: 1,
                 display: "flex",
                 alignItems: "center",
-                justifyContent:'center'
+                justifyContent: "center"
               }}
             >
               <div>

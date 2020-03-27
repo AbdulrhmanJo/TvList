@@ -3,8 +3,5 @@ export function getMovieInitialData() {
 }
 
 export function getMoviesOfSection(section, page) {
-    console.log(page);
-    
-  return fetch(`/movies/${section}/${page}`, {
-  }).then(res => res.json());
+  return fetch(`/movies/${section}/${page}`).then(res => res.json());
 }

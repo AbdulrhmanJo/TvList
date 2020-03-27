@@ -1,5 +1,5 @@
-import { getMoviesOfSection } from "../utils/API";
-export const RECEIVE_SECTION_MOVIES = "RECEIVE_SECTION_MOVIES";
+// import { getMoviesOfSection } from "../utils/API";
+// export const RECEIVE_SECTION_MOVIES = "RECEIVE_SECTION_MOVIES";
 
 // export function receiveSectionMovies(movies) {
 //   return {

@@ -1,21 +1,35 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import Movie from "./movie";
 import { getMoviesOfSection } from "../utils/API";
 import InfiniteScroll from "react-infinite-scroll-component";
 import BeatLoader from "react-spinners/BeatLoader";
+import SyncLoader from "react-spinners/SyncLoader";
 
 class SectionPage extends Component {
   state = {
     movies: [],
     page: 1,
+    hasMore: true,
     loading: true
   };
   loadMovies = () => {
-    this.setState({ page: this.state.page + 1 });
-    getMoviesOfSection(this.props.match.params.id, this.state.page).then(res =>
-      this.setState({ movies: this.state.movies.concat(res[0].results) })
-    );
+    const { match } = this.props;
+    const { page, movies, hasMore } = this.state;
+
+    if (match.params.id !== "trending") {
+      this.setState({ page: page + 1 });
+
+      getMoviesOfSection(match.params.id, page).then(res =>
+        this.setState({
+          movies: this.state.movies.concat(res[0].results),
+          hasMore: this.state.totalPages - this.state.page > 0 ? true : false
+        })
+      );
+    } else {
+      this.setState({
+        hasMore: false
+      });
+    }
   };
   componentDidMount() {
     window.scroll({
@@ -25,7 +39,8 @@ class SectionPage extends Component {
     getMoviesOfSection(this.props.match.params.id, this.state.page).then(data =>
       this.setState({
         movies: data[0].results,
-        loading: false
+        loading: false,
+        totalPages: data[0].total_pages
       })
     );
   }
@@ -37,12 +52,6 @@ class SectionPage extends Component {
       <div className="section-page">
         {this.state.loading ? (
           <BeatLoader
-            css={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%"
-            }}
             loading={this.state.loading}
             size={45}
             color={"rgb(243, 45, 88)"}
@@ -55,13 +64,24 @@ class SectionPage extends Component {
             <InfiniteScroll
               dataLength={this.state.movies.length}
               next={this.loadMovies}
-              hasMore={true}
-              loader={<h4>Loading...</h4>}
+              hasMore={this.state.hasMore}
+              loader={
+                <SyncLoader
+                  css={{
+                    padding: "2rem",
+                    display: "flex",
+                    justifyContent: "center"
+                  }}
+                  size={15}
+                  color={"rgb(243, 45, 88)"}
+                />
+              }
             >
               <div className="section-page_movies">
-                {this.state.movies.map(movie => (
-                  <Movie movie={movie} />
-                ))}
+                {this.state.movies.map(
+                  movie =>
+                    movie.poster_path && <Movie key={movie.id} movie={movie} />
+                )}
               </div>
             </InfiniteScroll>
           </div>
@@ -71,14 +91,4 @@ class SectionPage extends Component {
   }
 }
 
-// const mapStateToProps = ({ movies }, { match }) => {
-//   const id = match.params.id;
-//   return {
-//     // movies: movies[section],
-//     loading: movies.sectionMovies === undefined,
-//     id,
-//     sectionMovies: movies.sectionMovies
-//   };
-// };
-
-export default connect()(SectionPage);
+export default SectionPage;
