@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Movie from "./movie";
 import { getMoviesOfSection } from "../utils/API";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { connect } from "react-redux";
 import BeatLoader from "react-spinners/BeatLoader";
 import SyncLoader from "react-spinners/SyncLoader";
 
@@ -14,15 +15,14 @@ class SectionPage extends Component {
   };
   loadMovies = () => {
     const { match } = this.props;
-    const { page, movies, hasMore } = this.state;
+    const { page, movies, totalPages } = this.state;
 
     if (match.params.id !== "trending") {
-      this.setState({ page: page + 1 });
-
       getMoviesOfSection(match.params.id, page).then(res =>
         this.setState({
-          movies: this.state.movies.concat(res[0].results),
-          hasMore: this.state.totalPages - this.state.page > 0 ? true : false
+          movies: movies.concat(res[0].results),
+          hasMore: totalPages - page > 0 ? true : false,
+          page: page + 1
         })
       );
     } else {
@@ -36,11 +36,13 @@ class SectionPage extends Component {
       top: 0,
       left: 0
     });
+
     getMoviesOfSection(this.props.match.params.id, this.state.page).then(data =>
       this.setState({
         movies: data[0].results,
         loading: false,
-        totalPages: data[0].total_pages
+        totalPages: data[0].total_pages,
+        page: this.state.page + 1
       })
     );
   }
@@ -57,8 +59,8 @@ class SectionPage extends Component {
             color={"rgb(243, 45, 88)"}
           />
         ) : (
-          <div>
-            <p className="section-page_info">
+          <div className="section-page-content">
+            <p className="section-page-content_info">
               {match.params.id.replace("-", " ")}
             </p>
             <InfiniteScroll
@@ -77,7 +79,7 @@ class SectionPage extends Component {
                 />
               }
             >
-              <div className="section-page_movies">
+              <div className="section-page-content_movies">
                 {this.state.movies.map(
                   movie =>
                     movie.poster_path && <Movie key={movie.id} movie={movie} />
@@ -91,4 +93,11 @@ class SectionPage extends Component {
   }
 }
 
-export default SectionPage;
+const mapStateToProps = ({ movies }, { match }) => {
+  const id = match.params.id;
+  const { genres } = movies.genre;
+
+  return {};
+};
+
+export default connect(mapStateToProps)(SectionPage);

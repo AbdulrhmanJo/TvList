@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getInitialData } from "../Actions/movie";
 import BeatLoader from "react-spinners/BeatLoader";
 import NowPlaying from "./nowPlaying";
 import SecondarySection from "./SecondraySection";
@@ -8,9 +7,6 @@ import GenreSection from "./genreSection";
 import TrailerSection from "./trailerSection";
 
 class MoviesPage extends Component {
-  componentDidMount() {
-    this.props.dispatch(getInitialData());
-  }
   render() {
     const { movies, genres, videos, loading } = this.props;
     return (

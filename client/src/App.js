@@ -4,11 +4,18 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
-import "./styles/App.scss";
 import sectionPage from "./components/sectionPage";
+import { getInitialData } from "./Actions/movie";
+import BeatLoader from "react-spinners/BeatLoader";
+
+import "./styles/App.scss";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(getInitialData());
+  }
   render() {
+    const { loading } = this.props;
     return (
       <Router>
         <div className="container">
@@ -24,12 +31,26 @@ class App extends Component {
                 justifyContent: "center"
               }}
             >
-              <div>
-                <Route exact path="/" render={() => <p>home</p>} />
-                <Route exact path="/movies" component={MoviesPage} />
-                <Route exact path="/tvshows" render={() => <p>tv shows</p>} />
-                <Route path="/movies/:id" component={sectionPage} />
-              </div>
+              {loading ? (
+                <BeatLoader
+                  css={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "100%"
+                  }}
+                  loading={loading}
+                  size={45}
+                  color={"rgb(243, 45, 88)"}
+                />
+              ) : (
+                <div>
+                  <Route exact path="/" render={() => <p>home</p>} />
+                  <Route exact path="/movies" component={MoviesPage} />
+                  <Route exact path="/tvshows" render={() => <p>tv shows</p>} />
+                  <Route path="/movies/:id" component={sectionPage} />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -38,4 +59,8 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default connect(state => {
+  return {
+    loading: state.movies.genre === undefined
+  };
+})(App);
