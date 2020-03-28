@@ -29,9 +29,9 @@ class MoviesPage extends Component {
             <SecondarySection name="Now Playing" movies={movies.nowPlaying} />
             <SecondarySection name="trending" movies={movies.trending} />
             <TrailerSection name="trailers" videos={videos} />
-            <SecondarySection name="most popular" movies={movies.popular} />
+            <SecondarySection name="popular" movies={movies.popular} />
             <SecondarySection name="top rated" movies={movies.topRated} />
-            <GenreSection name="genres" genres={genres} />
+            <GenreSection name="genres" genres={genres.genres} />
           </div>
         )}
       </div>

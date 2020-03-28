@@ -1,10 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
 import Movie from "./movie";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-const SecondarySection = props => {
-  const { name, movies } = props;
+const SecondarySection = props => {  
+  const { name, movies, match } = props;
   const settings = {
     lazyLoad: true,
     infinite: true,
@@ -17,7 +17,7 @@ const SecondarySection = props => {
       <div className="movies-content_SecondarySection-header">
         <h1 className="movies-content_SecondarySection-header--name">{name}</h1>
         <Link
-          to={`/movies/${name.replace(" ", "-").toLowerCase()}`}
+          to={`${match.path}/${name.replace(" ", "-").toLowerCase()}`}
           className="btn btn-tertiary"
         >
           See all
@@ -32,4 +32,4 @@ const SecondarySection = props => {
   );
 };
 
-export default SecondarySection;
+export default withRouter(SecondarySection);
