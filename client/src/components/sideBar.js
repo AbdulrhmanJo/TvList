@@ -13,7 +13,7 @@ class Sidebar extends Component {
           <p>Something</p>
         </div>
         <SidebarList
-          items={["home", "movies", "TV_shows"]}
+          items={["home", "movies", "TV-shows"]}
           icons={[
             <AiOutlineHome
               size={20}

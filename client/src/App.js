@@ -4,15 +4,16 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
+import TVshows from "./components/tvshowsPage.js";
 import sectionPage from "./components/sectionPage";
-import { getInitialData } from "./Actions/movie";
+import { handleInitialData } from "./Actions/shared";
 import BeatLoader from "react-spinners/BeatLoader";
 
 import "./styles/App.scss";
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(getInitialData());
+    this.props.dispatch(handleInitialData());
   }
   render() {
     const { loading } = this.props;
@@ -27,7 +28,6 @@ class App extends Component {
                 backgroundColor: "#030303",
                 flex: 1,
                 display: "flex",
-                alignItems: "center",
                 justifyContent: "center"
               }}
             >
@@ -47,7 +47,7 @@ class App extends Component {
                 <div>
                   <Route exact path="/" render={() => <p>home</p>} />
                   <Route exact path="/movies" component={MoviesPage} />
-                  <Route exact path="/tvshows" render={() => <p>tv shows</p>} />
+                  <Route exact path="/tv-shows" component={TVshows} />
                   <Route path="/movies/:id" component={sectionPage} />
                 </div>
               )}
@@ -61,6 +61,6 @@ class App extends Component {
 
 export default connect(state => {
   return {
-    loading: state.movies.genre === undefined
+    loading: state.tvshows.genres === undefined
   };
 })(App);

@@ -1,7 +1,8 @@
-import movies from './movies'
-import { combineReducers } from 'redux'
-
+import movies from "./movies";
+import tvshows from "./tvshows";
+import { combineReducers } from "redux";
 
 export default combineReducers({
-    movies
-})
+  movies,
+  tvshows
+});

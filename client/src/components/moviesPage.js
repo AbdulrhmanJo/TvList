@@ -25,7 +25,7 @@ class MoviesPage extends Component {
           />
         ) : (
           <div>
-            <NowPlaying movies={movies.nowPlaying} genres={genres} />
+            <NowPlaying movies={movies.nowPlaying} genres={genres} type={"movies"}/>
             <SecondarySection name="Now Playing" movies={movies.nowPlaying} />
             <SecondarySection name="trending" movies={movies.trending} />
             <TrailerSection name="trailers" videos={videos} />

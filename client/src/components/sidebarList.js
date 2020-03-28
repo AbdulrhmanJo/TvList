@@ -11,7 +11,7 @@ const SidebarList = props => {
           <NavLink
             exact
             to={
-              item === "home" ? "/" : `/${item.replace("_", "").toLowerCase()}`
+              item === "home" ? "/" : `/${item.toLowerCase()}`
             }
             className="sidebar-list_item"
             activeClassName="sidebar-list_item--active"
@@ -20,7 +20,7 @@ const SidebarList = props => {
                 return true;
               } else if (
                 location.pathname.indexOf(
-                  `/${item.replace("_", "").toLowerCase()}`
+                  `/${item.toLowerCase()}`
                 ) !== -1
               ) {
                 return true;
@@ -29,7 +29,7 @@ const SidebarList = props => {
           >
             {icons[index]}
             <span className="sidebar-list_item--text">
-              {item.replace("_", " ")}
+              {item.replace("-", " ")}
             </span>
           </NavLink>
         </li>

@@ -16,7 +16,7 @@ class SectionPage extends Component {
   loadData = () => {
     const { match } = this.props;
     const { page, movies, totalPages } = this.state;
-    if (this.props.genre) {
+    if (this.props.genre.length > 0) {
       getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(res =>
         this.setState({
           movies: movies.concat(res[0].results),
@@ -46,7 +46,7 @@ class SectionPage extends Component {
       left: 0
     });
 
-    if (this.props.genre) {
+    if (this.props.genre.length > 0) {
       getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(data =>
         this.setState({
           movies: data[0].results,

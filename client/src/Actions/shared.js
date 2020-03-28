@@ -1,17 +1,12 @@
-// import { getMoviesOfSection } from "../utils/API";
-// export const RECEIVE_SECTION_MOVIES = "RECEIVE_SECTION_MOVIES";
+import { getInitialData } from "../utils/API";
+import { receiveMovies } from "./movie";
+import { receiveTV } from "./tvshows";
 
-// export function receiveSectionMovies(movies) {
-//   return {
-//     type: RECEIVE_SECTION_MOVIES,
-//     movies
-//   };
-// }
-
-// export function getSectionMovies(section) {
-//   return dispatch => {
-//     return getMoviesOfSection(section).then(movies => {
-//       dispatch(receiveSectionMovies(movies));
-//     });
-//   };
-// }
+export function handleInitialData() {
+  return dispatch => {
+    return getInitialData().then(({ movies, tvShows }) => {
+      dispatch(receiveMovies(movies));
+      dispatch(receiveTV(tvShows));
+    });
+  };
+}
