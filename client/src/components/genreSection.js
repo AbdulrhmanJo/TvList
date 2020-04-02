@@ -24,8 +24,6 @@ const slide = genre => {
 
 const GenreSection = props => {
   const { name, genres } = props;
-  console.log(genres);
-
   const settings = {
     infinite: true,
     speed: 500,

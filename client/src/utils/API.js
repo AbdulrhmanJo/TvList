@@ -16,6 +16,11 @@ export function getTvInitialData() {
   return fetch("/tv-shows").then(res => res.json());
 }
 
+export function getTvOfSection(section, page) {
+  return fetch(`/tv-shows/${section}/${page}`).then(res => res.json());
+}
+
+
 //initial data
 export function getInitialData() {
   return Promise.all([getMovieInitialData(), getTvInitialData()]).then(

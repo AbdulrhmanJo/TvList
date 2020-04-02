@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import Movie from "./movie";
-import { getMoviesOfSection, getMoviesOfCategory } from "../utils/API";
+import {
+  getMoviesOfSection,
+  getMoviesOfCategory,
+  getTvOfSection
+} from "../utils/API";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { connect } from "react-redux";
 import BeatLoader from "react-spinners/BeatLoader";
@@ -8,39 +12,56 @@ import SyncLoader from "react-spinners/SyncLoader";
 
 class SectionPage extends Component {
   state = {
-    movies: [],
+    data: [],
     page: 1,
     hasMore: true,
     loading: true
   };
   loadData = () => {
     const { match } = this.props;
-    const { page, movies, totalPages } = this.state;
+    const { page, data, totalPages } = this.state;
     if (this.props.genre.length > 0) {
       getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(res =>
         this.setState({
-          movies: movies.concat(res[0].results),
+          data: data.concat(res[0].results),
           hasMore: totalPages - page > 0 ? true : false,
           page: page + 1
         })
       );
     } else {
-      if (match.params.id !== "trending") {
-        getMoviesOfSection(match.params.id, page).then(res =>
+      if (match.path.indexOf("movies") !== -1) {
+        if (match.params.id !== "trending") {
+          getMoviesOfSection(match.params.id, page).then(res =>
+            this.setState({
+              data: data.concat(res[0].results),
+              hasMore: totalPages - page > 0 ? true : false,
+              page: page + 1
+            })
+          );
+        } else {
           this.setState({
-            movies: movies.concat(res[0].results),
-            hasMore: totalPages - page > 0 ? true : false,
-            page: page + 1
-          })
-        );
+            hasMore: false
+          });
+        }
       } else {
-        this.setState({
-          hasMore: false
-        });
+        if (match.params.id !== "trending") {
+          getTvOfSection(match.params.id, page).then(res =>
+            this.setState({
+              data: data.concat(res[0].results),
+              hasMore: totalPages - page > 0 ? true : false,
+              page: page + 1
+            })
+          );
+        } else {
+          this.setState({
+            hasMore: false
+          });
+        }
       }
     }
   };
   componentDidMount() {
+    const { match } = this.props;
     window.scroll({
       top: 0,
       left: 0
@@ -49,22 +70,32 @@ class SectionPage extends Component {
     if (this.props.genre.length > 0) {
       getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(data =>
         this.setState({
-          movies: data[0].results,
+          data: data[0].results,
           loading: false,
           totalPages: data[0].total_pages,
           page: this.state.page + 1
         })
       );
     } else {
-      getMoviesOfSection(this.props.match.params.id, this.state.page).then(
-        data =>
+      if (match.path.indexOf("movies") !== -1) {
+        getMoviesOfSection(match.params.id, this.state.page).then(data =>
           this.setState({
-            movies: data[0].results,
+            data: data[0].results,
             loading: false,
             totalPages: data[0].total_pages,
             page: this.state.page + 1
           })
-      );
+        );
+      } else {
+        getTvOfSection(match.params.id, this.state.page).then(data =>
+          this.setState({
+            data: data[0].results,
+            loading: false,
+            totalPages: data[0].total_pages,
+            page: this.state.page + 1
+          })
+        );
+      }
     }
   }
 
@@ -87,7 +118,7 @@ class SectionPage extends Component {
                 : match.params.id.replace("-", " ")}
             </p>
             <InfiniteScroll
-              dataLength={this.state.movies.length}
+              dataLength={this.state.data.length}
               next={this.loadData}
               hasMore={this.state.hasMore}
               loader={
@@ -103,7 +134,7 @@ class SectionPage extends Component {
               }
             >
               <div className="section-page-content_movies">
-                {this.state.movies.map(
+                {this.state.data.map(
                   movie =>
                     movie.poster_path && <Movie key={movie.id} movie={movie} />
                 )}
