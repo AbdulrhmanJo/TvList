@@ -12,7 +12,6 @@ const slide = (genre, path) => {
   } else {
     genrre = genre.name.replace(" ", "-");
   }
-
   return (
     <Link
       to={`${path}/${genrre.toLowerCase()}`}

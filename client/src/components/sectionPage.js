@@ -3,7 +3,8 @@ import Movie from "./movie";
 import {
   getMoviesOfSection,
   getMoviesOfCategory,
-  getTvOfSection
+  getTvOfSection,
+  getTvOfCategory
 } from "../utils/API";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { connect } from "react-redux";
@@ -21,13 +22,23 @@ class SectionPage extends Component {
     const { match } = this.props;
     const { page, data, totalPages } = this.state;
     if (this.props.genre.length > 0) {
-      getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(res =>
-        this.setState({
-          data: data.concat(res[0].results),
-          hasMore: totalPages - page > 0 ? true : false,
-          page: page + 1
-        })
-      );
+      if (match.path.indexOf("movies") !== -1) {
+        getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(res =>
+          this.setState({
+            data: data.concat(res[0].results),
+            hasMore: totalPages - page > 0 ? true : false,
+            page: page + 1
+          })
+        );
+      } else {
+        getTvOfCategory(this.props.genre[0].id, this.state.page).then(res =>
+          this.setState({
+            data: data.concat(res[0].results),
+            hasMore: totalPages - page > 0 ? true : false,
+            page: page + 1
+          })
+        );
+      }
     } else {
       if (match.path.indexOf("movies") !== -1) {
         if (match.params.id !== "trending") {
@@ -68,14 +79,26 @@ class SectionPage extends Component {
     });
 
     if (this.props.genre.length > 0) {
-      getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(data =>
-        this.setState({
-          data: data[0].results,
-          loading: false,
-          totalPages: data[0].total_pages,
-          page: this.state.page + 1
-        })
-      );
+      if (match.path.indexOf("movies") !== -1) {
+        getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(
+          data =>
+            this.setState({
+              data: data[0].results,
+              loading: false,
+              totalPages: data[0].total_pages,
+              page: this.state.page + 1
+            })
+        );
+      } else {
+        getTvOfCategory(this.props.genre[0].id, this.state.page).then(data =>
+          this.setState({
+            data: data[0].results,
+            loading: false,
+            totalPages: data[0].total_pages,
+            page: this.state.page + 1
+          })
+        );
+      }
     } else {
       if (match.path.indexOf("movies") !== -1) {
         getMoviesOfSection(match.params.id, this.state.page).then(data =>
@@ -147,23 +170,32 @@ class SectionPage extends Component {
   }
 }
 
-const mapStateToProps = ({ movies }, { match }) => {
+const mapStateToProps = (state, { match }) => {
   const id = match.params.id;
   let token = "";
   if (id.indexOf("-") !== -1) {
     let words = id.split("-");
-    words.forEach(word => {
-      token +=
-        word === "tv"
-          ? word.toUpperCase() + " "
-          : word.charAt(0).toUpperCase() + word.substring(1) + " ";
+    words.forEach((word, index) => {
+      if (match.path.indexOf("tv-shows") !== -1) {
+        if (words.length === index + 1) {
+          token += word.charAt(0).toUpperCase() + word.substring(1);
+        } else {
+          token += word.charAt(0).toUpperCase() + word.substring(1) + " & ";
+        }
+      } else {
+        token +=
+          word === "tv"
+            ? word.toUpperCase() + " "
+            : word.charAt(0).toUpperCase() + word.substring(1) + " ";
+      }
     });
   } else {
     token += id.charAt(0).toUpperCase() + id.substring(1);
   }
-
-  const { genres } = movies.genre;
-  const genre = genres.filter(genre => token.trim() === genre.name);
+  const genre =
+    match.path.indexOf("movies") !== -1
+      ? state.movies.genre.genres.filter(genre => token.trim() === genre.name)
+      : state.tvshows.genre.genres.filter(genre => token.trim() === genre.name);
 
   return {
     genre

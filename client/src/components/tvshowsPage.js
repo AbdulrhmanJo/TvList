@@ -44,9 +44,9 @@ class TVshows extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.tvshows.genres === undefined,
+    loading: state.tvshows.genre === undefined,
     tvshows: state.tvshows,
-    genres: state.tvshows.genres,
+    genres: state.tvshows.genre,
     videos: state.tvshows.trailer
   };
 };

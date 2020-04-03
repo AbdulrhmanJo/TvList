@@ -3,6 +3,7 @@ const morgan = require('morgan');
 
 
 const movies = require('./routes/movies');
+const tvShows = require('./routes/tvshow')
 const app = express();
 
 app.use(express.json());
@@ -10,6 +11,8 @@ app.use(morgan('dev'));
 
 // use moveis route 
 app.use('/movies', movies);
+app.use('/tv-shows', tvShows);
+
  
 const PORT = 5000;
 

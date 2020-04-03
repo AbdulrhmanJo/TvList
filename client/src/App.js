@@ -62,6 +62,6 @@ class App extends Component {
 
 export default connect(state => {
   return {
-    loading: state.tvshows.genres === undefined
+    loading: state.tvshows.genre === undefined
   };
 })(App);

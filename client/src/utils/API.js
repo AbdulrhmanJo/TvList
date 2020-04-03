@@ -20,6 +20,10 @@ export function getTvOfSection(section, page) {
   return fetch(`/tv-shows/${section}/${page}`).then(res => res.json());
 }
 
+export function getTvOfCategory(catagory, page) {
+  return fetch(`/tv-shows/${catagory}/${page}`).then(res => res.json());
+}
+
 
 //initial data
 export function getInitialData() {
