@@ -1,18 +1,27 @@
 import React from "react";
 import Slider from "react-slick";
 import { getIcon } from "../utils/images";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-const slide = genre => {
+const slide = (genre, path) => {
+  const Icon = getIcon(genre.name);
+  let genrre;
+  if (genre.name.indexOf("&") !== -1) {
+    const arr = genre.name.split("&");
+    genrre = arr[0].trim() + "-" + arr[1].trim();
+  } else {
+    genrre = genre.name.replace(" ", "-");
+  }
+
   return (
     <Link
-      to={`/movies/${genre.name.replace(" ", "-").toLowerCase()}`}
+      to={`${path}/${genrre.toLowerCase()}`}
       key={genre.id}
       className="movies-content_genreSection-genre"
     >
       <div className="movies-content_genreSection-genre-box">
         <div className="movies-content_genreSection-genre-box--img">
-          <img src={getIcon(genre.name)} alt="come" width="100%" />
+          <img src={Icon} alt={genre.name} width="100%" />
         </div>
         <p className="movies-content_genreSection-genre-box--text">
           {genre.name}
@@ -35,9 +44,11 @@ const GenreSection = props => {
       <div className="movies-content_genreSection-header">
         <h1 className="movies-content_genreSection-header--name">{name}</h1>
       </div>
-      <Slider {...settings}>{genres.map(genre => slide(genre))}</Slider>
+      <Slider {...settings}>
+        {genres.map(genre => slide(genre, props.match.path))}
+      </Slider>
     </div>
   );
 };
 
-export default GenreSection;
+export default withRouter(GenreSection);

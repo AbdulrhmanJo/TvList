@@ -8,7 +8,6 @@ const Slide = props => {
       <img
         src={`https://image.tmdb.org/t/p/original${props.backdrop_path}`}
         alt={`${props.title}`}
-        width="100%"
         className="movies-content_nowPlaying--movie-img"
       />
       <div className="movies-content_nowPlaying--movie-info">

@@ -33,14 +33,17 @@ export function getIcon(genreName) {
     case "History":
       return History;
     case "Action":
+    case "Action & Adventure":
       return Action;
     case "Thriller":
       return Thriller;
     case "Western":
       return Western;
     case "Romance":
+    case "Kids":
       return Romance;
     case "War":
+    case "War & Politics":
       return War;
     case "Animation":
       return Animation;
@@ -49,8 +52,10 @@ export function getIcon(genreName) {
     case "Music":
       return Music;
     case "Fantasy":
+    case "Sci-Fi & Fantasy":
       return Fantasy;
     case "TV Movie":
+    case "Reality":
       return TVShow;
     case "Adventure":
       return Adventure;
