@@ -35,8 +35,9 @@ const GenreSection = props => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 7,
-    rows: Math.ceil(genres.length / 7)
+    slidesToShow: 6,
+    rows: 1,
+    slidesToScroll: 6
   };
   return (
     <div className="movies-content_genreSection">

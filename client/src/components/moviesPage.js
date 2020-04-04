@@ -31,7 +31,7 @@ class MoviesPage extends Component {
             <TrailerSection name="trailers" videos={videos} />
             <SecondarySection name="popular" movies={movies.popular} />
             <SecondarySection name="top rated" movies={movies.topRated} />
-            <GenreSection name="genres" genres={genres.genres} />
+            <GenreSection name="Browse by genre" genres={genres.genres} />
           </div>
         )}
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Movie = props => {
-    const {movie} = props
+  const { movie } = props;
   return (
     <div className="movies-content_SecondarySection-movie">
       <img
@@ -9,6 +9,7 @@ const Movie = props => {
         alt={`${movie.title}`}
         className="movies-content_SecondarySection-movie--img"
       />
+      {/* <p className="movies-content_SecondarySection-movie--title">{props.type === "/movies" ? movie.title : movie.name}</p> */}
     </div>
   );
 };

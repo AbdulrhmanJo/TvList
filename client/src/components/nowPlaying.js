@@ -67,7 +67,7 @@ class NowPlaying extends Component {
             return (
               index < 15 && (
                 <Slide
-                  sectionName={type === "movies" ? "Now playing" : "Trending"}
+                  sectionName={type === "movies" ? "Now playing" : "On TV"}
                   backdrop_path={movie.backdrop_path}
                   key={movie.id}
                   title={type === "movies" ? movie.title : movie.name}

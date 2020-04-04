@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import Movie from "./movie";
 import { Link, withRouter } from "react-router-dom";
 
-const SecondarySection = props => {  
+const SecondarySection = props => {
   const { name, movies, match } = props;
   const settings = {
     lazyLoad: true,
@@ -25,7 +25,7 @@ const SecondarySection = props => {
       </div>
       <Slider {...settings}>
         {movies.results.map(movie => (
-          <Movie key={movie.id} movie={movie} />
+          <Movie key={movie.id} movie={movie} type={match.path} />
         ))}
       </Slider>
     </div>

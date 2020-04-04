@@ -27,7 +27,8 @@ const getTrailer = videos => {
 
 const TrailerSection = props => {
   const { name, videos } = props;
-
+  console.log(videos);
+  
   const trailers = getTrailer(videos);
 
   const settings = {

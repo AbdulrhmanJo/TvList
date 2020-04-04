@@ -75,23 +75,23 @@
   &-search {
     display: flex;
     align-items: center;
-    width: 35rem;
-    background-color: #ffffff10;
+    width: 30.5rem;
+    background-color: #ffffff33;
     padding: 0 0rem 0 2rem;
-    border-radius: 0.3rem;
+    border-radius: 0.2rem;
     &--active {
       background-color: transparent;
     }
     &--input {
       font-size: 1.7rem;
-      color: rgb(196, 196, 196);
+      color: rgb(221, 221, 221);
       margin-left: 1.5rem;
       width: 100%;
       height: 100%;
       background-color: transparent;
       border: none;
       &::placeholder{
-        color: rgb(141, 141, 141);
+        color: rgb(211, 211, 211);
       }
       &:focus{
         outline: none;
@@ -99,7 +99,7 @@
     }
 
     &--icon {
-      color: rgb(163, 164, 168);
+      color: rgb(216, 216, 216);
 
     }
   }
