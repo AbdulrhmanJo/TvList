@@ -4,6 +4,12 @@ const fetch = require("node-fetch");
 
 const key = "api_key=0ccf6380a06c28412d00de81b5b1d24e";
 
+function getNetwork(id) {
+  return fetch(`https://api.themoviedb.org/3/network/${id}/images?${key}`).then(res =>
+    res.json()
+  );
+}
+
 function trending(type, time) {
   return fetch(
     `https://api.themoviedb.org/3/trending/${type}/${time}?${key}`
@@ -27,7 +33,6 @@ function getTrailer(id) {
     `).then(res => res.json());
 }
 
-
 function getTvByGenre(genre, page) {
   return fetch(
     `https://api.themoviedb.org/3/discover/tv?${key}&sort_by=popularity.desc&page=${page}&with_genres=${genre}`
@@ -43,21 +48,35 @@ router.get("/", (req, res) => {
     genre()
   ]).then(data => {
     Promise.all([
-      getTrailer(data[3].results[0].id),
-      getTrailer(data[3].results[1].id),
-      getTrailer(data[3].results[2].id),
-      getTrailer(data[3].results[3].id),
-      getTrailer(data[3].results[4].id),
-      getTrailer(data[3].results[5].id)
+      getTrailer(data[2].results[0].id),
+      getTrailer(data[2].results[1].id),
+      getTrailer(data[2].results[2].id),
+      getTrailer(data[2].results[3].id),
+      getTrailer(data[2].results[4].id),
+      getTrailer(data[2].results[5].id)
     ]).then(trailers =>
-      res.send({
-        popular: data[0],
-        topRated: data[1],
-        onTV: data[2],
-        trending: data[3],
-        genre: data[4],
-        trailer: trailers
-      })
+      Promise.all([
+        getNetwork(213),
+        getNetwork(49),
+        getNetwork(2552),
+        getNetwork(67),
+        getNetwork(453),
+        getNetwork(2739),
+        getNetwork(1024),
+        getNetwork(1709),
+        getNetwork(1436),
+        getNetwork(318),
+      ]).then(networks =>
+        res.send({
+          popular: data[0],
+          topRated: data[1],
+          onTV: data[2],
+          trending: data[3],
+          genre: data[4],
+          trailer: trailers,
+          networks: networks
+        })
+      )
     );
   });
 });
@@ -85,9 +104,9 @@ router.get("/:id/:page", (req, res) => {
   }
   if (section === "trending") {
     Promise.all([trending("tv", "week")]).then(data => res.send(data));
-    } else if (!isNaN(id)) {
-      Promise.all([getTvByGenre(section, page)]).then(data => res.send(data));
-    }else {
+  } else if (!isNaN(id)) {
+    Promise.all([getTvByGenre(section, page)]).then(data => res.send(data));
+  } else {
     Promise.all([discover(section, page)]).then(data => res.send(data));
   }
 });
