@@ -24,6 +24,11 @@ export function getTvOfCategory(catagory, page) {
   return fetch(`/tv-shows/${catagory}/${page}`).then(res => res.json());
 }
 
+export function getTvOfNetwork(netwrokId, page) {
+  return fetch(`/tv-shows/${netwrokId}s/${page}`).then(res => res.json());
+}
+
+
 
 //initial data
 export function getInitialData() {

@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 const slide = network => {
   return (
     <Link
-      to={`tv-shows/${network.id}`}
+      to={`tv-shows/${network[0].name.replace(" ", "-")}`}
       key={network.id}
       className="movies-content_networkSection-network"
     >
       <div className="movies-content_networkSection-network-box">
         <div className="movies-content_networkSection-network-box--img">
-          <img src={`https://image.tmdb.org/t/p/w342${network.logos[0].file_path}`} alt={network.id} width="100%" />
+          <img src={`https://image.tmdb.org/t/p/w342${network[1].logos[0].file_path}`} alt={network.id} width="100%" />
         </div>
       </div>
     </Link>

@@ -4,10 +4,13 @@ const fetch = require("node-fetch");
 
 const key = "api_key=0ccf6380a06c28412d00de81b5b1d24e";
 
-function getNetwork(id) {
-  return fetch(`https://api.themoviedb.org/3/network/${id}/images?${key}`).then(res =>
-    res.json()
-  );
+function getNetworks(id) {
+  return Promise.all([
+    fetch(`https://api.themoviedb.org/3/network/${id}?${key}`),
+    fetch(`https://api.themoviedb.org/3/network/${id}/images?${key}`)
+  ])
+    .then(data => Promise.all(data.map(d => d.json())))
+    .then(networks => networks);
 }
 
 function trending(type, time) {
@@ -39,6 +42,12 @@ function getTvByGenre(genre, page) {
   ).then(res => res.json());
 }
 
+function getTvByNetwork(id, page) {
+  return fetch(
+    `https://api.themoviedb.org/3/discover/tv?${key}&sort_by=popularity.desc&page=${page}&with_networks=${id}`
+  ).then(res => res.json());
+}
+
 router.get("/", (req, res) => {
   Promise.all([
     discover("popular", 1),
@@ -56,16 +65,16 @@ router.get("/", (req, res) => {
       getTrailer(data[2].results[5].id)
     ]).then(trailers =>
       Promise.all([
-        getNetwork(213),
-        getNetwork(49),
-        getNetwork(2552),
-        getNetwork(67),
-        getNetwork(453),
-        getNetwork(2739),
-        getNetwork(1024),
-        getNetwork(1709),
-        getNetwork(1436),
-        getNetwork(318),
+        getNetworks(213),
+        getNetworks(49),
+        getNetworks(2552),
+        getNetworks(67),
+        getNetworks(453),
+        getNetworks(2739),
+        getNetworks(1024),
+        getNetworks(1709),
+        getNetworks(1436),
+        getNetworks(318)
       ]).then(networks =>
         res.send({
           popular: data[0],
@@ -106,6 +115,10 @@ router.get("/:id/:page", (req, res) => {
     Promise.all([trending("tv", "week")]).then(data => res.send(data));
   } else if (!isNaN(id)) {
     Promise.all([getTvByGenre(section, page)]).then(data => res.send(data));
+  } else if (id.endsWith("s")) {
+    Promise.all([getTvByNetwork(id.slice(0, id.length - 1), page)]).then(data =>
+      res.send(data)
+    );
   } else {
     Promise.all([discover(section, page)]).then(data => res.send(data));
   }

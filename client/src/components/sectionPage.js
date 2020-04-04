@@ -4,7 +4,8 @@ import {
   getMoviesOfSection,
   getMoviesOfCategory,
   getTvOfSection,
-  getTvOfCategory
+  getTvOfCategory,
+  getTvOfNetwork
 } from "../utils/API";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { connect } from "react-redux";
@@ -21,6 +22,14 @@ class SectionPage extends Component {
   loadData = () => {
     const { match } = this.props;
     const { page, data, totalPages } = this.state;
+    const id =
+      match.params.id
+        .replace("-", " ")
+        .charAt(0)
+        .toUpperCase() + match.params.id.replace("-", " ").substring(1);
+
+    const network = this.props.networks.filter(network => network.name === id);
+
     if (this.props.genre.length > 0) {
       if (match.path.indexOf("movies") !== -1) {
         getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(res =>
@@ -39,6 +48,14 @@ class SectionPage extends Component {
           })
         );
       }
+    } else if (network.length > 0) {
+      getTvOfNetwork(network[0].id, this.state.page).then(res =>
+        this.setState({
+          data: data.concat(res[0].results),
+          hasMore: totalPages - page > 0 ? true : false,
+          page: page + 1
+        })
+      );
     } else {
       if (match.path.indexOf("movies") !== -1) {
         if (match.params.id !== "trending") {
@@ -78,6 +95,15 @@ class SectionPage extends Component {
       left: 0
     });
 
+    const id =
+      match.params.id
+        .replace("-", " ")
+        .charAt(0)
+        .toUpperCase() + match.params.id.replace("-", " ").substring(1);
+
+    const network = this.props.networks.filter(network => network.name === id);
+    console.log(network);
+
     if (this.props.genre.length > 0) {
       if (match.path.indexOf("movies") !== -1) {
         getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(
@@ -99,6 +125,15 @@ class SectionPage extends Component {
           })
         );
       }
+    } else if (network.length > 0) {
+      getTvOfNetwork(network[0].id, this.state.page).then(data =>
+        this.setState({
+          data: data[0].results,
+          loading: false,
+          totalPages: data[0].total_pages,
+          page: this.state.page + 1
+        })
+      );
     } else {
       if (match.path.indexOf("movies") !== -1) {
         getMoviesOfSection(match.params.id, this.state.page).then(data =>
@@ -124,7 +159,6 @@ class SectionPage extends Component {
 
   render() {
     const { match } = this.props;
-
     return (
       <div className="section-page">
         {this.state.loading ? (
@@ -198,7 +232,8 @@ const mapStateToProps = (state, { match }) => {
       : state.tvshows.genre.genres.filter(genre => token.trim() === genre.name);
 
   return {
-    genre
+    genre,
+    networks: state.tvshows.networks.map(network => network[0])
   };
 };
 
