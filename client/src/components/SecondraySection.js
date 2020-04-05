@@ -17,7 +17,7 @@ const SecondarySection = props => {
       <div className="movies-content_SecondarySection-header">
         <h1 className="movies-content_SecondarySection-header--name">{name}</h1>
         <Link
-          to={`${match.path}/${name.replace(" ", "-").toLowerCase()}`}
+          to={`${match.url}/discover/${name.replace(" ", "-").toLowerCase()}`}
           className="btn btn-tertiary"
         >
           See all
@@ -25,7 +25,11 @@ const SecondarySection = props => {
       </div>
       <Slider {...settings}>
         {movies.results.map(movie => (
-          <Movie key={movie.id} movie={movie} type={match.path} />
+          <Movie
+            key={movie.id}
+            movie={movie}
+            type={match.url === "/movies" ? "movies" : "tv-shows"}
+          />
         ))}
       </Slider>
     </div>

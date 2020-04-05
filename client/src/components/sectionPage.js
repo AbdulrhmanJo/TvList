@@ -193,7 +193,14 @@ class SectionPage extends Component {
               <div className="section-page-content_movies">
                 {this.state.data.map(
                   movie =>
-                    movie.poster_path && <Movie key={movie.id} movie={movie} />
+                    movie.poster_path && (
+                      <Movie
+                        key={movie.id}
+                        movie={movie}
+                        place="section"
+                        type={match.url.indexOf("movies") !== -1 ? "movies" : "tv-shows"}
+                      />
+                    )
                 )}
               </div>
             </InfiniteScroll>
