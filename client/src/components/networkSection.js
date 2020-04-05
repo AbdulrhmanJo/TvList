@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import Arrow from "./arrow";
 
 const slide = network => {
   return (
@@ -24,7 +25,9 @@ const NetworkSection = props => {
     infinite: true,
     speed: 700,
     slidesToShow: 4,
-    slidesToScroll: 4
+    slidesToScroll: 4,
+    prevArrow: <Arrow type="prev" />,
+    nextArrow: <Arrow type="next" />
   };
   return (
     <div className="movies-content_networkSection">

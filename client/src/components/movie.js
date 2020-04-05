@@ -3,8 +3,6 @@ import { Link, withRouter } from "react-router-dom";
 class Movie extends Component {
   render() {
     const { movie, type, match, place } = this.props;
-    console.log(movie);
-
     return (
       <Link
         to={`/${type}/${movie.id}`}
@@ -22,7 +20,7 @@ class Movie extends Component {
           />
           <div className="movies-content_SecondarySection-movie--box-info">
             <p className="movies-content_SecondarySection-movie--box-info-title">
-              {movie.name}
+              {type === "movies" ? movie.title : movie.name}
             </p>
           </div>
         </div>

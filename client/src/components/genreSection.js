@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import { getIcon } from "../utils/images";
 import { Link, withRouter } from "react-router-dom";
+import Arrow from "./arrow";
 
 const slide = (genre, path) => {
   const Icon = getIcon(genre.name);
@@ -37,7 +38,9 @@ const GenreSection = props => {
     speed: 500,
     slidesToShow: 6,
     rows: 1,
-    slidesToScroll: 6
+    slidesToScroll: 6,
+    prevArrow: <Arrow type="prev" />,
+    nextArrow: <Arrow type="next" />
   };
   return (
     <div className="movies-content_genreSection">

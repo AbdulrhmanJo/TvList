@@ -23,7 +23,6 @@ body {
   font-size: inherit;
   font-family: "Roboto", sans-serif;
   height: 100vh;
-
 }
 
 .container {
@@ -73,5 +72,25 @@ body {
     &:hover {
       transform: scale(1.1);
     }
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: all 0.2s;
+  &-left {
+    left: -2rem;
+  }
+
+  &-right{
+    right: -6rem;
+    
+  }
+
+  &:hover{
+    opacity: .5;
   }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import ReactPlayer from "react-player";
+import Arrow from "./arrow";
 
 const slide = trailer => {
   return (
@@ -27,8 +28,6 @@ const getTrailer = videos => {
 
 const TrailerSection = props => {
   const { name, videos } = props;
-  console.log(videos);
-  
   const trailers = getTrailer(videos);
 
   const settings = {
@@ -36,7 +35,9 @@ const TrailerSection = props => {
     infinite: true,
     speed: 700,
     slidesToShow: 2,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    prevArrow: <Arrow type="prev" />,
+    nextArrow: <Arrow type="next" />
   };
   return (
     <div className="movies-content_trailerSection">

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Children } from "react";
 import Slider from "react-slick";
 import Movie from "./movie";
 import { Link, withRouter } from "react-router-dom";
+import Arrow from './arrow'
 
 const SecondarySection = props => {
   const { name, movies, match } = props;
@@ -10,8 +11,9 @@ const SecondarySection = props => {
     infinite: true,
     speed: 700,
     slidesToShow: 6,
-    slidesToScroll: 4,
-    nextArrow: <div style={{ marginLeft: "10rem", background: "red" }} />
+    slidesToScroll: 5,
+    prevArrow: <Arrow type="prev" />,
+    nextArrow: <Arrow type="next" />
   };
   return (
     <div className="movies-content_SecondarySection">
