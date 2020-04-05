@@ -48,9 +48,17 @@ class App extends Component {
                   <Route exact path="/" render={() => <p>home</p>} />
                   <Route exact path="/movies" component={MoviesPage} />
                   <Route exact path="/movies/:id" component={sectionPage} />
-                  <Route exact path="/movies/discover/:id" component={sectionPage} />
-                  {/* <Route exact path="/tv-shows" component={TVshows} /> */}
-                  {/* <Route path="/tv-shows/:id" component={sectionPage} /> */}
+                  <Route
+                    exact
+                    path="/movies/discover/:id"
+                    component={sectionPage}
+                  />
+                  <Route exact path="/tv-shows" component={TVshows} />
+                  <Route exact path="/tv-shows/:id" component={sectionPage} />
+                  <Route
+                    path="/tv-shows/discover/:id"
+                    component={sectionPage}
+                  />
                 </div>
               )}
             </div>

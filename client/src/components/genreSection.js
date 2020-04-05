@@ -14,7 +14,7 @@ const slide = (genre, path) => {
   }
   return (
     <Link
-      to={`${path}/${genrre.toLowerCase()}`}
+      to={`${path}/discover/${genrre.toLowerCase()}`}
       key={genre.id}
       className="movies-content_genreSection-genre"
     >

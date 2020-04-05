@@ -10,7 +10,8 @@ const SecondarySection = props => {
     infinite: true,
     speed: 700,
     slidesToShow: 6,
-    slidesToScroll: 4
+    slidesToScroll: 4,
+    nextArrow: <div style={{ marginLeft: "10rem", background: "red" }} />
   };
   return (
     <div className="movies-content_SecondarySection">
