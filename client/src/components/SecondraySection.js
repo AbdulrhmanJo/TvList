@@ -2,7 +2,7 @@ import React, { Children } from "react";
 import Slider from "react-slick";
 import Movie from "./movie";
 import { Link, withRouter } from "react-router-dom";
-import Arrow from './arrow'
+import Arrow from "./arrow";
 
 const SecondarySection = props => {
   const { name, movies, match } = props;

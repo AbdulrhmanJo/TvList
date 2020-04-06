@@ -198,7 +198,11 @@ class SectionPage extends Component {
                         key={movie.id}
                         movie={movie}
                         place="section"
-                        type={match.url.indexOf("movies") !== -1 ? "movies" : "tv-shows"}
+                        type={
+                          match.url.indexOf("movies") !== -1
+                            ? "movies"
+                            : "tv-shows"
+                        }
                       />
                     )
                 )}

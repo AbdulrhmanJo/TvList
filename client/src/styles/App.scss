@@ -39,6 +39,7 @@ body {
 }
 
 .btn {
+  margin-right: 0.4rem;
   border-radius: 0.2rem;
   font-size: 2rem;
   border: 0.1rem solid #f32d58;
@@ -53,13 +54,16 @@ body {
   }
 
   &-secandry {
-    margin-left: 0.5rem;
     background-color: transparent;
     color: #f32d58;
     padding: 0 0.2rem;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
+    &:hover {
+      background-color: #f32d5877;
+    }
   }
 
   &-tertiary {
@@ -85,12 +89,15 @@ body {
     left: -2rem;
   }
 
-  &-right{
+  &-right {
     right: -6rem;
-    
   }
 
-  &:hover{
-    opacity: .5;
+  &:hover {
+    opacity: 0.5;
   }
+}
+
+.pad-small {
+  padding: 0.5rem 0rem;
 }
