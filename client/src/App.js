@@ -53,12 +53,18 @@ class App extends Component {
                     path="/movies/discover/:id"
                     component={sectionPage}
                   />
+                  <Route
+                    exact
+                    path="/movies/genre/:id"
+                    component={sectionPage}
+                  />
                   <Route exact path="/tv-shows" component={TVshows} />
                   <Route exact path="/tv-shows/:id" component={sectionPage} />
                   <Route
                     path="/tv-shows/discover/:id"
                     component={sectionPage}
                   />
+                  <Route path="/tv-shows/genre/:id" component={sectionPage} />
                 </div>
               )}
             </div>

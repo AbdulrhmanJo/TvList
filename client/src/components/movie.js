@@ -6,41 +6,49 @@ import { connect } from "react-redux";
 class Movie extends Component {
   render() {
     const { movie, type, place } = this.props;
+    console.log(this.props.genre, type);
 
     return (
-      <Link
-        to={`/${type}/${movie.id}`}
+      <div
         className={
           place === "section"
             ? "movies-content_SecondarySection-movie section"
             : "movies-content_SecondarySection-movie"
         }
       >
-        <div className="movies-content_SecondarySection-movie--box">
-          <img
-            src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-            alt={`${movie.title}`}
-            className="movies-content_SecondarySection-movie--box-img"
-          />
-          <div className="movies-content_SecondarySection-movie--box-info">
-            <div className="movies-content_SecondarySection-movie--box-info-action">
-              <button className="btn btn-secandry pad-small">
-                <IoIosAdd size={25} />
-              </button>
-            </div>
-            <div className="movies-content_SecondarySection-movie--box-info--text">
-              <p className="movies-content_SecondarySection-movie--box-info--text-title">
-                {type === "movies" ? movie.title : movie.name}
-                <span>{this.props.genre[0].name}</span>
-              </p>
-              <div className="movies-content_SecondarySection-movie--box-info--text-rating">
-                <span>{movie.vote_average}/10</span>
+        <Link
+          to={`/${type}/${movie.id}`}
+          // className={
+          //   place === "section"
+          //     ? "movies-content_SecondarySection-movie section"
+          //     : "movies-content_SecondarySection-movie"
+          // }
+        >
+          <div className="movies-content_SecondarySection-movie--box">
+            <img
+              src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+              alt={`${movie.title}`}
+              className="movies-content_SecondarySection-movie--box-img"
+            />
+            <div className="movies-content_SecondarySection-movie--box-info">
+              <div className="movies-content_SecondarySection-movie--box-info--text">
+                <p className="movies-content_SecondarySection-movie--box-info--text-title">
+                  {type === "movies" ? movie.title : movie.name}
+                </p>
+                <div className="movies-content_SecondarySection-movie--box-info--text-rating">
+                  <span>{movie.vote_average}/10</span>
+                </div>
               </div>
             </div>
           </div>
+          {/* <p className="movies-content_SecondarySection-movie--title">{props.type === "/movies" ? movie.title : movie.name}</p> */}
+        </Link>
+        <div className="movies-content_SecondarySection-movie--action">
+          <button className="btn btn-secandry pad-small">
+            <IoIosAdd size={25} />
+          </button>
         </div>
-        {/* <p className="movies-content_SecondarySection-movie--title">{props.type === "/movies" ? movie.title : movie.name}</p> */}
-      </Link>
+      </div>
     );
   }
 }

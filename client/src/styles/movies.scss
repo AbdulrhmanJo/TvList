@@ -79,13 +79,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+      transition: all 0.2s;
 
       padding: 2rem 0.5rem;
       &--box {
-        transition: all 0.2s;
-        position: relative;
         &-img {
-          transition: all 0.2s;
           border-radius: 0.05rem;
           width: 100%;
           height: 100%;
@@ -95,10 +94,7 @@
             box-shadow: 0rem 0rem 3rem rgba(0, 0, 0, 0.5);
           }
         }
-
-        &:hover {
-          transform: scale(1.05);
-        }
+        position: relative;
 
         &-info {
           transition: all 0.3s;
@@ -110,38 +106,34 @@
           height: 100%;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: flex-end;
           align-items: flex-start;
           &--text {
             width: 100%;
-            padding: 1rem 1rem 2rem;
+            padding: 1rem 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             &-title {
               font-size: 1.7rem;
               color: white;
               width: 70%;
-              display: flex;
-              justify-content: center;
-              flex-direction: column;
-              & span {
-                padding-top: 0.2rem;
-                font-size: 1.3rem;
-                color: #f32d58;
-              }
             }
             &-rating {
               color: #f32d58;
               font-size: 1.5rem;
             }
           }
-          &-action {
-            padding: 1rem 0.5rem;
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-          }
         }
+      }
+
+      &--action {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 2.7rem .8rem;
+        opacity: 0;
+        transform: all 0.2s;
+        // width: 100%;
       }
 
       &:hover &--box-info {
@@ -153,6 +145,13 @@
         );
       }
 
+      &:hover &--action {
+        opacity: 1;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+      }
       // &--title {
       //   margin-top: 1rem;
       //   font-size: 1.3rem;
