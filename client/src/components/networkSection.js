@@ -7,14 +7,14 @@ const slide = network => {
   return (
     <Link
       to={`tv-shows/${network[0].name.replace(" ", "-")}`}
-      key={network.id}
       className="movies-content_networkSection-network"
-    >
+      key={network[0].id}
+      >
       <div className="movies-content_networkSection-network-box">
         <div className="movies-content_networkSection-network-box--img">
           <img
             src={`https://image.tmdb.org/t/p/w342${network[1].logos[0].file_path}`}
-            alt={network.id}
+            alt={network[0].name}
             width="100%"
           />
         </div>

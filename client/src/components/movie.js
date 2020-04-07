@@ -6,8 +6,7 @@ import { connect } from "react-redux";
 class Movie extends Component {
   render() {
     const { movie, type, place } = this.props;
-    console.log(this.props.genre, type);
-
+    
     return (
       <div
         className={
@@ -16,14 +15,7 @@ class Movie extends Component {
             : "movies-content_SecondarySection-movie"
         }
       >
-        <Link
-          to={`/${type}/${movie.id}`}
-          // className={
-          //   place === "section"
-          //     ? "movies-content_SecondarySection-movie section"
-          //     : "movies-content_SecondarySection-movie"
-          // }
-        >
+        <Link to={`/${type}/${movie.id}`}>
           <div className="movies-content_SecondarySection-movie--box">
             <img
               src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}

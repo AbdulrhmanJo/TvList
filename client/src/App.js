@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
 import TVshows from "./components/tvshowsPage.js";
 import sectionPage from "./components/sectionPage";
+import MoviePage from "./components/moviePage";
 import { handleInitialData } from "./Actions/shared";
 import BeatLoader from "react-spinners/BeatLoader";
 
@@ -47,7 +48,7 @@ class App extends Component {
                 <div>
                   <Route exact path="/" render={() => <p>home</p>} />
                   <Route exact path="/movies" component={MoviesPage} />
-                  <Route exact path="/movies/:id" component={sectionPage} />
+                  <Route exact path="/movies/:id" component={MoviePage} />
                   <Route
                     exact
                     path="/movies/discover/:id"

@@ -8,9 +8,7 @@ import TrailerSection from "./trailerSection";
 import NetworkSection from "./networkSection";
 class TVshows extends Component {
   render() {
-    const { tvshows, genres, loading, videos, networks} = this.props;
-    console.log(networks);
-    
+    const { tvshows, genres, loading, videos, networks } = this.props;
     const genre = genres.genres.filter(
       genre =>
         genre.name !== "Talk" && genre.name !== "Soap" && genre.name !== "News"
@@ -34,7 +32,10 @@ class TVshows extends Component {
             <NowPlaying movies={tvshows.onTV} genres={genres} type={"tv"} />
             netw
             <SecondarySection name="On TV" movies={tvshows.onTV} />
-            <NetworkSection name="Browse by service" networks={tvshows.networks} />
+            <NetworkSection
+              name="Browse by service"
+              networks={tvshows.networks}
+            />
             <SecondarySection name="Trending" movies={tvshows.trending} />
             <TrailerSection name="Trailers" videos={videos} />
             <SecondarySection name="Popular" movies={tvshows.popular} />

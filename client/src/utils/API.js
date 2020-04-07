@@ -4,11 +4,14 @@ export function getMovieInitialData() {
 }
 
 export function getMoviesOfSection(section, page) {
-  return fetch(`/movies/${section}/${page}`).then(res => res.json());
+  return fetch(`/movies/discover/${section}/${page}`).then(res => res.json());
 }
 
 export function getMoviesOfCategory(catagory, page) {
-  return fetch(`/movies/${catagory}/${page}`).then(res => res.json());
+  return fetch(`/movies/discover/${catagory}/${page}`).then(res => res.json());
+}
+export function getMovieDetails(id) {
+  return fetch(`/movies/${id}`).then(res => res.json());
 }
 
 //tv shows
@@ -27,8 +30,6 @@ export function getTvOfCategory(catagory, page) {
 export function getTvOfNetwork(netwrokId, page) {
   return fetch(`/tv-shows/${netwrokId}s/${page}`).then(res => res.json());
 }
-
-
 
 //initial data
 export function getInitialData() {
