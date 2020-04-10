@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { getMovieDetails } from "../utils/API";
-import Slider from "react-slick";
+// import Slider from "react-slick";
+import { GoPrimitiveDot } from "react-icons/go";
 
 class MoviePage extends Component {
   state = {
@@ -14,19 +15,107 @@ class MoviePage extends Component {
       this.setState({ data: data, loading: false })
     );
   }
+
+  getGenres = arr => {
+    let genres = "";
+    arr.forEach((genre, index) => {
+      if (index === 2 || index === arr.length - 1) {
+        genres += genre.name;
+      } else {
+        genres += genre.name + " . ";
+      }
+    });
+    return genres;
+  };
+
+  getTime = min => {
+    const afterDiv = min / 60;
+    const hour = Math.floor(afterDiv);
+    const m = Math.round((afterDiv - hour) * 60);
+    return `${hour}h ${m}m`;
+  };
+
   render() {
     const { data, loading } = this.state;
+    console.log(data);
+
     return loading ? (
       <h1>loading...</h1>
     ) : (
       <div className="movie">
-        <div className="movie-bg">
+        {/* <div className="movie-bg">
           <img
             src={`https://image.tmdb.org/t/p/original${data[0].backdrop_path}`}
             alt={data[0].title}
             className="movie-bg--img"
           />
+          <div className="movie-bg--overlay"></div>
+        </div> */}
+        <div className="movie-header">
+          <div className="movie-header--text">
+            <p className="movie-header--text-title">{data[0].title}</p>
+            <div className="movie-header--text-details">
+              <p>{this.getTime(data[0].runtime)}</p>
+              <div className="movie-header--text-details--genres">
+                {data[0].genres.map((genre, index) =>
+                  index === data[0].genres.length - 1 ? (
+                    <span className="movie-header--text-details--genres-genre">
+                      {genre.name}
+                    </span>
+                  ) : (
+                    <div>
+                      <span className="movie-header--text-details--genres-genre">
+                        {genre.name}
+                      </span>
+                      <GoPrimitiveDot size={8} />
+                    </div>
+                  )
+                )}
+              </div>
+              <p>{data[0].release_date.slice(0, 4)}</p>
+              {/* <p>{data[0].tagline}</p> */}
+            </div>
+          </div>
+
+          <div className="movie-header--rating">
+            <p className="movie-header--rating-number">
+              {data[0].vote_average}
+              <span
+                style={{
+                  color: "white",
+                  fontSize: "2.5rem",
+                  marginLeft: ".5rem"
+                }}
+              >
+                /10
+              </span>
+            </p>
+            <p className="movie-header--rating-user">
+              {`${data[0].vote_count} User Ratings`}
+            </p>
+          </div>
         </div>
+        <div className="movie-content">
+          <div className="movie-content-left">
+            <div className="movie-content-left--poster">
+              <img
+                src={`https://image.tmdb.org/t/p/original${data[0].poster_path}`}
+                alt={data[0].title}
+                className="movie-content-left--poster"
+              />
+            </div>
+            <button className="btn btn-movie">Add to Watchlist</button>
+          </div>
+          <div className="movie-content--details">
+            <div className="movie-content--details-desc">
+              <p className="movie-content--details-desc-title">Overview</p>
+              <p className="movie-content--details-desc-overview">
+                {data[0].overview}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="movie-bottom"></div>
       </div>
     );
   }

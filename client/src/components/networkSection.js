@@ -6,10 +6,10 @@ import Arrow from "./arrow";
 const slide = network => {
   return (
     <Link
-      to={`tv-shows/${network[0].name.replace(" ", "-")}`}
+      to={`tv-shows/discover/${network[0].name.replace(" ", "-")}`}
       className="movies-content_networkSection-network"
       key={network[0].id}
-      >
+    >
       <div className="movies-content_networkSection-network-box">
         <div className="movies-content_networkSection-network-box--img">
           <img

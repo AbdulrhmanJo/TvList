@@ -12,6 +12,7 @@ const slide = trailer => {
         light
         width="100%"
         controls
+        playing
       />
     </div>
   );

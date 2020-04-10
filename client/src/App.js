@@ -28,8 +28,8 @@ class App extends Component {
               style={{
                 backgroundColor: "#030303",
                 flex: 1,
-                display: "flex",
-                justifyContent: "center"
+                // display: "flex",
+                // justifyContent: "center"
               }}
             >
               {loading ? (
@@ -45,7 +45,7 @@ class App extends Component {
                   color={"rgb(243, 45, 88)"}
                 />
               ) : (
-                <div>
+                <div className="routes">
                   <Route exact path="/" render={() => <p>home</p>} />
                   <Route exact path="/movies" component={MoviesPage} />
                   <Route exact path="/movies/:id" component={MoviePage} />
@@ -60,7 +60,7 @@ class App extends Component {
                     component={sectionPage}
                   />
                   <Route exact path="/tv-shows" component={TVshows} />
-                  <Route exact path="/tv-shows/:id" component={sectionPage} />
+                  <Route exact path="/tv-shows/:id" component={MoviePage} />
                   <Route
                     path="/tv-shows/discover/:id"
                     component={sectionPage}
