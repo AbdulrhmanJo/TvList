@@ -4,6 +4,8 @@ import ReactPlayer from "react-player";
 import Arrow from "./arrow";
 
 const slide = trailer => {
+  console.log(trailer);
+
   return (
     <div key={trailer[0].id} className="movies-content_trailerSection-trailer">
       <ReactPlayer
@@ -45,7 +47,9 @@ const TrailerSection = props => {
       <div className="movies-content_trailerSection-header">
         <h1 className="movies-content_trailerSection-header--name">{name}</h1>
       </div>
-      <Slider {...settings}>{trailers.map(trailer => slide(trailer))}</Slider>
+      <Slider {...settings}>
+        {trailers.map(trailer => trailer.length > 0 && slide(trailer))}
+      </Slider>
     </div>
   );
 };

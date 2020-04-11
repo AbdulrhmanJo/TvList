@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { getMovieDetails } from "../utils/API";
-// import Slider from "react-slick";
+import Slider from "react-slick";
 import { GoPrimitiveDot } from "react-icons/go";
+import ReactPlayer from "react-player";
+import CastSection from "./castSection";
 
 class MoviePage extends Component {
   state = {
@@ -35,22 +37,19 @@ class MoviePage extends Component {
     return `${hour}h ${m}m`;
   };
 
+  getTrailer = videos => {
+    return videos.results.filter(option => option.type === "Trailer");
+  };
+
   render() {
     const { data, loading } = this.state;
+    const trailer = !loading && this.getTrailer(data[3]);
     console.log(data);
 
     return loading ? (
       <h1>loading...</h1>
     ) : (
       <div className="movie">
-        {/* <div className="movie-bg">
-          <img
-            src={`https://image.tmdb.org/t/p/original${data[0].backdrop_path}`}
-            alt={data[0].title}
-            className="movie-bg--img"
-          />
-          <div className="movie-bg--overlay"></div>
-        </div> */}
         <div className="movie-header">
           <div className="movie-header--text">
             <p className="movie-header--text-title">{data[0].title}</p>
@@ -73,7 +72,6 @@ class MoviePage extends Component {
                 )}
               </div>
               <p>{data[0].release_date.slice(0, 4)}</p>
-              {/* <p>{data[0].tagline}</p> */}
             </div>
           </div>
 
@@ -113,9 +111,27 @@ class MoviePage extends Component {
                 {data[0].overview}
               </p>
             </div>
+            <div className="movie-content--details-trailer">
+              <p className="movie-content--details-trailer-title">Trailer</p>
+              <div
+                key={trailer[0].id}
+                className="movies-content--details-trailer-video"
+              >
+                <ReactPlayer
+                  className="movies-content--details-trailer-video--player"
+                  url={`https://www.youtube.com/watch?v=${trailer[0].key}`}
+                  width="100%"
+                  controls
+                  light
+                  playing
+                />
+              </div>
+            </div>
           </div>
         </div>
-        <div className="movie-bottom"></div>
+        <div className="movie-bottom">
+          <CastSection cast={data[1]} name={"Cast"} />
+        </div>
       </div>
     );
   }
