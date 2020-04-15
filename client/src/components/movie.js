@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 class Movie extends Component {
   render() {
     const { movie, type, place } = this.props;
-    
+
     return (
       <div
         className={

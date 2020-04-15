@@ -1,29 +1,11 @@
 .movie {
-  // &-bg {
-  // //   height: 70vh;
-  //   position: relative;
-  //   height: 50rem;
-  //   &--img {
-  //     width: 100%;
-  //   }
+  &-bg {
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;    
+    padding: 10rem 0rem 0rem 0rem;
+  }
 
-  //   &--overlay {
-  //     position: absolute;
-  //     font-size: 3rem;
-  //     //   transform: translate(0,-50%);
-  //     bottom: 0;
-  //     height: 100%;
-  //     width: 100%;
-  //     background-image: linear-gradient(
-  //       rgba(3, 3, 3, 0.2),
-  //       rgba(3, 3, 3, 1) 100%
-  //     );
-  //   }
-  // }
-
-  //   z-index: 10;
-
-  padding: 10rem 0rem;
   &-header {
     padding: 0rem 20rem 4rem;
     // padding: 0rem 0 4rem;
@@ -79,14 +61,14 @@
   }
   &-content {
     display: flex;
-    height: 59rem;
+    // height: 59rem;
     padding: 0rem 20rem;
 
     // background-color: red;
     &-left {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      // justify-content: space-between;
       // height: 60rem;
       &--poster {
         // flex: 1;
@@ -107,12 +89,12 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      // height: 59rem;
 
       &-desc,
       &-trailer {
         &-title {
           margin-bottom: 1rem;
-          // line-height: .6;
           font-size: 3rem;
           font-weight: 500;
         }
@@ -137,28 +119,34 @@
     }
   }
   &-bottom {
-    padding: 5rem 10rem;
+    padding: 3rem 10rem;
 
     &_genreSection {
       &-header {
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        padding: 4rem 1rem 0;
         &--name {
           color: white;
           font-size: 3rem;
           font-weight: 500;
-          margin-bottom: 1rem;
+          // margin-bottom: 1rem;
+          // margin-left: 1rem;
         }
       }
 
       &-person {
-        padding: 0.5rem 0.5rem;
+        padding: 2rem 0.5rem;
         width: 100%;
         transition: all 0.2s;
         text-decoration: none;
         &-box {
-            transition: all .2s;
-          padding: 1rem 2rem;
-          height: 22rem;
-          background-color: gold;
+          transition: all 0.2s;
+          padding: 2rem 0.5rem;
+
+          height: 20rem;
+          //   background-color: gold;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -175,9 +163,9 @@
             overflow: hidden;
             & img {
               border-radius: 50%;
-
-              width: 9rem;
-              height: 9rem;
+              object-fit: cover;
+              width: 7rem;
+              height: 7rem;
             }
           }
 
@@ -188,13 +176,13 @@
             &-name {
               color: white;
               text-align: center;
-              font-size: 1.7rem;
+              font-size: 1.5rem;
               font-weight: 500;
             }
             &-role {
-              height: 20%;
+              height: 30%;
               overflow: hidden;
-              font-size: 1.4rem;
+              font-size: 1.3rem;
               text-align: center;
               color: #f32d58;
             }

@@ -2,17 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import { Link, withRouter } from "react-router-dom";
 import Arrow from "./arrow";
+import { FiUser } from "react-icons/fi";
 
 const slide = (person, path) => {
-  // let genrre;
-  //   if (genre.name.indexOf("&") !== -1) {
-  //     const arr = genre.name.split("&");
-  //     genrre = arr[0].trim() + "-" + arr[1].trim();
-  //   } else {
-  //     genrre = genre.name.replace(" ", "-");
-  //   }
-  console.log(person);
-
   return (
     <Link
       to={`/person/${person.id}`}
@@ -21,11 +13,15 @@ const slide = (person, path) => {
     >
       <div className="movie-bottom_genreSection-person-box">
         <div className="movie-bottom_genreSection-person-box--img">
-          <img
-            src={`https://image.tmdb.org/t/p/w342${person.profile_path}`}
-            alt={person.name}
-            width="100%"
-          />
+          {person.profile_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w342${person.profile_path}`}
+              alt={person.name}
+              width="100%"
+            />
+          ) : (
+            <FiUser size={65} color="#f32d58" />
+          )}
         </div>
         <div className="movie-bottom_genreSection-person-box--text">
           <p className="movie-bottom_genreSection-person-box--text-name">
@@ -42,7 +38,6 @@ const slide = (person, path) => {
 
 const CastSection = props => {
   const { name, cast } = props;
-  console.log(cast);
 
   const settings = {
     infinite: true,

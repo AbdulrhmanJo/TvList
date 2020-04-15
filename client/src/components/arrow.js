@@ -8,11 +8,11 @@ const Arrow = props => {
     <div>
       {props.type === "prev" ? (
         <div className="arrow arrow-left" onClick={onClick}>
-          <IoIosArrowBack size={40} color="white" />
+          <IoIosArrowBack size={25} color="white" />
         </div>
       ) : (
         <div className="arrow arrow-right" onClick={onClick}>
-          <IoIosArrowForward size={40} color="white" />
+          <IoIosArrowForward size={25} color="white" />
         </div>
       )}
     </div>

@@ -1,5 +1,4 @@
 .movies-content {
-  padding-bottom: 7rem;
   display: flex;
   flex-direction: column;
   &_nowPlaying {
@@ -20,7 +19,7 @@
         bottom: 0rem;
         background-image: linear-gradient(
           to top ,
-          rgba(rgb(0, 0, 0), .6)10%,
+          rgba(rgb(0, 0, 0), .6),
           rgba(rgb(0, 0, 0), 0)
         );
         width: 100%;
@@ -61,15 +60,14 @@
     }
   }
   &_SecondarySection {
-    padding: 0 5rem;
     width: 100%;
 
     &-header {
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
+      align-items: center;
       padding: 4rem 1rem 0;
       &--name {
+        margin-right: 2rem;
         color: white;
         font-size: 2.6rem;
         font-weight: 500;
@@ -85,10 +83,9 @@
       align-items: center;
       position: relative;
       transition: all 0.2s;
-
       padding: 2rem 0.5rem;
       &--box {
-        height: 32rem;
+        height: 30.6rem;
         &-img {
           border-radius: 0.05rem;
           width: 100%;
@@ -135,7 +132,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        padding: 2.7rem 0.8rem;
+        padding: 2.4rem 0.8rem;
         opacity: 0;
         transform: all 0.2s;
         // width: 100%;
@@ -167,14 +164,16 @@
     }
   }
   &_genreSection {
-    padding: 0 5rem;
+    // padding: 0 5rem;
     width: 100%;
     margin-bottom: 1rem;
     &-header {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: space-between;
-      padding: 4rem 1rem 1rem;
+      padding: 4rem 1rem 0rem;
+      line-height: 1;
+
       &--name {
         color: white;
         font-size: 2.6rem;
@@ -184,7 +183,7 @@
     }
 
     &-genre {
-      padding: 0.5rem 0.5rem;
+      padding: 2rem 0.5rem;
       width: 100%;
       transition: all 0.2s;
       text-decoration: none;
@@ -233,14 +232,15 @@
     }
   }
   &_trailerSection {
-    padding: 0 5rem;
+    // padding: 0 5rem;
     width: 100%;
     margin-bottom: 1rem;
     &-header {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      padding: 4rem 1rem 1rem;
+      padding: 4rem 1rem 0;
+      line-height: 1;
       &--name {
         color: white;
         font-size: 2.6rem;
@@ -249,7 +249,7 @@
       }
     }
     &-trailer {
-      padding: 0.5rem 0.5rem;
+      padding: 2rem 0.5rem;
       // position: relative;
       // padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
       // &--player {
@@ -261,7 +261,7 @@
   }
 
   &_networkSection {
-    padding: 0 5rem;
+    // padding: 0 5rem;
     width: 100%;
     margin-bottom: 1rem;
     &-header {
@@ -324,6 +324,6 @@
 }
 
 .section {
-  height: 33rem;
+  // height: 33rem;
   // height: 30rem;
 }

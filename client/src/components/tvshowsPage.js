@@ -30,17 +30,18 @@ class TVshows extends Component {
         ) : (
           <div>
             <NowPlaying movies={tvshows.onTV} genres={genres} type={"tv"} />
-            netw
-            <SecondarySection name="On TV" movies={tvshows.onTV} />
-            <NetworkSection
-              name="Browse by service"
-              networks={tvshows.networks}
-            />
-            <SecondarySection name="Trending" movies={tvshows.trending} />
-            <TrailerSection name="Trailers" videos={videos} />
-            <SecondarySection name="Popular" movies={tvshows.popular} />
-            <SecondarySection name="Top rated" movies={tvshows.topRated} />
-            <GenreSection name="Browse by genre" genres={genre} />Î
+            <div style={{ padding: "2.5rem 7rem" }}>
+              <SecondarySection name="On TV" movies={tvshows.onTV} />
+              <NetworkSection
+                name="Browse by service"
+                networks={tvshows.networks}
+              />
+              <SecondarySection name="Trending" movies={tvshows.trending} />
+              <TrailerSection name="Trailers" videos={videos} />
+              <SecondarySection name="Popular" movies={tvshows.popular} />
+              <SecondarySection name="Top rated" movies={tvshows.topRated} />
+              <GenreSection name="Browse by genre" genres={genre} />Î
+            </div>
           </div>
         )}
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
@@ -27,7 +27,7 @@ class App extends Component {
             <div
               style={{
                 backgroundColor: "#030303",
-                flex: 1,
+                flex: 1
                 // display: "flex",
                 // justifyContent: "center"
               }}

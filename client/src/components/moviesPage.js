@@ -25,13 +25,19 @@ class MoviesPage extends Component {
           />
         ) : (
           <div>
-            <NowPlaying movies={movies.nowPlaying} genres={genres} type={"movies"}/>
-            <SecondarySection name="Now Playing" movies={movies.nowPlaying} />
-            <SecondarySection name="trending" movies={movies.trending} />
-            <TrailerSection name="trailers" videos={videos} />
-            <SecondarySection name="popular" movies={movies.popular} />
-            <SecondarySection name="top rated" movies={movies.topRated} />
-            <GenreSection name="Browse by genre" genres={genres.genres} />
+            <NowPlaying
+              movies={movies.nowPlaying}
+              genres={genres}
+              type={"movies"}
+            />
+            <div style={{padding: "2.5rem 7rem"}}>
+              <SecondarySection name="Now Playing" movies={movies.nowPlaying} />
+              <SecondarySection name="trending" movies={movies.trending} />
+              <TrailerSection name="trailers" videos={videos} />
+              <SecondarySection name="popular" movies={movies.popular} />
+              <SecondarySection name="top rated" movies={movies.topRated} />
+              <GenreSection name="Browse by genre" genres={genres.genres} />
+            </div>
           </div>
         )}
       </div>

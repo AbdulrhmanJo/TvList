@@ -99,16 +99,20 @@ body {
 
 .arrow {
   position: absolute;
-  top: 50%;
+  top: -1.5rem;
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: all 0.2s;
+  background-color: rgba(27, 27, 27, 0.781);
+  display: flex;
+  padding: .5rem;
+  border-radius: .3rem;
   &-left {
-    left: -2rem;
+    left: 95%;
   }
 
   &-right {
-    right: -6rem;
+    right: -1.5rem;
   }
 
   &:hover {

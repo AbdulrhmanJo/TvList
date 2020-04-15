@@ -26,7 +26,13 @@ const Slide = props => {
         <p className="movies-content_nowPlaying--movie-info__overview">
           {props.overview}
         </p>
-        <div style={{ display: "flex" }}>
+        <div
+          style={{
+            display: "flex",
+            width: "28.5rem",
+            justifyContent: "space-between"
+          }}
+        >
           <button className="btn btn-primary">watch trailer</button>
           <button className="btn btn-secandry">
             <IoIosAdd size={35} />
