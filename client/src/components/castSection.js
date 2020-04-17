@@ -42,7 +42,7 @@ const CastSection = props => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: cast.cast.length > 6 ? 6 : cast.cast.length,
     rows: 1,
     slidesToScroll: 6,
     prevArrow: <Arrow type="prev" />,

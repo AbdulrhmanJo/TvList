@@ -2,7 +2,7 @@
   &-bg {
     background-position: top;
     background-repeat: no-repeat;
-    background-size: contain;    
+    background-size: contain;
     padding: 10rem 0rem 0rem 0rem;
   }
 
@@ -36,6 +36,12 @@
           &-genre {
             margin-right: 0.3rem;
             margin-left: 0.3rem;
+            color: #f32d58;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
         & p {
@@ -85,14 +91,15 @@
       height: 100%;
       flex: 1;
       color: white;
-      padding: 0 0rem 0 5rem;
+      padding: 0 0rem 0 3rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      // height: 59rem;
+      // flex: 1;
 
       &-desc,
-      &-trailer {
+      &-trailer,
+      &-networks {
         &-title {
           margin-bottom: 1rem;
           font-size: 3rem;
@@ -106,6 +113,7 @@
       }
 
       &-trailer {
+        // margin-bottom: 2rem;
         &-video {
           position: relative;
           padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
@@ -113,6 +121,29 @@
             position: absolute;
             top: 0;
             left: 0;
+          }
+        }
+      }
+
+      &-networks {
+        margin-bottom: 3rem;
+        width: 100%;
+        &-container {
+          display: flex;
+          &-logo {
+            margin-right: 1rem;
+            // width: 8rem;
+            height: 4rem;
+            padding: 1rem 1.5rem;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.3rem;
+            & img {
+              // width: 100%;
+              height: 100%;
+            }
           }
         }
       }

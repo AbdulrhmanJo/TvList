@@ -95,14 +95,10 @@ class SectionPage extends Component {
       left: 0
     });
 
-    const id =
-      match.params.id
-        .replace("-", " ")
-        .charAt(0)
-        .toUpperCase() + match.params.id.replace("-", " ").substring(1);
+    const id = match.params.id;
 
-    const network = this.props.networks.filter(network => network.name === id);
-    console.log(network);
+    // const network = this.props.networks.filter(network => network.name === id);
+    // console.log(network);
 
     if (this.props.genre.length > 0) {
       if (match.path.indexOf("movies") !== -1) {
@@ -125,8 +121,8 @@ class SectionPage extends Component {
           })
         );
       }
-    } else if (network.length > 0) {
-      getTvOfNetwork(network[0].id, this.state.page).then(data =>
+    } else if (!isNaN(id)) {
+      getTvOfNetwork(id, this.state.page).then(data =>
         this.setState({
           data: data[0].results,
           loading: false,
@@ -159,6 +155,8 @@ class SectionPage extends Component {
 
   render() {
     const { match } = this.props;
+    // console.log();
+
     return (
       <div className="section-page">
         {this.state.loading ? (

@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 import Arrow from "./arrow";
 
 const SecondarySection = props => {
-  const { name, movies, match } = props;
+  const { name, movies, match, seeAll } = props;
   const settings = {
     lazyLoad: true,
     infinite: true,
@@ -19,12 +19,14 @@ const SecondarySection = props => {
     <div className="movies-content_SecondarySection">
       <div className="movies-content_SecondarySection-header">
         <h1 className="movies-content_SecondarySection-header--name">{name}</h1>
-        <Link
-          to={`${match.url}/discover/${name.replace(" ", "-").toLowerCase()}`}
-          className="btn btn-tertiary"
-        >
-          See all
-        </Link>
+        {seeAll && (
+          <Link
+            to={`${match.url}/discover/${name.replace(" ", "-").toLowerCase()}`}
+            className="btn btn-tertiary"
+          >
+            See all
+          </Link>
+        )}
       </div>
       <Slider {...settings}>
         {movies.results.map(movie => (

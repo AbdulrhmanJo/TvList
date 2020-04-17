@@ -31,6 +31,10 @@ export function getTvOfNetwork(netwrokId, page) {
   return fetch(`/tv-shows/${netwrokId}s/${page}`).then(res => res.json());
 }
 
+export function getTvDetails(id) {
+  return fetch(`/tv-shows/${id}`).then(res => res.json());
+}
+
 //initial data
 export function getInitialData() {
   return Promise.all([getMovieInitialData(), getTvInitialData()]).then(
