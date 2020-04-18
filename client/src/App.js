@@ -26,7 +26,7 @@ class App extends Component {
             <Navbar />
             <div
               style={{
-                backgroundColor: "#030303",
+                backgroundColor: "rgb(12, 11, 11)",
                 flex: 1
                 // display: "flex",
                 // justifyContent: "center"

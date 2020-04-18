@@ -33,7 +33,7 @@ const SecondarySection = props => {
           <Movie
             key={movie.id}
             movie={movie}
-            type={match.url.indexOf("/movies") != -1 ? "movies" : "tv-shows"}
+            type={match.url.indexOf("/movies") != -1 ? "/movies" : "/tv-shows"}
           />
         ))}
       </Slider>

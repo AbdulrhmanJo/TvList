@@ -15,7 +15,7 @@ class Movie extends Component {
             : "movies-content_SecondarySection-movie"
         }
       >
-        <Link to={`/${type}/${movie.id}`}>
+        <Link to={`${type}/${movie.id}`} style={{ textDecoration: "none" }}>
           <div className="movies-content_SecondarySection-movie--box">
             <img
               src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
@@ -23,17 +23,19 @@ class Movie extends Component {
               className="movies-content_SecondarySection-movie--box-img"
             />
             <div className="movies-content_SecondarySection-movie--box-info">
-              <div className="movies-content_SecondarySection-movie--box-info--text">
+              {/* <div className="movies-content_SecondarySection-movie--box-info--text">
                 <p className="movies-content_SecondarySection-movie--box-info--text-title">
                   {type === "movies" ? movie.title : movie.name}
                 </p>
-                <div className="movies-content_SecondarySection-movie--box-info--text-rating">
-                  <span>{movie.vote_average}/10</span>
-                </div>
-              </div>
+              </div> */}
             </div>
           </div>
-          {/* <p className="movies-content_SecondarySection-movie--title">{props.type === "/movies" ? movie.title : movie.name}</p> */}
+          <p className="movies-content_SecondarySection-movie--title">
+            {this.props.type === "/movies" ? movie.title : movie.name}
+          </p>
+          <div className="movies-content_SecondarySection-movie--box-info--text-rating">
+            <span>{movie.vote_average}/10</span>
+          </div>
         </Link>
         <div className="movies-content_SecondarySection-movie--action">
           <button className="btn btn-secandry pad-small">
@@ -49,16 +51,16 @@ const mapStateToProps = (state, { movie, type }) => {
   let genre = [];
   if (type === "movies") {
     genre = state.movies.genre.genres.filter(
-      genre => genre.id === movie.genre_ids[0]
+      (genre) => genre.id === movie.genre_ids[0]
     );
   } else {
     genre = state.tvshows.genre.genres.filter(
-      genre => genre.id === movie.genre_ids[0]
+      (genre) => genre.id === movie.genre_ids[0]
     );
   }
 
   return {
-    genre
+    genre,
   };
 };
 

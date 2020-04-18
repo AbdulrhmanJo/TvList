@@ -31,16 +31,17 @@ const slide = (genre, path) => {
   );
 };
 
-const GenreSection = props => {
+const GenreSection = (props) => {
   const { name, genres } = props;
+  
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
-    rows: 1,
-    slidesToScroll: 6,
+    slidesToShow: 5,
+    rows: Math.round(genres.length/5),
+    // slidesToScroll: 6,
     prevArrow: <Arrow type="prev" />,
-    nextArrow: <Arrow type="next" />
+    nextArrow: <Arrow type="next" />,
   };
   return (
     <div className="movies-content_genreSection">
@@ -48,7 +49,7 @@ const GenreSection = props => {
         <h1 className="movies-content_genreSection-header--name">{name}</h1>
       </div>
       <Slider {...settings}>
-        {genres.map(genre => slide(genre, props.match.path))}
+        {genres.map((genre) => slide(genre, props.match.path))}
       </Slider>
     </div>
   );

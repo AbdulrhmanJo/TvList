@@ -130,8 +130,10 @@
         width: 100%;
         &-container {
           display: flex;
+          flex-wrap: wrap;
           &-logo {
             margin-right: 1rem;
+            margin-bottom: 1rem;
             // width: 8rem;
             height: 4rem;
             padding: 1rem 1.5rem;

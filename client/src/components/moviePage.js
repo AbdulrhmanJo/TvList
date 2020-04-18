@@ -79,7 +79,7 @@ class MoviePage extends Component {
         <div
           className="movie-bg"
           style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.75),black),url(https://image.tmdb.org/t/p/original${data[0].backdrop_path})`
+            backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.75),rgb(12, 11, 11)),url(https://image.tmdb.org/t/p/original${data[0].backdrop_path})`
           }}
         >
           <div className="movie-header">
