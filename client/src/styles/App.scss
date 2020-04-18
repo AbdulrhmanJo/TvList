@@ -62,6 +62,10 @@ body {
     align-items: center;
     justify-content: space-evenly;
 
+    &-one {
+      padding: 1.5rem 2rem;
+    }
+
     &:hover {
       background-color: #f32d5877;
     }

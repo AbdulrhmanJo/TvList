@@ -37,8 +37,8 @@ const GenreSection = (props) => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    rows: Math.round(genres.length/5),
+    slidesToShow: 7,
+    rows: Math.round(genres.length/7),
     // slidesToScroll: 6,
     prevArrow: <Arrow type="prev" />,
     nextArrow: <Arrow type="next" />,
