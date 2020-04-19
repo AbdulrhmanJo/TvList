@@ -3,14 +3,14 @@ import Slider from "react-slick";
 import ReactPlayer from "react-player";
 import Arrow from "./arrow";
 
-const slide = trailer => {
+const slide = (trailer) => {
   console.log(trailer);
 
   return (
-    <div key={trailer[0].id} className="movies-content_trailerSection-trailer">
+    <div key={trailer.id} className="movies-content_trailerSection-trailer">
       <ReactPlayer
         className="movies-content_trailerSection-trailer--player"
-        url={`https://www.youtube.com/watch?v=${trailer[0].key}`}
+        url={`https://www.youtube.com/watch?v=${trailer.key}`}
         light
         width="100%"
         controls
@@ -20,27 +20,28 @@ const slide = trailer => {
   );
 };
 
-const getTrailer = videos => {
+const getTrailer = (videos) => {
   let trailer = [];
-  videos.forEach(video => {
-    trailer.push(video.results.filter(option => option.type === "Trailer"));
+  videos.forEach((video) => {
+    trailer.push(video.results.filter((option) => option.type === "Trailer"));
   });
 
   return trailer;
 };
 
-const TrailerSection = props => {
-  const { name, videos } = props;
-  const trailers = getTrailer(videos);
-
+const TrailerSection = (props) => {
+  const { name, videos, type } = props;
+  const trailers = type === "all" ? videos.results : getTrailer(videos);
+  
   const settings = {
     lazyLoad: true,
-    infinite: true,
+    infinite: trailers.length > 2,
     speed: 700,
     slidesToShow: 2,
+    rows: 1,
     slidesToScroll: 1,
     prevArrow: <Arrow type="prev" />,
-    nextArrow: <Arrow type="next" />
+    nextArrow: <Arrow type="next" />,
   };
   return (
     <div className="movies-content_trailerSection">
@@ -48,7 +49,9 @@ const TrailerSection = props => {
         <h1 className="movies-content_trailerSection-header--name">{name}</h1>
       </div>
       <Slider {...settings}>
-        {trailers.map(trailer => trailer.length > 0 && slide(trailer))}
+        {type === "all"
+          ? trailers.map((trailer) => slide(trailer))
+          : trailers.map((trailer) => trailer.length > 0 && slide(trailer[0]))}
       </Slider>
     </div>
   );

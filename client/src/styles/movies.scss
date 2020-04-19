@@ -145,11 +145,7 @@
 
       &:hover &--box-info {
         opacity: 1;
-        background-image: linear-gradient(
-          rgba(#000000, 0.5),
-          rgba(#000000, 0),
-         
-        );
+        background-image: linear-gradient(rgba(#000000, 0.5), rgba(#000000, 0));
       }
 
       &:hover &--action {
@@ -240,6 +236,15 @@
     // padding: 0 5rem;
     width: 100%;
     margin-bottom: 1rem;
+
+    & .slick-list > div {
+      margin-left: 0;
+    }
+    &-inner {
+      background-color: red;
+      //  width: 50%;
+      padding: 0;
+    }
     &-header {
       display: flex;
       align-items: flex-end;
@@ -253,15 +258,20 @@
         text-transform: capitalize;
       }
     }
+    // width: 50rem;
     &-trailer {
       padding: 2rem 0.5rem;
-      // position: relative;
+
+      // width: 50rem;
+      position: relative;
       // padding-top: 56.25%; /* Player ratio: 100 / (1280 / 720) */
-      // &--player {
-      //   // position: absolute;
-      //   // top: 0;
-      //   // left: 0;
-      // }
+      // width: 50% !important;
+      &--player {
+        // width: 100%;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+      }
     }
   }
 

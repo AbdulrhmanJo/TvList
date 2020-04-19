@@ -3,7 +3,8 @@ import { withRouter, Link } from "react-router-dom";
 import { getMovieDetails, getTvDetails } from "../utils/API";
 import BeatLoader from "react-spinners/BeatLoader";
 import { GoPrimitiveDot } from "react-icons/go";
-import ReactPlayer from "react-player";
+// import ReactPlayer from "react-player";
+import TrailerSection from "./trailerSection";
 import CastSection from "./castSection";
 import SecondarySection from "./SecondraySection";
 class MoviePage extends Component {
@@ -25,6 +26,11 @@ class MoviePage extends Component {
         this.setState({ data: data, loading: false })
       );
     }
+
+    // if (this.state.data[2].results.length < 2) {
+    //   const item = document.querySelector(".slick-track");
+    //   console.log(item);
+    // }
   }
 
   componentDidUpdate(prevProps) {
@@ -171,7 +177,9 @@ class MoviePage extends Component {
             )}
             <div className="movie-top--action">
               <button className="btn btn-primary">add to list</button>
-              <button className="btn btn-secandry btn-secandry-one">share</button>
+              <button className="btn btn-secandry btn-secandry-one">
+                Share
+              </button>
             </div>
           </div>
         </div>
@@ -296,6 +304,7 @@ class MoviePage extends Component {
           </div>
         </div>*/}
         <div className="movie-bottom">
+          <TrailerSection name="videos" videos={data[2]} type="all" />
           <CastSection cast={data[1]} name={"Cast"} />
           <SecondarySection name="More like this" movies={data[3]} />
         </div>

@@ -23,12 +23,12 @@ class SectionPage extends Component {
     const { match } = this.props;
     const { page, data, totalPages } = this.state;
     const id =
-      match.params.id
-        .replace("-", " ")
-        .charAt(0)
-        .toUpperCase() + match.params.id.replace("-", " ").substring(1);
+      match.params.id;
+    //     .replace("-", " ")
+    //     .charAt(0)
+    //     .toUpperCase() + match.params.id.replace("-", " ").substring(1);
 
-    const network = this.props.networks.filter(network => network.name === id);
+    // const network = this.props.networks.filter(network => network.name === id);
 
     if (this.props.genre.length > 0) {
       if (match.path.indexOf("movies") !== -1) {
@@ -48,8 +48,8 @@ class SectionPage extends Component {
           })
         );
       }
-    } else if (network.length > 0) {
-      getTvOfNetwork(network[0].id, this.state.page).then(res =>
+    } else if (!isNaN(match.params.id)) {
+      getTvOfNetwork(match.params.id, this.state.page).then(res =>
         this.setState({
           data: data.concat(res[0].results),
           hasMore: totalPages - page > 0 ? true : false,

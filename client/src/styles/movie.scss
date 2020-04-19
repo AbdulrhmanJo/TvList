@@ -36,7 +36,9 @@
   &-top {
     padding: 10rem 10rem 0rem;
     color: white;
+  
 
+    
     &--rating {
       font-size: 1.6rem;
       color: #f32d58;
@@ -46,7 +48,7 @@
     &--title {
       font-size: 6.5rem;
       font-weight: 700;
-      width: 55%;
+      width: 70%;
     }
 
     &--details {
@@ -75,7 +77,7 @@
     }
 
     &--overview {
-      width: 45%;
+      width: 50%;
       font-size: 1.7rem;
       margin-top: 3rem;
       color: #929292;
@@ -85,7 +87,7 @@
     &--networks {
       font-size: 2rem;
       margin-top: 3rem;
-      width: 50%;
+      width: 100%;
       &-container {
         margin-top: 1rem;
         display: flex;
@@ -109,12 +111,15 @@
       }
     }
 
-    &--action{
+    &--action {
       margin-top: 4rem;
       display: flex;
-      justify-content: space-between;
-      width: 28%;
+      & > * {
+        margin-right: 1rem;
+      }
     }
+
+
   }
 
   // &-header {
@@ -263,8 +268,8 @@
   //   }
   // }
   &-bottom {
-    // margin-top: -7rem;
-    padding: 0rem 10rem;
+    margin-top: -2rem;
+    padding: 0rem 10rem 8rem;
 
     &_genreSection {
       &-header {
@@ -274,7 +279,7 @@
         padding: 4rem 1rem 0;
         &--name {
           color: white;
-          font-size: 3rem;
+          font-size: 2.6rem;
           font-weight: 500;
           // margin-bottom: 1rem;
           // margin-left: 1rem;
@@ -341,4 +346,8 @@
       }
     }
   }
+}
+
+.one{
+  width: 100% !important;
 }
