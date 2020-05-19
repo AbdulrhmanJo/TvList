@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
@@ -16,6 +21,7 @@ class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
+
   render() {
     const { loading } = this.props;
     return (
@@ -24,51 +30,44 @@ class App extends Component {
           <Sidebar />
           <div className="content">
             <Navbar />
-            <div
-              style={{
-                backgroundColor: "rgb(12, 11, 11)",
-                flex: 1
-                // display: "flex",
-                // justifyContent: "center"
-              }}
-            >
-              {loading ? (
-                <BeatLoader
-                  css={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: "100%"
-                  }}
-                  loading={loading}
-                  size={45}
-                  color={"rgb(243, 45, 88)"}
+            {loading ? (
+              <BeatLoader
+                css={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+                loading={loading}
+                size={45}
+                color={"rgb(243, 45, 88)"}
+              />
+            ) : (
+              <div className="routes">
+                <Route
+                  exact
+                  path="/search"
+                  render={() => <h1 style={{ color: "white" }}>search</h1>}
                 />
-              ) : (
-                <div className="routes">
-                  <Route exact path="/" render={() => <p>home</p>} />
-                  <Route exact path="/movies" component={MoviesPage} />
-                  <Route exact path="/movies/:id" component={MoviePage} />
-                  <Route
-                    exact
-                    path="/movies/discover/:id"
-                    component={sectionPage}
-                  />
-                  <Route
-                    exact
-                    path="/movies/genre/:id"
-                    component={sectionPage}
-                  />
-                  <Route exact path="/tv-shows" component={TVshows} />
-                  <Route exact path="/tv-shows/:id" component={MoviePage} />
-                  <Route
-                    path="/tv-shows/discover/:id"
-                    component={sectionPage}
-                  />
-                  <Route path="/tv-shows/genre/:id" component={sectionPage} />
-                </div>
-              )}
-            </div>
+                <Route
+                  exact
+                  path="/"
+                  render={() => <h1 style={{ color: "white" }}>home</h1>}
+                />
+                <Route exact path="/movies" component={MoviesPage} />
+                <Route exact path="/movies/:id" component={MoviePage} />
+                <Route
+                  exact
+                  path="/movies/discover/:id"
+                  component={sectionPage}
+                />
+                <Route exact path="/movies/genres/:id" component={sectionPage} />
+                <Route exact path="/tv-shows" component={TVshows} />
+                <Route exact path="/tv-shows/:id" component={MoviePage} />
+                <Route path="/tv-shows/discover/:id" component={sectionPage} />
+                <Route path="/tv-shows/genres/:id" component={sectionPage} />
+              </div>
+            )}
           </div>
         </div>
       </Router>
@@ -76,8 +75,8 @@ class App extends Component {
   }
 }
 
-export default connect(state => {
+export default connect((state) => {
   return {
-    loading: state.tvshows.genre === undefined
+    loading: state.tvshows.genre === undefined,
   };
 })(App);

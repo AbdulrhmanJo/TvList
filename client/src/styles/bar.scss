@@ -62,14 +62,15 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  // height: 7rem;
-  // padding: 0rem 7rem;
-  padding: 2rem 6rem;
+  // height: 6rem;
+  padding: 1rem 0rem;
+  // padding: 0rem 0rem;
+  // background-color: red;
   background-color: transparent;
-  position: absolute;
+  // position: absolute;
   top: 0;
-  z-index: 1;
-  transition: all 0.4s;
+  z-index: 10000;
+  transition: background-color 0.4s;
   // font-size: 2rem;
   overflow: hidden;
 
@@ -77,9 +78,9 @@
     display: flex;
     align-items: center;
     width: 30.5rem;
-    background-color: #00000033;
-    padding: 0 0rem 0 2rem;
-    border-radius: 0.2rem;
+    background-color: #80808033;
+    padding: 0rem 0rem 0 2rem;
+    border-radius: 0.4rem;
     &--active {
       background-color: transparent;
     }
@@ -105,9 +106,10 @@
     }
   }
   &-scroll {
-    background-color: rgb(12, 11, 11);
+    background-color: #030303;
     position: fixed;
-    padding: 1rem 4rem;
+    padding: 1rem 7rem;
+    // height: 6rem;
   }
 
   &-account {
@@ -122,15 +124,15 @@
       margin-right: 2.4rem;
     }
     &--person{
-      width: 5rem;
-      height: 5rem;
+      width: 4.3rem;
+      height: 4.3rem;
       border-radius: 50%;
       background-color: rgb(243, 45, 88);
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 2.5rem;
+      font-size: 1.9rem;
     }
   }
 }

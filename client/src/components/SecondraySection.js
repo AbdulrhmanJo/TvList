@@ -5,12 +5,12 @@ import { Link, withRouter } from "react-router-dom";
 import Arrow from "./arrow";
 
 const SecondarySection = props => {
-  const { name, movies, match, seeAll } = props;
+  const { name, movies, match, seeAll, nom } = props;
   const settings = {
     lazyLoad: true,
     infinite: true,
     speed: 700,
-    slidesToShow: 6,
+    slidesToShow: nom,
     slidesToScroll: 5,
     prevArrow: <Arrow type="prev" />,
     nextArrow: <Arrow type="next" />

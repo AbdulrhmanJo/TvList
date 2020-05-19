@@ -13,6 +13,7 @@ const slide = (trailer) => {
         url={`https://www.youtube.com/watch?v=${trailer.key}`}
         light
         width="100%"
+        // height="25rem"
         controls
         playing
       />

@@ -26,31 +26,39 @@ class MoviesPage extends Component {
         ) : (
           <div>
             <NowPlaying
-              movies={movies.nowPlaying}
+              movies={movies.trending}
               genres={genres}
               type={"movies"}
             />
-            <div style={{ padding: "2.5rem 7rem" }}>
+            <div style={{ padding: "0.2rem 0rem" }}>
               <SecondarySection
                 name="Now Playing"
                 movies={movies.nowPlaying}
                 seeAll={true}
+                nom={6}
+
               />
               <SecondarySection
                 name="trending"
                 movies={movies.trending}
                 seeAll={true}
+                nom={6}
+
               />
               <TrailerSection name="trailers" videos={videos} />
               <SecondarySection
                 name="popular"
                 movies={movies.popular}
                 seeAll={true}
+                nom={6}
+
               />
               <SecondarySection
                 name="top rated"
                 movies={movies.topRated}
                 seeAll={true}
+                nom={6}
+
               />
               <GenreSection name="Browse by genre" genres={genres.genres} />
             </div>

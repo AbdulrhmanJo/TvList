@@ -37,10 +37,13 @@ body {
   flex-direction: column;
   width: 100%;
   position: relative;
+  background-color: rgb(12, 11, 11);
+  padding: 1rem 7rem;
   // padding-bottom:2rem;
 }
 
 .btn {
+  z-index: 10;
   // margin-right: 0.4rem;
   border-radius: 0.2rem;
   font-size: 2rem;
@@ -48,7 +51,7 @@ body {
   cursor: pointer;
   transition: all 0.2s;
   &-primary {
-    width: 24rem;
+    width: 100%;
     text-transform: capitalize;
     padding: 1.5rem 4rem;
     background-color: #f32d58;
@@ -58,7 +61,8 @@ body {
   &-secandry {
     background-color: transparent;
     color: #f32d58;
-    padding: 0 0.2rem;
+    width: 100%;
+    padding: 1.5rem 4rem;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -105,19 +109,24 @@ body {
 .arrow {
   position: absolute;
   top: -1.5rem;
-  transform: translate(-50%, -50%);
+  left:  100%;
+  transform: translate(-215%, -50%);
   cursor: pointer;
   transition: all 0.2s;
   background-color: rgba(27, 27, 27, 0.781);
   display: flex;
-  padding: .5rem;
-  border-radius: .3rem;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
   &-left {
-    left: 95%;
+    // margin-left: 1rem;
+    // left: 100%;
+    // margin-left: 4rem;
   }
-
+  
   &-right {
-    right: -1.5rem;
+    margin-left: 4rem;
+    // right: 0;
   }
 
   &:hover {

@@ -10,9 +10,11 @@ class TVshows extends Component {
   render() {
     const { tvshows, genres, loading, videos, networks } = this.props;
     const genre = genres.genres.filter(
-      genre =>
+      (genre) =>
         genre.name !== "Talk" && genre.name !== "Soap" && genre.name !== "News"
     );
+    console.log(genre);
+    
     return (
       <div className="movies-content">
         {loading ? (
@@ -21,7 +23,7 @@ class TVshows extends Component {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: "100%"
+              height: "100%",
             }}
             loading={loading}
             size={45}
@@ -29,17 +31,40 @@ class TVshows extends Component {
           />
         ) : (
           <div>
-            <NowPlaying movies={tvshows.onTV} genres={genres} type={"tv"} />
-            <div style={{ padding: "2.5rem 7rem" }}>
-              <SecondarySection name="On TV" movies={tvshows.onTV} />
+            <NowPlaying movies={tvshows.trending} genres={genres} type={"tv-shows"} />
+            <div style={{ padding: ".2rem 0rem" }}>
               <NetworkSection
                 name="Browse by service"
                 networks={tvshows.networks}
               />
-              <SecondarySection name="Trending" movies={tvshows.trending} />
+              <SecondarySection
+                name="On TV"
+                movies={tvshows.onTV}
+                seeAll={true}
+                nom={6}
+              />
+              <SecondarySection
+                name="Trending"
+                movies={tvshows.trending}
+                seeAll={true}
+                nom={6}
+
+              />
               <TrailerSection name="Trailers" videos={videos} />
-              <SecondarySection name="Popular" movies={tvshows.popular} />
-              <SecondarySection name="Top rated" movies={tvshows.topRated} />
+              <SecondarySection
+                name="Popular"
+                movies={tvshows.popular}
+                seeAll={true}
+                nom={6}
+
+              />
+              <SecondarySection
+                name="Top rated"
+                movies={tvshows.topRated}
+                seeAll={true}
+                nom={6}
+
+              />
               <GenreSection name="Browse by genre" genres={genre} />Î
             </div>
           </div>
@@ -49,13 +74,13 @@ class TVshows extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     loading: state.tvshows.networks === undefined,
     tvshows: state.tvshows,
     genres: state.tvshows.genre,
     videos: state.tvshows.trailer,
-    networks: state.tvshows.networks
+    networks: state.tvshows.networks,
   };
 };
 
