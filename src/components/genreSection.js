@@ -6,16 +6,9 @@ import Arrow from "./arrow";
 
 const slide = (genre, path) => {
   const Icon = getIcon(genre.name);
-  let genrre;
-  if (genre.name.indexOf("&") !== -1) {
-    const arr = genre.name.split("&");
-    genrre = arr[0].trim() + "-" + arr[1].trim();
-  } else {
-    genrre = genre.name.replace(" ", "-");
-  }
   return (
     <Link
-      to={`${path}/genres/${genrre.toLowerCase()}`}
+      to={`${path}/genres/${genre.name.split(" ").join("_")}`}
       key={genre.id}
       className="movies-content_genreSection-genre"
     >
@@ -33,12 +26,12 @@ const slide = (genre, path) => {
 
 const GenreSection = (props) => {
   const { name, genres } = props;
-  
+
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 7 ,
-    rows: Math.ceil(genres.length/7),
+    slidesToShow: 7,
+    rows: Math.ceil(genres.length / 7),
     // slidesToScroll: 6,
     prevArrow: <Arrow type="prev" />,
     nextArrow: <Arrow type="next" />,

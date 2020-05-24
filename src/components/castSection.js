@@ -78,7 +78,7 @@ class CastSection extends Component {
               return slide(person);
             }
           })}
-          {cast.length > 11 &&
+          {cast.length > numberOfcards &&
             (this.state.hasMore ? (
               <button className="cast-btn" onClick={this.reveal}>
                 see all

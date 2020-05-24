@@ -8,7 +8,7 @@ import TrailerSection from "./trailerSection";
 import NetworkSection from "./networkSection";
 class TVshows extends Component {
   render() {
-    const { tvshows, genres, loading, videos, networks } = this.props;
+    const { tvshows, genres, loading, videos } = this.props;
     const genre = genres.genres.filter(
       (genre) =>
         genre.name !== "Talk" && genre.name !== "Soap" && genre.name !== "News"

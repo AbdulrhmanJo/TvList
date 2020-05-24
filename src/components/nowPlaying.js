@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Slide = (props) => {
   return (
@@ -74,8 +74,6 @@ class NowPlaying extends Component {
   };
   render() {
     const { movies, genres, type } = this.props;
-    console.log(movies);
-
     const settings = {
       fade: true,
       lazyLoad: true,

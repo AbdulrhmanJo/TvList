@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
@@ -61,7 +56,11 @@ class App extends Component {
                   path="/movies/discover/:id"
                   component={sectionPage}
                 />
-                <Route exact path="/movies/genres/:id" component={sectionPage} />
+                <Route
+                  exact
+                  path="/movies/genres/:id"
+                  component={sectionPage}
+                />
                 <Route exact path="/tv-shows" component={TVshows} />
                 <Route exact path="/tv-shows/:id" component={MoviePage} />
                 <Route path="/tv-shows/discover/:id" component={sectionPage} />

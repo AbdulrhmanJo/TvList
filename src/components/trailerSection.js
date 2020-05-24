@@ -4,8 +4,6 @@ import ReactPlayer from "react-player";
 import Arrow from "./arrow";
 
 const slide = (trailer) => {
-  console.log(trailer);
-
   return (
     <div key={trailer.id} className="movies-content_trailerSection-trailer">
       <ReactPlayer

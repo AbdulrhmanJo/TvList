@@ -2,20 +2,17 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { getMovieDetails, getTvDetails } from "../utils/API";
 import BeatLoader from "react-spinners/BeatLoader";
-import { GoPrimitiveDot } from "react-icons/go";
+// import { GoPrimitiveDot } from "react-icons/go";
 import ReactPlayer from "react-player";
-import TrailerSection from "./trailerSection";
+// import TrailerSection from "./trailerSection";
 import CastSection from "./castSection";
 // import CrewSection from "./crewSection";
 import SecondarySection from "./SecondraySection";
 import { AiTwotoneStar } from "react-icons/ai";
-import MoreLikeThis from "./moreLikeThis";
-import SimilarMovies from "./similarMovies";
-import Details from "./Details";
+// import MoreLikeThis from "./moreLikeThis";
+// import SimilarMovies from "./similarMovies";
+// import Details from "./Details";
 
-const Wrapper = (props) => {
-  return <div>hello Component</div>;
-};
 class MoviePage extends Component {
   state = {
     data: {},
@@ -98,8 +95,7 @@ class MoviePage extends Component {
 
   render() {
     const { data, loading, type } = this.state;
-    const trailer = !loading && this.getTrailer(data[2]);
-    console.log(data);
+    const trailer = !loading && this.getTrailer(data.videos);
 
     return loading ? (
       <BeatLoader
@@ -117,19 +113,17 @@ class MoviePage extends Component {
       <div className="movie">
         <div className="movie-mainSection--header">
           <div className="movie-mainSection--header-title">
-            {type === "movies" ? data[0].title : data[0].name}
-            <p className="movie-mainSection--header-tagline">
-              {data[0].tagline}
-            </p>
+            {type === "movies" ? data.title : data.name}
+            <p className="movie-mainSection--header-tagline">{data.tagline}</p>
           </div>
           <div className="movie-mainSection--header-rating">
             <div className="movie-mainSection--header-rating--primary">
               <span>
                 <AiTwotoneStar size={26} color="#f32d58" />
               </span>
-              <p>{data[0].vote_average}</p>/10
+              <p>{data.vote_average}</p>/10
             </div>
-            <div className="movie-mainSection--header-rating--secondry">{`${data[0].vote_count} User Rating this`}</div>
+            <div className="movie-mainSection--header-rating--secondry">{`${data.vote_count} User Rating this`}</div>
           </div>
         </div>
         <div className="movie-content">
@@ -138,7 +132,7 @@ class MoviePage extends Component {
               <ReactPlayer
                 className="movie-mainSection--trailer-player"
                 url={`https://www.youtube.com/watch?v=${trailer[0].key}`}
-                light={`https://image.tmdb.org/t/p/original${data[0].backdrop_path}`}
+                light={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
                 width="100%"
                 height="100%"
                 playing
@@ -147,17 +141,17 @@ class MoviePage extends Component {
             <div className="movie-mainSection--overview">
               <p className="movie-mainSection--overview-header">Overview</p>
               <p className="movie-mainSection--overview-text">
-                {data[0].overview}
+                {data.overview}
               </p>
             </div>
             <div className="movie-mainSection--cast">
-              <CastSection name="cast" cast={data[1].cast} />
+              <CastSection name="cast" cast={data.credits.cast} />
             </div>
             <div className="movie-mainSection--recomendition">
               <SecondarySection
                 seeAll={false}
                 name="more like this"
-                movies={data[3]}
+                movies={data.similar}
                 nom={5}
               />
             </div>
@@ -167,16 +161,12 @@ class MoviePage extends Component {
               <div className="movie-secondarySection--genres">
                 <p className="movie-mainSection--overview-header">Genres</p>
                 <div className="movie-secondarySection--genres-list">
-                  {data[0].genres.map((genre) => (
+                  {data.genres.map((genre) => (
                     <Link
                       to={
                         type === "movies"
-                          ? `/movies/genres/${genre.name
-                              .replace(" ", "-")
-                              .toLowerCase()}`
-                          : `/tv-shows/genres/${genre.name
-                              .replace(" ", "-")
-                              .toLowerCase()}`
+                          ? `/movies/genres/${genre.name.replace(" ", "_")}`
+                          : `/tv-shows/genres/${genre.name.replace(" ", "_")}`
                       }
                       className="movie-secondarySection--genres-list--genre"
                     >
@@ -192,7 +182,7 @@ class MoviePage extends Component {
                     Available on
                   </p>
                   <div className="movie-secondarySection--networks-list">
-                    {data[0].networks.map(
+                    {data.networks.map(
                       (network, index) =>
                         index < 3 && (
                           <Link
@@ -219,7 +209,7 @@ class MoviePage extends Component {
                       number of seasons
                     </p>
                     <p className="movie-secondarySection--info-text">
-                      {data[0].number_of_seasons}
+                      {data.number_of_seasons}
                     </p>
                   </div>
                 )}
@@ -228,8 +218,8 @@ class MoviePage extends Component {
                 </p>
                 <p className="movie-secondarySection--info-text">
                   {type === "movies"
-                    ? this.getTime(data[0].runtime)
-                    : this.getTime(data[0].episode_run_time[0])}
+                    ? this.getTime(data.runtime)
+                    : this.getTime(data.episode_run_time[0])}
                 </p>
                 <p className="movie-secondarySection--info-subheader">
                   Release Year
@@ -237,24 +227,24 @@ class MoviePage extends Component {
 
                 <p className="movie-secondarySection--info-text">
                   {type === "movies"
-                    ? data[0].release_date.slice(0, 4)
-                    : data[0].first_air_date.slice(0, 4)}
+                    ? data.release_date.slice(0, 4)
+                    : data.first_air_date.slice(0, 4)}
                 </p>
                 <p className="movie-secondarySection--info-subheader">
                   Languages
                 </p>
                 <p className="movie-secondarySection--info-text">
                   {type === "movies"
-                    ? this.getLang(data[0].spoken_languages)
-                    : this.getLangTV(data[0].languages)}
+                    ? this.getLang(data.spoken_languages)
+                    : this.getLangTV(data.languages)}
                 </p>
-                {type === "tvshows" && data[0].created_by.length > 0 && (
+                {type === "tvshows" && data.created_by.length > 0 && (
                   <div>
                     <p className="movie-secondarySection--info-subheader">
                       Created by
                     </p>
                     <p className="movie-secondarySection--info-text">
-                      {this.getCreators(data[0].created_by)}
+                      {this.getCreators(data.created_by)}
                     </p>
                   </div>
                 )}
