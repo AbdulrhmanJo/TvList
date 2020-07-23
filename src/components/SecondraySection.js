@@ -5,7 +5,7 @@ import { Link, withRouter } from "react-router-dom";
 import Arrow from "./arrow";
 
 const SecondarySection = (props) => {
-  const { name, movies, match, seeAll, nom } = props;
+  const { name, movies, match, seeAll, nom, hight } = props;
   const settings = {
     lazyLoad: true,
     infinite: true,
@@ -14,6 +14,43 @@ const SecondarySection = (props) => {
     slidesToScroll: 5,
     prevArrow: <Arrow type="prev" />,
     nextArrow: <Arrow type="next" />,
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+        },
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 400,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <div className="movies-content_SecondarySection">
@@ -34,15 +71,27 @@ const SecondarySection = (props) => {
           </Link>
         )}
       </div>
-      <Slider {...settings}>
-        {movies.results.map((movie) => (
-          <Movie
-            key={movie.id}
-            movie={movie}
-            type={match.url.indexOf("/movies") !== -1 ? "/movies" : "/tv-shows"}
-          />
-        ))}
-      </Slider>
+      {movies.results.length > 0 ? (
+        <Slider {...settings}>
+          {movies.results.map(
+            (movie) =>
+              movie.poster_path && (
+                <Movie
+                  key={movie.id}
+                  movie={movie}
+                  type={
+                    match.url.indexOf("/movies") !== -1
+                      ? "/movies"
+                      : "/tv-shows"
+                  }
+                  hight={hight}
+                />
+              )
+          )}
+        </Slider>
+      ) : (
+        <p className="movie-mainSection--overview-text error">There is no recommendation based on this movie yet.</p>
+      )}
     </div>
   );
 };

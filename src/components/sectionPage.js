@@ -49,8 +49,8 @@ class SectionPage extends Component {
           })
         );
       }
-    } else if (!isNaN(match.params.id)) {
-      getTvOfNetwork(match.params.id, this.state.page).then((res) =>
+    } else if (!isNaN(this.props.dest[1])) {
+      getTvOfNetwork(this.props.dest[1], this.state.page).then((res) =>
         this.setState({
           data: data.concat(res.results),
           hasMore: totalPages - page > 0 ? true : false,
@@ -122,8 +122,8 @@ class SectionPage extends Component {
           })
         );
       }
-    } else if (!isNaN(id)) {
-      getTvOfNetwork(id, this.state.page).then((data) =>
+    } else if (!isNaN(this.props.dest[1])) {
+      getTvOfNetwork(this.props.dest[1], this.state.page).then((data) =>
         this.setState({
           data: data.results,
           loading: false,
@@ -156,8 +156,7 @@ class SectionPage extends Component {
 
   render() {
     const { match } = this.props;
-    // console.log();
-
+    const name = match.params.id.split("_").filter(part => isNaN(part) === true);
     return (
       <div className="section-page">
         {this.state.loading ? (
@@ -171,7 +170,7 @@ class SectionPage extends Component {
             <p className="section-page-content_info">
               {match.params.id === "tv-movie"
                 ? "TV Movie"
-                : match.params.id.split("_").join(" ")}
+                : name.join(" ")}
             </p>
             <InfiniteScroll
               dataLength={this.state.data.length}
@@ -227,6 +226,7 @@ const mapStateToProps = (state, { match }) => {
   return {
     genre,
     networks: state.tvshows.networks.map((network) => network[0]),
+    dest: match.params.id.split("_")
   };
 };
 

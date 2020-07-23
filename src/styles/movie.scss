@@ -79,6 +79,21 @@
       }
     }
 
+    &--img {
+      margin-top: 1.3rem;
+      width: 100%;
+      height: 55rem;
+      background-color: rgba(27, 27, 27, 0.404);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
+
+      & img {
+        width: 100%;
+      }
+    }
+
     &--overview {
       margin-top: 2rem;
       width: 100%;
@@ -297,4 +312,143 @@
       }
     }
   }
+}
+
+.seasons {
+  width: 100%;
+  // height: 100%;
+  margin-top: 4rem;
+
+  &-header {
+    padding-bottom: 0.5rem;
+    text-transform: capitalize;
+    font-size: 2rem;
+    color: gray;
+    font-weight: 500;
+    display: flex;
+    align-items: baseline;
+    &--text {
+      margin-right: 2rem;
+    }
+
+    &--pagination {
+      width: 80%;
+      &-num {
+        font-size: 1.8rem;
+        margin-right: 1.5rem;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        color: gray;
+        font-weight: 500;
+        // width: 80%;
+
+        &:hover:not(.active) {
+          color: #f32d58;
+        }
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+  }
+
+  &-section {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    .slick-slide {
+      & div {
+        display: flex;
+      }
+    }
+  }
+}
+
+.active {
+  // font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.episode {
+  display: flex;
+  flex-direction: column;
+  &-content {
+    position: relative;
+    width: 100%;
+    // height: 17rem;
+    // height: 100%;
+    // display: flex;
+    // flex-direction: column;
+    &--overlay {
+      width: 100%;
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 1.3rem;
+      padding: 0.5rem 0.5rem;
+      bottom: 0;
+      background-image: linear-gradient(rgba(0, 0, 0, 0), hsla(0, 0%, 0%, 0.5));
+      color: rgba(235, 235, 235, 0.966);
+
+      &-rate {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  padding: 1rem 0.4rem;
+
+  &-box--img {
+    width: 100%;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    height: 17rem;
+    background-color: rgba(27, 27, 27, 0.404);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & img {
+      width: 100%;
+    }
+  }
+
+  // &-box--icon {
+  //   // width: 100%;
+  //   // border-radius: 0.4rem;
+  //   // overflow: hidden;
+  //   // position: relative;
+  //   height: 17rem;
+  //   // background-color: rgba(27, 27, 27, 0.404);
+  //   // display: flex;
+  //   // align-items: center;
+  //   // justify-content: center;
+  //   // & img {
+  //   //   width: 100%;
+  //   // }
+  // }
+
+  &-title {
+    flex: 1;
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    letter-spacing: 0.04rem;
+  }
+}
+
+.loader {
+  position: absolute;
+  background-color: #0c0b0b;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error{
 }

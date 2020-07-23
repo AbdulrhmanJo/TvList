@@ -13,8 +13,7 @@ class TVshows extends Component {
       (genre) =>
         genre.name !== "Talk" && genre.name !== "Soap" && genre.name !== "News"
     );
-    console.log(genre);
-    
+        
     return (
       <div className="movies-content">
         {loading ? (

@@ -6,7 +6,7 @@ import Arrow from "./arrow";
 const slide = network => {
   return (
     <Link
-      to={`/tv-shows/discover/${network[0].id}`}
+      to={`/tv-shows/discover/${network[0].name}_${network[0].id}`}
       className="movies-content_networkSection-network"
       key={network[0].id}
     >

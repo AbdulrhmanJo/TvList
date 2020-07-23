@@ -8,7 +8,9 @@ import ReactPlayer from "react-player";
 import CastSection from "./castSection";
 // import CrewSection from "./crewSection";
 import SecondarySection from "./SecondraySection";
+import Seasons from "./seasons";
 import { AiTwotoneStar } from "react-icons/ai";
+import { AiOutlineFileImage } from "react-icons/ai";
 // import MoreLikeThis from "./moreLikeThis";
 // import SimilarMovies from "./similarMovies";
 // import Details from "./Details";
@@ -94,9 +96,14 @@ class MoviePage extends Component {
   };
 
   render() {
-    const { data, loading, type } = this.state;
+    let { data, loading, type } = this.state;
+    const seasons =
+      !loading &&
+      type === "tvshows" &&
+      data.seasons.filter((season) => season.season_number > 0);
+    data = data.details;
     const trailer = !loading && this.getTrailer(data.videos);
-
+    
     return loading ? (
       <BeatLoader
         css={{
@@ -128,32 +135,66 @@ class MoviePage extends Component {
         </div>
         <div className="movie-content">
           <div className="movie-mainSection">
-            <div className="movie-mainSection--trailer">
-              <ReactPlayer
-                className="movie-mainSection--trailer-player"
-                url={`https://www.youtube.com/watch?v=${trailer[0].key}`}
-                light={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
-                width="100%"
-                height="100%"
-                playing
-              />
-            </div>
+            {trailer.length > 0 ? (
+              <div className="movie-mainSection--trailer">
+                <ReactPlayer
+                  className="movie-mainSection--trailer-player"
+                  url={`https://www.youtube.com/watch?v=${trailer[0].key}`}
+                  light={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
+                  width="100%"
+                  height="100%"
+                  playing
+                />
+              </div>
+            ) : (
+              <div className="movie-mainSection--img">
+                {data.backdrop_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
+                    alt={data.name}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <AiOutlineFileImage size={100} />
+                    <p style={{ fontSize: "1.6rem" }}>No Image</p>
+                  </div>
+                )}
+              </div>
+            )}
             <div className="movie-mainSection--overview">
               <p className="movie-mainSection--overview-header">Overview</p>
               <p className="movie-mainSection--overview-text">
-                {data.overview}
+                {data.overview.length > 0 ? data.overview : "There is no overview yet.  "}
               </p>
             </div>
+            {type === "tvshows" && <Seasons data={seasons} />}
             <div className="movie-mainSection--cast">
               <CastSection name="cast" cast={data.credits.cast} />
             </div>
             <div className="movie-mainSection--recomendition">
-              <SecondarySection
-                seeAll={false}
-                name="more like this"
-                movies={data.similar}
-                nom={5}
-              />
+              {data.similar.results.length >= 5 ? (
+                <SecondarySection
+                  seeAll={false}
+                  name="more like this"
+                  movies={data.similar}
+                  nom={5}
+                  hight="small"
+                />
+              ) : data.recommendations.results.length >= 5 ? (
+                <SecondarySection
+                  seeAll={false}
+                  name="you may also like this"
+                  movies={data.recommendations}
+                  hight="small"
+                  nom={5}
+                />
+              ): ""}
             </div>
           </div>
           <div className="movie-secondarySection">
@@ -163,6 +204,7 @@ class MoviePage extends Component {
                 <div className="movie-secondarySection--genres-list">
                   {data.genres.map((genre) => (
                     <Link
+                      key={genre.id}
                       to={
                         type === "movies"
                           ? `/movies/genres/${genre.name.replace(" ", "_")}`
@@ -186,7 +228,8 @@ class MoviePage extends Component {
                       (network, index) =>
                         index < 3 && (
                           <Link
-                            to={`/tv-shows/discover/${network.id}`}
+                            key={network.id}
+                            to={`/tv-shows/discover/${network.name}_${network.id}`}
                             className="movie-secondarySection--networks-list--logo"
                           >
                             <img
@@ -249,8 +292,8 @@ class MoviePage extends Component {
                   </div>
                 )}
                 <div className="movie-secondarySection--info-btn">
-                  <button className="btn btn-primary">Add to list</button>
-                  <button className="btn btn-secandry">Share</button>
+                  {/* <button className="btn btn-primary">Add to list</button> */}
+                  <button className="btn btn-primary">Share</button>
                 </div>
               </div>
             </div>

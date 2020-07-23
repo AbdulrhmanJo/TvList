@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
 import TVshows from "./components/tvshowsPage.js";
 import sectionPage from "./components/sectionPage";
 import MoviePage from "./components/moviePage";
+import Search from "./components/Search";
 import { handleInitialData } from "./Actions/shared";
 import BeatLoader from "react-spinners/BeatLoader";
 
@@ -39,15 +40,11 @@ class App extends Component {
               />
             ) : (
               <div className="routes">
-                <Route
-                  exact
-                  path="/search"
-                  render={() => <h1 style={{ color: "white" }}>search</h1>}
-                />
+                <Route exact path="/search" component={Search} />
                 <Route
                   exact
                   path="/"
-                  render={() => <h1 style={{ color: "white" }}>home</h1>}
+                  render={() => <Redirect to="/movies" />}
                 />
                 <Route exact path="/movies" component={MoviesPage} />
                 <Route exact path="/movies/:id" component={MoviePage} />

@@ -70,25 +70,29 @@ class CastSection extends Component {
         <div className="cast-header">
           <p className="cast-header--text">{`${name}`}</p>
         </div>
-        <div className="cast-section">
-          {[...cast].map((person, index) => {
-            if (cast.length <= numberOfcards) {
-              return slide(person);
-            } else if (index < numberOfcards) {
-              return slide(person);
-            }
-          })}
-          {cast.length > numberOfcards &&
-            (this.state.hasMore ? (
-              <button className="cast-btn" onClick={this.reveal}>
-                see all
-              </button>
-            ) : (
-              <button className="cast-btn" onClick={this.unreveal}>
-                see less
-              </button>
-            ))}
-        </div>
+        {cast.length > 0 ? (
+          <div className="cast-section">
+            {cast.map((person, index) => {
+              if (cast.length <= numberOfcards) {
+                return slide(person);
+              } else if (index < numberOfcards) {
+                return slide(person);
+              }
+            })}
+            {cast.length > numberOfcards &&
+              (this.state.hasMore ? (
+                <button className="cast-btn" onClick={this.reveal}>
+                  see all
+                </button>
+              ) : (
+                <button className="cast-btn" onClick={this.unreveal}>
+                  see less
+                </button>
+              ))}
+          </div>
+        ) : (
+          <p className="movie-mainSection--overview-text">It is not provided yet.</p>
+        )}
       </div>
     );
   }

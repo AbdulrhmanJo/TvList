@@ -3,7 +3,7 @@ import SidebarList from "./sidebarList";
 import {
   AiOutlineHome,
   AiOutlineVideoCamera,
-  AiOutlinePlayCircle
+  AiOutlinePlayCircle,
 } from "react-icons/ai";
 class Sidebar extends Component {
   render() {
@@ -13,12 +13,9 @@ class Sidebar extends Component {
           <p>Something</p>
         </div>
         <SidebarList
-          items={["home", "movies", "TV-shows"]}
+          items={["movies", "TV-shows"]}
           icons={[
-            <AiOutlineHome
-              size={20}
-              className="sidebar-list_item--icon"
-            />,
+            <AiOutlineHome size={20} className="sidebar-list_item--icon" />,
             <AiOutlineVideoCamera
               size={20}
               className="sidebar-list_item--icon"
@@ -26,7 +23,8 @@ class Sidebar extends Component {
             <AiOutlinePlayCircle
               size={20}
               className="sidebar-list_item--icon"
-            />]}
+            />,
+          ]}
           title="Discover"
         />
       </nav>

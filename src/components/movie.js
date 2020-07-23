@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 class Movie extends Component {
   render() {
-    const { movie, type, place } = this.props;
+    const { movie, type, place, hight } = this.props;
 
     return (
       <div
@@ -16,7 +16,13 @@ class Movie extends Component {
         }
       >
         <Link to={`${type}/${movie.id}`} style={{ textDecoration: "none" }}>
-          <div className="movies-content_SecondarySection-movie--box">
+          <div
+            className={
+              hight === "small"
+                ? "movies-content_SecondarySection-movie--box small"
+                : "movies-content_SecondarySection-movie--box"
+            }
+          >
             <img
               src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
               alt={`${movie.title}`}

@@ -2,42 +2,36 @@ import React, { Component } from "react";
 import { GoSearch } from "react-icons/go";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { withRouter } from "react-router-dom";
-import { search } from "../utils/API";
-
+// import { search } from "../utils/API";
+import { connect } from "react-redux";
+import { search } from "../Actions/search";
 class Navbar extends Component {
   state = {
     query: "",
+    firstClick: true,
   };
-  // onScroll = () => {
-  //   if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
-  //     document.querySelector(".navbar").classList.add("navbar-scroll");
-  //     document
-  //       .querySelector(".navbar-search")
-  //       .classList.add("navbar-search--active");
-  //   } else {
-  //     document
-  //       .querySelector(".navbar-search")
-  //       .classList.remove("navbar-search--active");
-  //     document.querySelector(".navbar").classList.remove("navbar-scroll");
-  //   }
-  // };
-  // componentDidMount() {
-  //   // window.addEventListener("scroll", this.onScroll);
-  // }
-
+   
   componentDidUpdate() {
-    const { query } = this.state;
-    const { history, location } = this.props;
-    if (query.length > 0 && location.pathname !== "/search") {
-      history.push("/search");
-      search(query).then((data) => console.log(data));
-    } else if (query.length === 0 && location.pathname === "/search") {
-      history.goBack();
+    const { firstClick } = this.state;
+    const { location } = this.props;
+    if (location.pathname !== "/search" && !firstClick) {
+      this.setState({ firstClick: true });
     }
   }
 
   handleChange = (event) => {
-    this.setState({ query: event.target.value });
+    this.setState({ query: event.target.value }, () =>
+      this.props.dispatch(search(this.state.query))
+    );
+  };
+
+  handleClick = () => {
+    const { history } = this.props;
+    const { firstClick } = this.state;
+    if (firstClick) {
+      history.push("/search");
+      this.setState({ firstClick: false });
+    }
   };
 
   render() {
@@ -50,6 +44,7 @@ class Navbar extends Component {
             placeholder="search..."
             onChange={this.handleChange}
             value={this.state.query}
+            onClick={this.handleClick}
           />
         </div>
         <div className="navbar-account">
@@ -66,4 +61,10 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(Navbar);
+export default withRouter(
+  connect(({ search }) => {
+    return {
+      isEmpty: search !== null && search.length === 0,
+    };
+  })(Navbar)
+);

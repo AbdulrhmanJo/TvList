@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 
-const SidebarList = props => {
+const SidebarList = (props) => {
   const { items, icons, title } = props;
   return (
     <ul className="sidebar-list">
@@ -10,18 +10,14 @@ const SidebarList = props => {
         <li key={item}>
           <NavLink
             exact
-            to={
-              item === "home" ? "/" : `/${item.toLowerCase()}`
-            }
+            to={`/${item.toLowerCase()}`}
             className="sidebar-list_item"
             activeClassName="sidebar-list_item--active"
             isActive={(match, location) => {
               if (item === "home" && location.pathname === "/") {
                 return true;
               } else if (
-                location.pathname.indexOf(
-                  `/${item.toLowerCase()}`
-                ) !== -1
+                location.pathname.indexOf(`/${item.toLowerCase()}`) !== -1
               ) {
                 return true;
               }
