@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import Arrow from "./arrow";
 
-const slide = network => {
+const slide = (network) => {
   return (
     <Link
       to={`/tv-shows/discover/${network[0].name}_${network[0].id}`}
@@ -22,7 +22,7 @@ const slide = network => {
     </Link>
   );
 };
-const NetworkSection = props => {
+const NetworkSection = (props) => {
   const { name, networks } = props;
   const settings = {
     lazyLoad: true,
@@ -31,14 +31,37 @@ const NetworkSection = props => {
     slidesToShow: 4,
     slidesToScroll: 4,
     prevArrow: <Arrow type="prev" />,
-    nextArrow: <Arrow type="next" />
+    nextArrow: <Arrow type="next" />,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
     <div className="movies-content_networkSection">
       <div className="movies-content_networkSection-header">
         <h1 className="movies-content_networkSection-header--name">{name}</h1>
       </div>
-      <Slider {...settings}>{networks.map(network => slide(network))}</Slider>
+      <Slider {...settings}>{networks.map((network) => slide(network))}</Slider>
     </div>
   );
 };

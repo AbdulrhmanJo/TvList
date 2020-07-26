@@ -23,6 +23,26 @@ $bp-m: 64.8rem;
 html {
   font-size: 62.5%; // 1rem = 10px
 
+  // @media only screen and (max-width: 90rem) {
+  //   font-size: 60%;
+
+  // }
+
+  @media only screen and (max-width: 70rem) {
+    font-size: 57%;
+
+  }
+
+  // @media only screen and (max-width: 64.8rem) {
+  //   font-size: 55%;
+
+  // }
+
+  @media only screen and (max-width: 64.8rem) {
+    font-size: 55%;
+
+  }
+
   @media only screen and (max-width: 27rem) {
     font-size: 42.5%;
 

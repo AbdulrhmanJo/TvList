@@ -13,7 +13,7 @@ class TVshows extends Component {
       (genre) =>
         genre.name !== "Talk" && genre.name !== "Soap" && genre.name !== "News"
     );
-        
+
     return (
       <div className="movies-content">
         {loading ? (
@@ -30,7 +30,11 @@ class TVshows extends Component {
           />
         ) : (
           <div>
-            <NowPlaying movies={tvshows.trending} genres={genres} type={"tv-shows"} />
+            <NowPlaying
+              movies={tvshows.trending}
+              genres={genres}
+              type={"tv-shows"}
+            />
             <div style={{ padding: ".2rem 0rem" }}>
               <NetworkSection
                 name="Browse by service"
@@ -47,7 +51,6 @@ class TVshows extends Component {
                 movies={tvshows.trending}
                 seeAll={true}
                 nom={6}
-
               />
               <TrailerSection name="Trailers" videos={videos} />
               <SecondarySection
@@ -55,16 +58,14 @@ class TVshows extends Component {
                 movies={tvshows.popular}
                 seeAll={true}
                 nom={6}
-
               />
               <SecondarySection
                 name="Top rated"
                 movies={tvshows.topRated}
                 seeAll={true}
                 nom={6}
-
               />
-              <GenreSection name="Browse by genre" genres={genre} />Î
+              <GenreSection name="Browse by genre" genres={genre} num={5} />Î
             </div>
           </div>
         )}

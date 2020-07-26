@@ -25,13 +25,15 @@ const slide = (genre, path) => {
 };
 
 const GenreSection = (props) => {
-  const { name, genres } = props;
+  let { name, genres } = props;
+
+  genres = genres.filter(genre => genre.name !== "TV Movie");
 
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 7,
-    rows: Math.ceil(genres.length / 7),
+    slidesToShow: props.num,
+    rows: Math.ceil(genres.length / props.num),
     // slidesToScroll: 6,
     prevArrow: <Arrow type="prev" />,
     nextArrow: <Arrow type="next" />,
@@ -39,38 +41,38 @@ const GenreSection = (props) => {
       {
         breakpoint: 1300,
         settings: {
-          slidesToShow: 6,
-          rows: Math.ceil(genres.length / 7),
+          slidesToShow: 5,
+          rows: Math.ceil(genres.length / 5),
         },
       },
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 5,
-          rows: Math.ceil(genres.length / 7),
+          slidesToShow: 4,
+          rows: Math.ceil(genres.length / 4),
         },
       },
       {
         breakpoint: 700,
         settings: {
-          slidesToShow: 4,
-          rows: Math.ceil(genres.length / 7),
+          slidesToShow: 3,
+          rows: Math.ceil(genres.length / 3),
         },
       },
       {
         breakpoint: 550,
         settings: {
-          slidesToShow: 3,
-          rows: Math.ceil(genres.length / 7),
-        },
-      },
-      {
-        breakpoint: 440,
-        settings: {
-          slidesToShow:2,
+          slidesToShow: 2,
           rows: Math.ceil(genres.length / 2),
         },
       },
+      // {
+      //   breakpoint: 440,
+      //   settings: {
+      //     slidesToShow: 1,
+      //     rows: Math.ceil(genres.length / 1),
+      //   },
+      // },
     ],
   };
   return (

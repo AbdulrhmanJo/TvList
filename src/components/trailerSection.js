@@ -5,16 +5,18 @@ import Arrow from "./arrow";
 
 const slide = (trailer) => {
   return (
-    <div key={trailer.id} className="movies-content_trailerSection-trailer">
-      <ReactPlayer
-        className="movies-content_trailerSection-trailer--player"
-        url={`https://www.youtube.com/watch?v=${trailer.key}`}
-        light
-        width="100%"
-        // height="25rem"
-        controls
-        playing
-      />
+    <div className="movies-content_trailerSection-box">
+      <div key={trailer.id} className="movies-content_trailerSection-trailer">
+        <ReactPlayer
+          className="movies-content_trailerSection-trailer--player"
+          url={`https://www.youtube.com/watch?v=${trailer.key}`}
+          light
+          height="100%"
+          width="100%"
+          controls
+          playing
+        />
+      </div>
     </div>
   );
 };
@@ -31,7 +33,7 @@ const getTrailer = (videos) => {
 const TrailerSection = (props) => {
   const { name, videos, type } = props;
   const trailers = type === "all" ? videos.results : getTrailer(videos);
-  
+
   const settings = {
     lazyLoad: true,
     infinite: trailers.length > 2,
@@ -41,6 +43,15 @@ const TrailerSection = (props) => {
     slidesToScroll: 1,
     prevArrow: <Arrow type="prev" />,
     nextArrow: <Arrow type="next" />,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      }
+    ],
   };
   return (
     <div className="movies-content_trailerSection">

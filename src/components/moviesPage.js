@@ -60,7 +60,7 @@ class MoviesPage extends Component {
                 nom={6}
 
               />
-              <GenreSection name="Browse by genre" genres={genres.genres} />
+              <GenreSection name="Browse by genre" genres={genres.genres} num={6}/>
             </div>
           </div>
         )}

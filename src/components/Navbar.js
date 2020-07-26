@@ -47,7 +47,7 @@ class Navbar extends Component {
             onClick={this.handleClick}
           />
         </div>
-        <div className="navbar-account">
+        {/* <div className="navbar-account">
           <IoMdNotificationsOutline
             size={27}
             className="navbar-account--notification"
@@ -55,7 +55,7 @@ class Navbar extends Component {
           <div className="navbar-account--person">
             <p>A</p>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
