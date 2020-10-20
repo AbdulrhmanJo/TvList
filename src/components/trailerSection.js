@@ -50,7 +50,7 @@ const TrailerSection = (props) => {
           slidesToShow: 1,
           slidesToScroll: 1,
         },
-      }
+      },
     ],
   };
   return (
