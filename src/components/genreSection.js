@@ -1,8 +1,6 @@
 import React from "react";
-import Slider from "react-slick";
 import { getIcon } from "../utils/images";
 import { Link, withRouter } from "react-router-dom";
-import Arrow from "./arrow";
 
 const slide = (genre, path) => {
   const Icon = getIcon(genre.name);

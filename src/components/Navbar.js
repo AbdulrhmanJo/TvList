@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { GoSearch } from "react-icons/go";
-import { IoMdNotificationsOutline } from "react-icons/io";
 import { withRouter } from "react-router-dom";
-// import { search } from "../utils/API";
 import { connect } from "react-redux";
 import { search } from "../Actions/search";
 class Navbar extends Component {
@@ -10,7 +8,7 @@ class Navbar extends Component {
     query: "",
     firstClick: true,
   };
-   
+
   componentDidUpdate() {
     const { firstClick } = this.state;
     const { location } = this.props;

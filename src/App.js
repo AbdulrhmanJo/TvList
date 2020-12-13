@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
@@ -10,7 +10,6 @@ import MoviePage from "./components/moviePage";
 import Search from "./components/Search";
 import { handleInitialData } from "./Actions/shared";
 import BeatLoader from "react-spinners/BeatLoader";
-
 import "./styles/App.scss";
 
 class App extends Component {
@@ -25,7 +24,7 @@ class App extends Component {
         <div className="container">
           <Sidebar />
           <div className="content">
-            <Navbar />
+            {} <Navbar />
             {loading ? (
               <BeatLoader
                 css={{
@@ -41,11 +40,7 @@ class App extends Component {
             ) : (
               <div className="routes">
                 <Route exact path="/search" component={Search} />
-                <Route
-                  exact
-                  path="/"
-                  render={() => <Redirect to="/movies" />}
-                />
+                <Route exact path="/" render={() => <h1>Home</h1>} />
                 <Route exact path="/movies" component={MoviesPage} />
                 <Route exact path="/movies/:id" component={MoviePage} />
                 <Route

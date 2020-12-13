@@ -4,6 +4,7 @@
   // background-color: #ffffff;
   padding: 1rem 0;
   display: flex;
+  justify-content: center;
   //   margin-top: -5rem;
 
   &--welcome {
@@ -16,7 +17,7 @@
 
     &-header {
       color: white;
-      margin-top: 2rem;
+      margin-top: 3rem;
       margin-bottom: 0.5rem;
       font-size: 3rem;
       font-weight: 500;
@@ -32,16 +33,14 @@
       width: 35%;
     }
 
-   
-
     &-btn {
-      transition: all .2s;
+      transition: all 0.2s;
       background-color: transparent;
       border-top: none;
       border-left: none;
       border-right: none;
       border-bottom: 0.1rem solid grey;
-      color: gray;
+      color: rgb(211, 211, 211);
       margin-left: 0.5rem;
       font-size: 1.7rem;
       cursor: pointer;
@@ -52,7 +51,7 @@
         color: #f32d58;
       }
 
-      &:focus{
+      &:focus {
         outline: none;
       }
     }

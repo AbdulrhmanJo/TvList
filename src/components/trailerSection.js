@@ -5,8 +5,8 @@ import Arrow from "./arrow";
 
 const slide = (trailer) => {
   return (
-    <div className="movies-content_trailerSection-box">
-      <div key={trailer.id} className="movies-content_trailerSection-trailer">
+    <div key={trailer.id} className="movies-content_trailerSection-box">
+      <div className="movies-content_trailerSection-trailer">
         <ReactPlayer
           className="movies-content_trailerSection-trailer--player"
           url={`https://www.youtube.com/watch?v=${trailer.key}`}
@@ -24,7 +24,8 @@ const slide = (trailer) => {
 const getTrailer = (videos) => {
   let trailer = [];
   videos.forEach((video) => {
-    trailer.push(video.results.filter((option) => option.type === "Trailer"));
+    video.results &&
+      trailer.push(video.results.filter((option) => option.type === "Trailer"));
   });
 
   return trailer;

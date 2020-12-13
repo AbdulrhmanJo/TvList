@@ -99,7 +99,7 @@ class Seasons extends Component {
       nextArrow: <Arrow type="next" />,
     };
     const { data } = this.props;
-    const { season_number, loading } = this.state;
+    const { season_number } = this.state;
     return (
       <div className="seasons">
         <div className="seasons-header">

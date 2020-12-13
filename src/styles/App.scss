@@ -9,7 +9,6 @@
 
 $bp-m: 64.8rem;
 
-
 *,
 *::after,
 *::before {
@@ -30,7 +29,6 @@ html {
 
   @media only screen and (max-width: 70rem) {
     font-size: 57%;
-
   }
 
   // @media only screen and (max-width: 64.8rem) {
@@ -40,12 +38,10 @@ html {
 
   @media only screen and (max-width: 64.8rem) {
     font-size: 55%;
-
   }
 
   @media only screen and (max-width: 27rem) {
     font-size: 42.5%;
-
   }
 }
 
@@ -58,14 +54,13 @@ body {
 .container {
   width: 100%;
   display: flex;
-  @media only screen and (max-width: $bp-m){
+  @media only screen and (max-width: $bp-m) {
     width: 100%;
-    display:block
+    display: block;
   }
 }
 
 .content {
-  
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -74,9 +69,8 @@ body {
   background-color: rgb(12, 11, 11);
   padding: 1rem 7rem;
 
-  @media only screen and (max-width: $bp-m){
+  @media only screen and (max-width: $bp-m) {
     padding: 1rem 4rem;
-
   }
   // padding-bottom:2rem;
 }

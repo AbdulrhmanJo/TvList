@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { FiUser } from "react-icons/fi";
 
-const slide = (person) => {
+const Slide = ({ person }) => {
   return (
-    <Link to={`/person/${person.id}`} key={person.id} className="cast-person">
+    <Link to={`/person/${person.id}`} className="cast-person">
       <div className="cast-person--box">
         <div className="cast-person--box-img">
           {person.profile_path ? (
@@ -14,7 +14,7 @@ const slide = (person) => {
               width="100%"
             />
           ) : (
-            <FiUser size={45} color="#f32d58" />
+            <FiUser size={55} color="#f32d58" />
           )}
         </div>
         <div className="cast-person--box-text">
@@ -29,33 +29,31 @@ const slide = (person) => {
 class CastSection extends Component {
   state = {
     numberOfcards: 11,
-    hasMore: false,
     reveal: false,
   };
 
-  componentDidMount() {
-    if (this.state.numberOfcards < this.props.cast.length) {
-      this.setState({ hasMore: true });
-    }
-  }
+  // componentDidMount() {
+  //   if (this.state.numberOfcards < this.props.cast.length) {
+  //     this.setState({ hasMore: true });
+  //   }
+  // }
 
   reveal = () => {
     this.setState({
       numberOfcards: this.props.cast.length,
       reveal: true,
-      hasMore: false,
     });
   };
   unreveal = () => {
     this.setState({
       numberOfcards: 11,
       reveal: false,
-      hasMore: true,
     });
   };
   render() {
     const { name, cast } = this.props;
     const { numberOfcards } = this.state;
+    const showdList = cast.filter((person) => person.order < numberOfcards);
     // const settings = {
     //   infinite: true,
     //   speed: 500,
@@ -72,15 +70,11 @@ class CastSection extends Component {
         </div>
         {cast.length > 0 ? (
           <div className="cast-section">
-            {cast.map((person, index) => {
-              if (cast.length <= numberOfcards) {
-                return slide(person);
-              } else if (index < numberOfcards) {
-                return slide(person);
-              }
-            })}
-            {cast.length > numberOfcards &&
-              (this.state.hasMore ? (
+            {showdList.map((person) => (
+              <Slide key={person.id} person={person} />
+            ))}
+            {cast.length >= numberOfcards &&
+              (!this.state.reveal ? (
                 <button className="cast-btn" onClick={this.reveal}>
                   see all
                 </button>
@@ -91,7 +85,9 @@ class CastSection extends Component {
               ))}
           </div>
         ) : (
-          <p className="movie-mainSection--overview-text">It is not provided yet.</p>
+          <p className="movie-mainSection--overview-text">
+            It is not provided yet.
+          </p>
         )}
       </div>
     );

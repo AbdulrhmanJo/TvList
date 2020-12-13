@@ -10,10 +10,10 @@ class Sidebar extends Component {
     return (
       <nav className="sidebar">
         <div className="logo">
-          <p>Something</p>
+          <p>TV Pocket</p>
         </div>
         <SidebarList
-          items={["movies", "TV-shows"]}
+          items={["home", "movies", "TV-shows"]}
           icons={[
             <AiOutlineHome size={20} className="sidebar-list_item--icon" />,
             <AiOutlineVideoCamera

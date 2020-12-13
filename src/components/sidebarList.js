@@ -10,7 +10,7 @@ const SidebarList = (props) => {
         <li key={item}>
           <NavLink
             exact
-            to={`/${item.toLowerCase()}`}
+            to={item === "home" ? "/" : `/${item.toLowerCase()}`}
             className="sidebar-list_item"
             activeClassName="sidebar-list_item--active"
             isActive={(match, location) => {

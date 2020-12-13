@@ -221,10 +221,6 @@
 }
 
 .cast {
-  width: 100%;
-  height: 100%;
-  margin-top: 2rem;
-
   &-header {
     text-transform: capitalize;
     font-size: 2rem;
@@ -265,32 +261,22 @@
 
     &--box {
       height: 100%;
-      // height: 20rem;
-
       padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
       text-align: center;
       background-color: rgba(27, 27, 27, 0.404);
       border-radius: 0.3rem;
       font-size: 1.2rem;
       &-img {
-        flex: 1;
-        // background-color: chartreuse;
+        margin: auto;
         display: flex;
         justify-content: center;
-        align-items: center;
         position: relative;
         margin-bottom: 1rem;
-        overflow: hidden;
-
+        width: 6rem;
+        height: 6rem;
         & img {
           border-radius: 50%;
           object-fit: cover;
-          width: 5rem;
-          height: 5rem;
         }
       }
 
@@ -450,5 +436,5 @@
   align-items: center;
 }
 
-.error{
+.error {
 }

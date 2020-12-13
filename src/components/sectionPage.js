@@ -96,7 +96,7 @@ class SectionPage extends Component {
       left: 0,
     });
 
-    const id = match.params.id;
+    // const id = match.params.id;
 
     // const network = this.props.networks.filter(network => network.name === id);
     // console.log(network);
@@ -156,7 +156,9 @@ class SectionPage extends Component {
 
   render() {
     const { match } = this.props;
-    const name = match.params.id.split("_").filter(part => isNaN(part) === true);
+    const name = match.params.id
+      .split("_")
+      .filter((part) => isNaN(part) === true);
     return (
       <div className="section-page">
         {this.state.loading ? (
@@ -168,9 +170,7 @@ class SectionPage extends Component {
         ) : (
           <div className="section-page-content">
             <p className="section-page-content_info">
-              {match.params.id === "tv-movie"
-                ? "TV Movie"
-                : name.join(" ")}
+              {match.params.id === "tv-movie" ? "TV Movie" : name.join(" ")}
             </p>
             <InfiniteScroll
               dataLength={this.state.data.length}
@@ -226,7 +226,7 @@ const mapStateToProps = (state, { match }) => {
   return {
     genre,
     networks: state.tvshows.networks.map((network) => network[0]),
-    dest: match.params.id.split("_")
+    dest: match.params.id.split("_"),
   };
 };
 

@@ -24,16 +24,18 @@ $bp-m: 64.8rem;
     // height: 100%;
   }
   &-list {
+    margin-top: 3rem;
+    padding: 0 2rem;
     @media only screen and (max-width: $bp-m) {
       display: flex;
       justify-content: center;
       margin-left: 4rem;
       // align-items: center;
       // height: 100%;
-
     }
     list-style: none;
     &_title {
+      display: none;
       font-size: 1.8rem;
       color: #82827c;
       //   font-weight: 500;
@@ -52,8 +54,9 @@ $bp-m: 64.8rem;
       font-size: 1.4rem;
       text-transform: capitalize;
       margin-bottom: 1rem;
-      padding: 1rem 3rem;
-      transition: all 0.2s;
+      padding: 1.2rem 2rem;
+      transition: all 0.3s;
+      border-radius: 0.5rem;
 
       &--text {
         margin-left: 1rem;
@@ -68,19 +71,18 @@ $bp-m: 64.8rem;
       }
       &--active {
         // background-color: rgba(rgb(243, 45, 88), 0.2);
-        color: rgb(243, 45, 88);
-        border-left: 0.3rem solid rgb(243, 45, 88);
-        border-top-left-radius: 0.1rem;
-        border-bottom-left-radius: 0.1rem;
-        transition: all 0.2s;
-
+        background-color: rgb(243, 45, 88);
         @media only screen and (max-width: $bp-m) {
           border-bottom: 0.3rem solid rgb(243, 45, 88);
           border-left: 0;
 
           border-bottom-left-radius: 0;
-          border-bottom-right-radius:0;
+          border-bottom-right-radius: 0;
         }
+      }
+
+      &:hover:not(&--active) {
+        background-color: rgba(32, 32, 32, 0.534);
       }
     }
   }
@@ -92,7 +94,7 @@ $bp-m: 64.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 7rem;
+  height: 9rem;
 
   font-weight: 500;
 }
@@ -100,7 +102,7 @@ $bp-m: 64.8rem;
 //---------nav bar----------
 .navbar {
   @media only screen and (max-width: $bp-m) {
-   display: none;
+    display: none;
   }
   display: flex;
   justify-content: space-between;
@@ -118,7 +120,6 @@ $bp-m: 64.8rem;
   overflow: hidden;
 
   &-search {
-
     display: flex;
     align-items: center;
     width: 30.5rem;
