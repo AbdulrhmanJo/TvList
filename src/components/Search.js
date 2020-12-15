@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { IoIosSearch } from "react-icons/io";
+import SearchImg from "../icons/searchImg.svg";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -65,7 +65,9 @@ class Search extends Component {
       <div className="search-container">
         {isEmpty ? (
           <div className="search-container--welcome">
-            <IoIosSearch size={90} color="gray" />
+            <div className="search-container--img">
+              <img src={SearchImg} alt="search-image" />
+            </div>
             <p className="search-container--welcome-header">Search Something</p>
             <p className="search-container--welcome-text">
               Find your favorite movies, tv shows and acotrs, or you can go

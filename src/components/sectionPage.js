@@ -163,6 +163,12 @@ class SectionPage extends Component {
       <div className="section-page">
         {this.state.loading ? (
           <BeatLoader
+            css={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+            }}
             loading={this.state.loading}
             size={45}
             color={"rgb(243, 45, 88)"}

@@ -7,6 +7,13 @@
   justify-content: center;
   //   margin-top: -5rem;
 
+  &--img {
+    width: 40rem;
+
+    & img {
+      width: 100%;
+    }
+  }
   &--welcome {
     width: 100%;
     display: flex;

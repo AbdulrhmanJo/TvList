@@ -12,7 +12,7 @@ const Error = () => {
       </div>
       <div className="notFound_pic">
         <div className="notFound_pic-wrapper">
-          <img src={NotFound} />
+          <img src={NotFound} alt="error" />
         </div>
       </div>
     </div>
