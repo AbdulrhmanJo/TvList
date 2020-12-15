@@ -2,19 +2,13 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import { getMovieDetails, getTvDetails } from "../utils/API";
 import BeatLoader from "react-spinners/BeatLoader";
-// import { GoPrimitiveDot } from "react-icons/go";
 import ReactPlayer from "react-player";
-// import TrailerSection from "./trailerSection";
 import CastSection from "./castSection";
-// import CrewSection from "./crewSection";
 import SecondarySection from "./SecondraySection";
 import Seasons from "./seasons";
 import { AiTwotoneStar } from "react-icons/ai";
 import { AiOutlineFileImage } from "react-icons/ai";
-// import MoreLikeThis from "./moreLikeThis";
-// import SimilarMovies from "./similarMovies";
-// import Details from "./Details";
-
+import Error from "./error";
 class MoviePage extends Component {
   state = {
     data: {},
@@ -97,13 +91,14 @@ class MoviePage extends Component {
 
   render() {
     let { data, loading, type } = this.state;
+    !loading && console.log(data);
+    if (!loading && data.details.success === false) return <Error />;
     const seasons =
       !loading &&
       type === "tvshows" &&
       data.seasons.filter((season) => season.season_number > 0);
     data = data.details;
     const trailer = !loading && this.getTrailer(data.videos);
-    
     return loading ? (
       <BeatLoader
         css={{
@@ -170,7 +165,9 @@ class MoviePage extends Component {
             <div className="movie-mainSection--overview">
               <p className="movie-mainSection--overview-header">Overview</p>
               <p className="movie-mainSection--overview-text">
-                {data.overview.length > 0 ? data.overview : "There is no overview yet.  "}
+                {data.overview.length > 0
+                  ? data.overview
+                  : "There is no overview yet.  "}
               </p>
             </div>
             {type === "tvshows" && <Seasons data={seasons} />}
@@ -194,7 +191,9 @@ class MoviePage extends Component {
                   hight="small"
                   nom={5}
                 />
-              ): ""}
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className="movie-secondarySection">

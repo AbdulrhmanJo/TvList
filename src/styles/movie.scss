@@ -436,5 +436,46 @@
   align-items: center;
 }
 
-.error {
+.notFound {
+  padding-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  &_content {
+    & h1 {
+      font-size: 10rem;
+      color: white;
+    }
+    & p {
+      color: gray;
+      margin-top: 2rem;
+      font-size: 2.5rem;
+      width: 35%;
+    }
+    & button {
+      cursor: pointer;
+      color: #f32d58;
+      border: none;
+      background-color: transparent;
+      font-family: inherit;
+      margin-top: 2rem;
+      font-size: 1.8rem;
+      transition: color 0.2s;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  &_pic {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15rem;
+    &-wrapper {
+      width: 65rem;
+      & img {
+        width: 100%;
+      }
+    }
+  }
 }
