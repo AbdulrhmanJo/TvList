@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import Movie from "./movie";
 import {
   getMoviesOfSection,
@@ -126,7 +127,7 @@ class SectionPage extends Component {
       getTvOfNetwork(this.props.dest[1], this.state.page).then((data) =>
         this.setState({
           data: data.results,
-          loading: false,
+          loading: true,
           totalPages: data.total_pages,
           page: this.state.page + 1,
         })
@@ -236,4 +237,4 @@ const mapStateToProps = (state, { match }) => {
   };
 };
 
-export default connect(mapStateToProps)(SectionPage);
+export default withRouter(connect(mapStateToProps)(SectionPage));

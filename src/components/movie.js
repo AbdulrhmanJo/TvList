@@ -2,11 +2,37 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { IoIosAdd } from "react-icons/io";
 import { connect } from "react-redux";
+import ClipLoader from "react-spinners/ClipLoader";
+import { Img } from "react-image";
 
+const Photo = ({ imgSrc }) => (
+  <Img
+    src={imgSrc}
+    className="movies-content_SecondarySection-movie--box-img"
+    loader={
+      <ClipLoader
+        css={{
+          margin: "auto",
+        }}
+        loading={true}
+        size={25}
+        color={"rgb(243, 45, 88)"}
+      />
+    }
+  />
+);
 class Movie extends Component {
-  render() {
-    const { movie, type, place, hight } = this.props;
+  state = {
+    mount: false,
+  };
 
+  componentDidMount() {
+    this.setState({ mount: true });
+  }
+
+  render() {
+    if (!this.state.mount) return null;
+    const { movie, type, place, hight } = this.props;
     return (
       <div
         className={
@@ -23,11 +49,10 @@ class Movie extends Component {
                 : "movies-content_SecondarySection-movie--box"
             }
           >
-            <img
-              src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-              alt={`${movie.title}`}
-              className="movies-content_SecondarySection-movie--box-img"
+            <Photo
+              imgSrc={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
             />
+
             <div className="movies-content_SecondarySection-movie--box-info">
               {/* <div className="movies-content_SecondarySection-movie--box-info--text">
                 <p className="movies-content_SecondarySection-movie--box-info--text-title">
