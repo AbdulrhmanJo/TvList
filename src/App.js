@@ -40,95 +40,24 @@ class App extends Component {
             ) : (
               <div className="routes">
                 <Route exact path="/" component={Home} />
-                <Route
-                  exact
-                  path="/search"
-                  render={() => (
-                    <div className="fix">
-                      <Navbar />
-                      <Search />
-                    </div>
-                  )}
-                />
+                <Route exact path="/search" component={Search} />
 
-                <Route
-                  exact
-                  path="/movies"
-                  render={() => (
-                    <>
-                      <Navbar />
-                      <MoviesPage />
-                    </>
-                  )}
-                />
-                <Route
-                  exact
-                  path="/movies/:id"
-                  render={() => (
-                    <div className="fix">
-                      <Navbar />
-                      <MoviePage />
-                    </div>
-                  )}
-                />
+                <Route exact path="/movies" component={MoviesPage} />
+                <Route exact path="/movies/:id" component={MoviePage} />
                 <Route
                   exact
                   path="/movies/discover/:id"
-                  render={() => (
-                    <div className="fix">
-                      <Navbar />
-                      <SectionPage />
-                    </div>
-                  )}
+                  component={SectionPage}
                 />
                 <Route
                   exact
                   path="/movies/genres/:id"
-                  render={() => (
-                    <div className="fix">
-                      <Navbar />
-                      <SectionPage />
-                    </div>
-                  )}
+                  component={SectionPage}
                 />
-                <Route
-                  exact
-                  path="/tv-shows"
-                  render={() => (
-                    <>
-                      <Navbar />
-                      <TVshows />
-                    </>
-                  )}
-                />
-                <Route
-                  exact
-                  path="/tv-shows/:id"
-                  render={() => (
-                    <div className="fix">
-                      <Navbar />
-                      <MoviePage />
-                    </div>
-                  )}
-                />
-                <Route
-                  path="/tv-shows/discover/:id"
-                  render={() => (
-                    <div className="fix">
-                      <Navbar />
-                      <SectionPage />
-                    </div>
-                  )}
-                />
-                <Route
-                  path="/tv-shows/genres/:id"
-                  render={() => (
-                    <div className="fix">
-                      <Navbar />
-                      <SectionPage />
-                    </div>
-                  )}
-                />
+                <Route exact path="/tv-shows" component={TVshows} />
+                <Route exact path="/tv-shows/:id" component={MoviePage} />
+                <Route path="/tv-shows/discover/:id" component={SectionPage} />
+                <Route path="/tv-shows/genres/:id" component={SectionPage} />
               </div>
             )}
           </div>

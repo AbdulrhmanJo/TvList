@@ -5,28 +5,32 @@ import {
   AiOutlineVideoCamera,
   AiOutlinePlayCircle,
 } from "react-icons/ai";
+import Navbar from "./Navbar";
 class Sidebar extends Component {
   render() {
     return (
       <nav className="sidebar">
-        <div className="logo">
-          <p>TV Pocket</p>
+        <div className="sidebar-wrapper">
+          <div className="logo">
+            <p>TV Pocket</p>
+          </div>
+          <SidebarList
+            items={["home", "movies", "TV-shows"]}
+            icons={[
+              <AiOutlineHome size={20} className="sidebar-list_item--icon" />,
+              <AiOutlineVideoCamera
+                size={20}
+                className="sidebar-list_item--icon"
+              />,
+              <AiOutlinePlayCircle
+                size={20}
+                className="sidebar-list_item--icon"
+              />,
+            ]}
+            title="Discover"
+          />
+          <Navbar />
         </div>
-        <SidebarList
-          items={["home", "movies", "TV-shows"]}
-          icons={[
-            <AiOutlineHome size={20} className="sidebar-list_item--icon" />,
-            <AiOutlineVideoCamera
-              size={20}
-              className="sidebar-list_item--icon"
-            />,
-            <AiOutlinePlayCircle
-              size={20}
-              className="sidebar-list_item--icon"
-            />,
-          ]}
-          title="Discover"
-        />
       </nav>
     );
   }

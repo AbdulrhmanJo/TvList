@@ -2,6 +2,7 @@ $bp-mobile: 27rem;
 
 .movies-content {
   display: flex;
+  margin-top: 1rem;
   flex-direction: column;
 
   &_nowPlaying {
@@ -345,17 +346,18 @@ $bp-mobile: 27rem;
       }
       &-box {
         // width: 15rem;
-        height: 16rem;
+        height: 20rem;
         // padding: 2rem 9rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #f32d583a;
+        background-image: linear-gradient(45deg, #c52144, #6b1313);
         border-radius: 0.5rem;
         font-size: 1.7rem;
         color: rgb(161, 161, 161);
         &--img {
+          filter: brightness(0) invert(0);
           display: flex;
           justify-content: center;
           align-items: center;

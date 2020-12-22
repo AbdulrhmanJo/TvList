@@ -127,7 +127,7 @@ class SectionPage extends Component {
       getTvOfNetwork(this.props.dest[1], this.state.page).then((data) =>
         this.setState({
           data: data.results,
-          loading: true,
+          loading: false,
           totalPages: data.total_pages,
           page: this.state.page + 1,
         })
