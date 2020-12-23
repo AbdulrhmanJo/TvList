@@ -82,10 +82,10 @@ class Search extends Component {
         ) : loading ? (
           <BeatLoader
             css={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
             }}
             loading={loading}
             size={45}

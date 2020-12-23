@@ -165,10 +165,10 @@ class SectionPage extends Component {
         {this.state.loading ? (
           <BeatLoader
             css={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "100%",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
             }}
             loading={this.state.loading}
             size={45}
