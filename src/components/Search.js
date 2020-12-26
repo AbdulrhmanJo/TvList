@@ -56,6 +56,7 @@ class Search extends Component {
   componentWillUnmount() {
     this._isMounted = false;
   }
+
   render() {
     const isEmpty = this.props.search.length === 0;
     const { loading, found } = this.state;

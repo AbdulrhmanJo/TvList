@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BiMovie } from "react-icons/bi";
 import SidebarList from "./sidebarList";
 import {
   AiOutlineHome,
@@ -12,7 +13,7 @@ class Sidebar extends Component {
       <nav className="sidebar">
         <div className="sidebar-wrapper">
           <div className="logo">
-            <p>TV Pocket</p>
+            <BiMovie className="logo-icon" />
           </div>
           <SidebarList
             items={["home", "movies", "TV-shows"]}

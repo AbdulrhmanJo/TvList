@@ -11,7 +11,8 @@ $bp-m: 64.8rem;
   // top: 0;
   // background-color: rgb(12, 11, 11);
   // background-color: rgb(3, 3, 3);
-  background-color: #050506;
+  background-color: #121213;
+  backdrop-filter: blur(40rem);
   // background-color: blue;
   // box-shadow: 0rem 0 6rem black;
   z-index: 100000;
@@ -35,6 +36,7 @@ $bp-m: 64.8rem;
     height: 100%;
   }
   &-list {
+    // flex: 1;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -105,21 +107,24 @@ $bp-m: 64.8rem;
 }
 
 .logo {
-  margin-right: 10rem;
-  color: white;
-  font-size: 2.5rem;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-  // height: 9rem;
+  flex: 1;
+  // margin-right: 10rem;
+  display: flex;
+  align-items: center;
 
-  font-weight: 500;
+  &-icon {
+    color: #f32d58;
+    // color: white;
+    font-size: 3.5rem;
+  }
+  // height: 9rem;
 }
 
 //---------nav bar----------
 .navbar {
-  // flex: 2;
+  flex: 1;
   display: flex;
+  justify-content: flex-end;
   // padding: 0rem 0rem;
   // background-color: red;
   // position: absolute;

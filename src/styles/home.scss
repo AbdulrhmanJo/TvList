@@ -1,0 +1,121 @@
+.home {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: flex-start;
+  height: calc(100% - 13rem);
+}
+
+.list {
+  flex: 1;
+  height: 100%;
+  &-header {
+    font-size: 2.5rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-btn {
+      color: white;
+      font-size: 1.6rem;
+      padding: 1.2rem 3rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #f32d58;
+    }
+  }
+
+  &-content {
+    margin-top: 2rem;
+    height: 100%;
+    border: 0.1rem dashed #424141;
+    border-radius: 1rem;
+    &-holder {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &--img {
+        width: 25rem;
+
+        & img {
+          width: 100%;
+        }
+      }
+
+      &--text {
+        margin-top: 3rem;
+
+        text-align: center;
+        &-header {
+          color: white;
+          font-size: 2rem;
+          font-weight: 500;
+        }
+
+        &-desc {
+          font-size: 1.6rem;
+          color: rgb(124, 124, 124);
+        }
+      }
+    }
+  }
+}
+
+.profile {
+  border-radius: 1rem;
+  margin-right: 4rem;
+  width: 25%;
+  padding: 3rem;
+  background-color: #1f1e1e6e;
+
+  &-avatar {
+    display: flex;
+    justify-content: center;
+    &-content {
+      color: white;
+      border-radius: 50%;
+      width: 10rem;
+      height: 10rem;
+      background-color: #f32d58;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      line-height: 1;
+      font-weight: 500;
+    }
+  }
+
+  &-info {
+    text-align: center;
+    margin-top: 1.5rem;
+    &-name {
+      font-size: 2rem;
+      font-weight: 500;
+      color: white;
+    }
+
+    &-handle {
+      margin-top: 0.2rem;
+      font-size: 1.6rem;
+      color: #666666;
+    }
+  }
+
+  &-stats {
+    margin-top: 4rem;
+    &-item {
+      margin-bottom: 0.4rem;
+      color: rgb(163, 163, 163);
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.7rem;
+
+      &-content {
+        color: white;
+      }
+    }
+  }
+}
