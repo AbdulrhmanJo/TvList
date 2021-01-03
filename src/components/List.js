@@ -1,28 +1,25 @@
 import React from "react";
-import Wait from "../icons/wait.svg";
+import EmptyLists from "./emptyLists";
+import ListCard from "./listCard";
 
-const List = () => {
+const Lists = ({ lists }) => {
   return (
-    <div className="list">
-      <div className="list-header">
-        <p className="list-header-text">My lists</p>
-        <button className="list-header-btn">create list</button>
+    <div className="lists">
+      <div className="lists-header">
+        <p className="lists-header-text">My lists</p>
+        <button className="lists-header-btn">create list</button>
       </div>
-      <div className="list-content">
-        <div className="list-content-holder">
-          <div className="list-content-holder--img">
-            <img src={Wait} alt="wait image" />
-          </div>
-          <div className="list-content-holder--text">
-            <p className="list-content-holder--text-header">No lists... yet</p>
-            <p className="list-content-holder--text-desc">
-              All your lists will appear here
-            </p>
-          </div>
-        </div>
+      <div className="lists-content">
+        {Object.keys(lists).length === 0 ? (
+          <EmptyLists />
+        ) : (
+          Object.entries(lists).map((list, index) => (
+            <ListCard key={index} list={list} />
+          ))
+        )}
       </div>
     </div>
   );
 };
 
-export default List;
+export default Lists;

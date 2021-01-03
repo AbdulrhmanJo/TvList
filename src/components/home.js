@@ -1,14 +1,18 @@
 import React from "react";
 import Profile from "./profile";
-import List from "./List";
-
-const Home = () => {
+import Lists from "./List";
+import { connect } from "react-redux";
+const Home = (props) => {
   return (
     <div className="home">
       <Profile />
-      <List />
+      <Lists lists={props.lists} />
     </div>
   );
 };
 
-export default Home;
+const mapStateToProps = ({ lists }) => {
+  return { lists };
+};
+
+export default connect(mapStateToProps)(Home);

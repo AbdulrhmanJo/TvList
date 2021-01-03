@@ -41,7 +41,6 @@ class App extends Component {
               <div className="routes">
                 <Route exact path="/" component={Home} />
                 <Route exact path="/search" component={Search} />
-
                 <Route exact path="/movies" component={MoviesPage} />
                 <Route exact path="/movies/:id" component={MoviePage} />
                 <Route
@@ -68,6 +67,7 @@ class App extends Component {
 }
 
 export default connect((state) => {
+  console.log(state);
   return {
     loading: state.tvshows.genre === undefined,
   };

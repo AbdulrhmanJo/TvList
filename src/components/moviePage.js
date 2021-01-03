@@ -291,8 +291,8 @@ class MoviePage extends Component {
                   </div>
                 )}
                 <div className="movie-secondarySection--info-btn">
-                  {/* <button className="btn btn-primary">Add to list</button> */}
-                  <button className="btn btn-primary">Share</button>
+                  <button className="btn btn-primary">Add to list</button>
+                  <button className="btn btn-secandry">Share</button>
                 </div>
               </div>
             </div>
