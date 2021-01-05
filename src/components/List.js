@@ -1,14 +1,19 @@
 import React from "react";
 import EmptyLists from "./emptyLists";
 import ListCard from "./listCard";
-
+import Modal from "./modal";
 const Lists = ({ lists }) => {
+  const [isModalOpen, openModel] = React.useState(false);
+
   return (
     <div className="lists">
       <div className="lists-header">
         <p className="lists-header-text">My lists</p>
-        <button className="lists-header-btn">create list</button>
+        <button className="lists-header-btn" onClick={() => openModel(true)}>
+          create list
+        </button>
       </div>
+      <Modal open={isModalOpen} modalLabel="Create List" />
       <div className="lists-content">
         {Object.keys(lists).length === 0 ? (
           <EmptyLists />
