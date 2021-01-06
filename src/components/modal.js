@@ -1,6 +1,31 @@
 import React from "react";
 import { CgClose } from "react-icons/cg";
-const Modal = ({ modalLabel, open, handleClose }) => {
+import { connect } from "react-redux";
+import { createList } from "../Actions/list";
+import { updateList } from "../Actions/list";
+
+const Modal = ({
+  modalLabel,
+  open,
+  handleClose,
+  buttonLabel,
+  data,
+  dispatch,
+}) => {
+  const [name, setName] = React.useState(() => (data ? data.name : ""));
+  const [desc, setDesc] = React.useState(() => (data ? data.desc : ""));
+
+  const handleCreateList = () => {
+    dispatch(createList({ name, desc, content: [] }));
+    handleClose();
+    setName("");
+    setDesc("");
+  };
+  const handleUpdateList = () => {
+    dispatch(updateList({ name, desc, listId: data.id }));
+    handleClose();
+  };
+
   if (!open) {
     return null;
   }
@@ -18,9 +43,11 @@ const Modal = ({ modalLabel, open, handleClose }) => {
           <div className="modal-card--content-nameWrapper">
             <p className="modal-card--content-nameWrapper-name">Name</p>
             <input
+              value={name}
               placeholder="My watchlist"
               type="text"
               className="modal-card--content-nameWrapper-input"
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="modal-card--content-descWrapper">
@@ -29,10 +56,17 @@ const Modal = ({ modalLabel, open, handleClose }) => {
               placeholder="Give your list a catchy  description."
               className="modal-card--content-descWrapper-textarea"
               rows={3}
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
             />
           </div>
           <div className="modal-card--content-btn">
-            <button>Create</button>
+            <button
+              disabled={!name}
+              onClick={data ? handleUpdateList : handleCreateList}
+            >
+              {buttonLabel}
+            </button>
           </div>
         </div>
       </div>
@@ -40,4 +74,4 @@ const Modal = ({ modalLabel, open, handleClose }) => {
   );
 };
 
-export default Modal;
+export default connect()(Modal);

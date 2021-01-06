@@ -31,5 +31,24 @@ const fakelists = {
 };
 
 export default function lists(state = fakelists, action) {
-  return state;
+  switch (action.type) {
+    case "CREAT_LIST":
+      return {
+        ...state,
+        [Math.random().toString(36).substr(2, 9)]: action.newList,
+      };
+
+    case "UPDATE_LIST":
+      console.log(action.updatedList);
+      return {
+        ...state,
+        [action.updatedList.listId]: {
+          ...state[action.updatedList.listId],
+          name: action.updatedList.name,
+          desc: action.updatedList.desc,
+        },
+      };
+    default:
+      return state;
+  }
 }

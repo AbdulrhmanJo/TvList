@@ -1,11 +1,25 @@
 import React from "react";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { BsPencil } from "react-icons/bs";
+import { AiOutlineFileImage } from "react-icons/ai";
+import Modal from "./modal";
 
 const ListCard = ({ list }) => {
   const listData = list[1];
+  const [isModalOpen, openModel] = React.useState(false);
+  const handleClose = () => {
+    openModel(false);
+  };
+
   return (
     <div className="list">
+      <Modal
+        open={isModalOpen}
+        modalLabel="Edit List Details"
+        handleClose={handleClose}
+        buttonLabel="save"
+        data={{ name: listData.name, desc: listData.desc, id: list[0] }}
+      />
       <div className="list-card">
         <div className="list-card--cover">
           {listData.content.length >= 4 ? (
@@ -33,14 +47,18 @@ const ListCard = ({ list }) => {
             />
           )}
         </div>
+
         <div className="list-card--overlay">
           <div className="list-card--overlay-wrapper">
-            <div className="list-card--overlay-wrapper-dots">
+            <button className="list-card--overlay-wrapper-dots">
               <HiDotsHorizontal />
-            </div>
-            <div className="list-card--overlay-wrapper-pencil">
+            </button>
+            <button
+              onClick={() => openModel(true)}
+              className="list-card--overlay-wrapper-pencil"
+            >
               <BsPencil />
-            </div>
+            </button>
           </div>
         </div>
       </div>

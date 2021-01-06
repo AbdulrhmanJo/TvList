@@ -3,9 +3,16 @@ const CREATE_LIST = "CREAT_LIST";
 const UPDATE_LIST = "UPDATE_LIST";
 const DELETE_LIST = "UPDATE_LIST";
 
-export function createList(list) {
+export function createList(newList) {
   return {
     type: CREATE_LIST,
-    list,
+    newList,
+  };
+}
+
+export function updateList(updatedList) {
+  return {
+    type: UPDATE_LIST,
+    updatedList,
   };
 }

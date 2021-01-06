@@ -20,16 +20,19 @@ const Lists = ({ lists }) => {
         open={isModalOpen}
         modalLabel="Create List"
         handleClose={handleClose}
+        buttonLabel="create"
       />
-      <div className="lists-content">
-        {Object.keys(lists).length === 0 ? (
+      {Object.keys(lists).length === 0 ? (
+        <div className="lists-content-empty">
           <EmptyLists />
-        ) : (
-          Object.entries(lists).map((list, index) => (
+        </div>
+      ) : (
+        <div className="lists-content-grid">
+          {Object.entries(lists).map((list, index) => (
             <ListCard key={index} list={list} />
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
