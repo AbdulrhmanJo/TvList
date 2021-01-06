@@ -24,6 +24,10 @@
       transition: color 0.2s;
       cursor: pointer;
 
+      &:focus {
+        outline: none;
+      }
+
       &:hover {
         background-color: #c42345;
       }
@@ -241,6 +245,10 @@
         font-size: 2rem;
         transition: color 0.1s;
         cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
         &:hover {
           color: white;
         }
@@ -249,7 +257,7 @@
 
     &--content {
       &-nameWrapper {
-        margin-top: 3rem;
+        margin-top: 2rem;
 
         &-name {
           color: gray;
@@ -311,6 +319,15 @@
           font-family: inherit;
           color: white;
           margin-top: 2rem;
+          cursor: pointer;
+          transition: color 0.2s;
+          &:focus {
+            outline: none;
+          }
+
+          &:hover {
+            background-color: #c42345;
+          }
         }
       }
     }

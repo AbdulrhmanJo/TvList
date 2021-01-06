@@ -15,6 +15,7 @@ const ListCard = ({ list }) => {
                   <img
                     src={`https://image.tmdb.org/t/p/w342${item.image}`}
                     alt={item.name}
+                    key={index}
                   />
                 );
               }
