@@ -128,6 +128,7 @@
       // background-color: #1b1b1b48;
       padding: 0rem 1rem;
       border-radius: 0.4rem;
+      position: relative;
     }
     &--genres {
       &-list {
@@ -214,6 +215,8 @@
         flex-direction: column;
         justify-content: space-between;
         margin-top: 4rem;
+        // position: relative
+
         height: 12rem;
       }
     }

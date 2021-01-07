@@ -30,7 +30,7 @@ const fakelists = {
   },
 };
 
-export default function lists(state = fakelists, action) {
+export default function lists(state = {}, action) {
   switch (action.type) {
     case "CREAT_LIST":
       return {

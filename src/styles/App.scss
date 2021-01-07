@@ -82,17 +82,20 @@ body {
 .btn {
   z-index: 10;
   // margin-right: 0.4rem;
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   font-size: 2rem;
   border: 0.1rem solid #f32d58;
   cursor: pointer;
   transition: all 0.2s;
   &-primary {
     width: 100%;
-    text-transform: capitalize;
-    padding: 1.5rem 4rem;
+    // text-transform: capitalize;
+    padding: 1.5rem 6rem;
     background-color: #f32d58;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
   }
 
   &-secandry {

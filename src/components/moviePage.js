@@ -8,13 +8,38 @@ import SecondarySection from "./SecondraySection";
 import Seasons from "./seasons";
 import { AiTwotoneStar } from "react-icons/ai";
 import { AiOutlineFileImage } from "react-icons/ai";
+import { IoIosAdd } from "react-icons/io";
 import Error from "./error";
+import Menu from "./menu";
 class MoviePage extends Component {
   state = {
+    openMenu: false,
     data: {},
     loading: true,
     type: this.props.match.path.indexOf("movies") !== -1 ? "movies" : "tvshows",
   };
+
+  closeMenu = (e) => {
+    const n = e.target;
+    if (n.classList.value.includes("menu")) {
+      return;
+    }
+
+    this.handleClick();
+  };
+
+  handleClick = () => {
+    if (!this.state.openMenu) {
+      document.addEventListener("click", this.closeMenu, false);
+    } else {
+      document.removeEventListener("click", this.closeMenu, false);
+    }
+
+    this.setState((prevState) => ({
+      openMenu: !prevState.openMenu,
+    }));
+  };
+
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
@@ -28,7 +53,6 @@ class MoviePage extends Component {
         this.setState({ data: data, loading: false })
       );
     }
-
     // if (this.state.data[2].results.length < 2) {
     //   const item = document.querySelector(".slick-track");
     //   console.log(item);
@@ -291,10 +315,16 @@ class MoviePage extends Component {
                   </div>
                 )}
                 <div className="movie-secondarySection--info-btn">
-                  <button className="btn btn-primary">Add to list</button>
-                  <button className="btn btn-secandry">Share</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={this.handleClick}
+                  >
+                    Add to list
+                  </button>
+                  {/* <button className="btn btn-secandry">Share</button> */}
                 </div>
               </div>
+              <Menu open={this.state.openMenu} />
             </div>
           </div>
         </div>
