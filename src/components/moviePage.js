@@ -8,7 +8,6 @@ import SecondarySection from "./SecondraySection";
 import Seasons from "./seasons";
 import { AiTwotoneStar } from "react-icons/ai";
 import { AiOutlineFileImage } from "react-icons/ai";
-import { IoIosAdd } from "react-icons/io";
 import Error from "./error";
 import Menu from "./menu";
 class MoviePage extends Component {
