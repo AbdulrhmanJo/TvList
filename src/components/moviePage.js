@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { getMovieDetails, getTvDetails } from "../utils/API";
 import BeatLoader from "react-spinners/BeatLoader";
@@ -18,6 +19,28 @@ class MoviePage extends Component {
     type: this.props.match.path.indexOf("movies") !== -1 ? "movies" : "tvshows",
   };
 
+  inList = (lists) => {
+    let numberOflists = 0;
+    const id = this.props.match.params.id;
+
+    Object.entries(lists).map((list) => {
+      list[1].content.map((show) => {
+        if (show.id == id) numberOflists++;
+      });
+    });
+
+    return numberOflists;
+
+    // if (lists.length > 0) {
+    //   let found = false;
+    //   const id = this.props.match.params.id;
+    //   content.map((show) => {
+    //     if (show.id == id) found = true;
+    //   });
+    //   return found;
+    // }
+    // return false;
+  };
   closeMenu = (e) => {
     const n = e.target;
     if (n.classList.value.includes("menu")) {
@@ -52,6 +75,7 @@ class MoviePage extends Component {
         this.setState({ data: data, loading: false })
       );
     }
+
     // if (this.state.data[2].results.length < 2) {
     //   const item = document.querySelector(".slick-track");
     //   console.log(item);
@@ -114,7 +138,7 @@ class MoviePage extends Component {
 
   render() {
     let { data, loading, type } = this.state;
-    !loading && console.log(data);
+    !loading && console.log(this.props);
     if (!loading && data.details.success === false) return <Error />;
     const seasons =
       !loading &&
@@ -314,16 +338,36 @@ class MoviePage extends Component {
                   </div>
                 )}
                 <div className="movie-secondarySection--info-btn">
-                  <button
-                    className="btn btn-primary"
-                    onClick={this.handleClick}
-                  >
-                    Add to list
-                  </button>
+                  {this.inList(this.props.lists) > 0 ? (
+                    <button
+                      className="btn btn-primary"
+                      onClick={this.handleClick}
+                    >
+                      {this.inList(this.props.lists) > 1
+                        ? `Added to ${this.inList(this.props.lists)} lists`
+                        : `Added to ${this.inList(this.props.lists)} list`}
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-primary"
+                      onClick={this.handleClick}
+                    >
+                      Add to list
+                    </button>
+                  )}
+
                   {/* <button className="btn btn-secandry">Share</button> */}
                 </div>
               </div>
-              <Menu open={this.state.openMenu} />
+              <Menu
+                open={this.state.openMenu}
+                showData={{
+                  title: data.title,
+                  poster: data.poster_path,
+                  id: data.id,
+                }}
+                closeMenu={this.handleClick}
+              />
             </div>
           </div>
         </div>
@@ -332,4 +376,9 @@ class MoviePage extends Component {
   }
 }
 
-export default withRouter(MoviePage);
+const mapStateToProps = ({ lists }) => {
+  return {
+    lists,
+  };
+};
+export default withRouter(connect(mapStateToProps)(MoviePage));

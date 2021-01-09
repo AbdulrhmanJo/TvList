@@ -96,6 +96,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: #d3284d;
+    }
   }
 
   &-secandry {

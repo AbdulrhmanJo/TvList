@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import { CgSearch } from "react-icons/cg";
 import { connect } from "react-redux";
-const Menu = ({ lists, open }) => {
+import { useParams } from "react-router-dom";
+import { addShow, deleteShow } from "../Actions/list";
+const Menu = ({ lists, open, showData, dispatch, closeMenu }) => {
   const arrLists = Object.entries(lists);
   const [inputVal, setInputVal] = React.useState("");
   const [tempLists, setTempLists] = React.useState(arrLists);
+  const { id } = useParams();
+
   const filterLists = (e) => {
     const value = e.target.value;
     setInputVal(value);
@@ -18,9 +22,34 @@ const Menu = ({ lists, open }) => {
     }
   };
 
-  //   useEffect(() => {
-  //     setTempLists(lists);
-  //   }, [lists]);
+  const addShowToList = (listId, showData) => {
+    dispatch(addShow({ ...showData, status: "unwatched" }, listId));
+    closeMenu();
+  };
+
+  const removeShow = (listId, showId) => {
+    dispatch(deleteShow(showId, listId));
+    closeMenu();
+  };
+
+  const inList = (id, content) => {
+    if (content.length > 0) {
+      let found = false;
+      content.map((show) => {
+        if (show.id == id) {
+          console.log("hi");
+          found = true;
+        }
+      });
+      return found;
+    }
+    console.log("outside");
+    return false;
+  };
+
+  useEffect(() => {
+    setTempLists(Object.entries(lists));
+  }, [lists]);
 
   if (!open) {
     return null;
@@ -39,12 +68,26 @@ const Menu = ({ lists, open }) => {
         <CgSearch className="menu-search--icon" />
       </div>
       <div className="menu-lists">
-        <p className="menu-lists-title">Lists</p>
+        <p className="menu-lists-title">All lists</p>
         {tempLists.length > 0 ? (
           tempLists.map((list, index) => (
             <div key={index} className="menu-lists-list">
               <p className="menu-lists-list--title">{list[1].name}</p>
-              <button className="menu-lists-list--btn">Add</button>
+              {inList(id, list[1].content) ? (
+                <button
+                  className="menu-lists-list--btn"
+                  onClick={(e) => removeShow(list[0], showData.id)}
+                >
+                  remove
+                </button>
+              ) : (
+                <button
+                  className="menu-lists-list--btn"
+                  onClick={(e) => addShowToList(list[0], showData)}
+                >
+                  add
+                </button>
+              )}
             </div>
           ))
         ) : (

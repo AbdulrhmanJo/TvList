@@ -176,6 +176,7 @@
 }
 
 .profile {
+  position: sticky;
   border-radius: 1rem;
   margin-right: 4rem;
   width: 25%;
@@ -379,7 +380,7 @@
   position: absolute;
   top: 88%;
   left: 50%;
-  width: 30rem;
+  width: 33rem;
   transform: translateX(-50%);
   border-radius: 0.5rem;
   padding: 1.5rem;
@@ -409,7 +410,7 @@
   }
 
   &-lists {
-    max-height: 22rem;
+    max-height: 24rem;
     margin-top: 2rem;
     overflow: scroll;
     &-title {
@@ -426,14 +427,19 @@
     }
 
     &-list {
-      margin: 1rem 0;
-      padding: 0.2rem 0.7rem;
+      // margin: 1rem 0;
+      padding: 1rem;
       // background-color: blue;
       font-size: 1.4rem;
       font-weight: 500;
       align-items: center;
       display: flex;
       justify-content: space-between;
+      border-radius: 0.5rem;
+
+      &:hover {
+        background-color: rgb(54, 54, 54);
+      }
 
       &--title {
         flex: 1;
@@ -445,6 +451,11 @@
         border: none;
         border-radius: 0.3rem;
         color: white;
+        transition: background-color 0.2s;
+        cursor: pointer;
+        &:hover {
+          background-color: #c42345;
+        }
       }
     }
   }

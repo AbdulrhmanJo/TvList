@@ -27,8 +27,8 @@ const ListCard = ({ list }) => {
               if (index < 4) {
                 return (
                   <img
-                    src={`https://image.tmdb.org/t/p/w342${item.image}`}
-                    alt={item.name}
+                    src={`https://image.tmdb.org/t/p/w342${item.poster}`}
+                    alt={item.title}
                     key={index}
                   />
                 );
@@ -41,9 +41,9 @@ const ListCard = ({ list }) => {
           ) : (
             <img
               src={`https://image.tmdb.org/t/p/w342${
-                listData.content[listData.content.length - 1].image
+                listData.content[listData.content.length - 1].poster
               }`}
-              alt={listData.content[listData.content.length - 1].name}
+              alt={listData.content[listData.content.length - 1].title}
             />
           )}
         </div>
