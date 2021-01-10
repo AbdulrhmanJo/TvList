@@ -3,7 +3,7 @@ import { CgSearch } from "react-icons/cg";
 import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addShow, deleteShow } from "../Actions/list";
-const Menu = ({ lists, open, showData, dispatch, closeMenu }) => {
+const Menu = ({ lists, open, showData, dispatch, closeMenu, place }) => {
   const arrLists = Object.entries(lists);
   const [inputVal, setInputVal] = React.useState("");
   const [tempLists, setTempLists] = React.useState(arrLists);
@@ -46,6 +46,10 @@ const Menu = ({ lists, open, showData, dispatch, closeMenu }) => {
     console.log("outside");
     return false;
   };
+
+  // const fixPosition = () => {
+  //   const
+  // };
 
   useEffect(() => {
     setTempLists(Object.entries(lists));

@@ -4,6 +4,7 @@ import { IoIosAdd } from "react-icons/io";
 import { connect } from "react-redux";
 import ClipLoader from "react-spinners/ClipLoader";
 import { Img } from "react-image";
+import Menu from "./menu";
 
 const Photo = ({ imgSrc }) => (
   <Img
@@ -52,14 +53,7 @@ class Movie extends Component {
             <Photo
               imgSrc={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
             />
-
-            <div className="movies-content_SecondarySection-movie--box-info">
-              {/* <div className="movies-content_SecondarySection-movie--box-info--text">
-                <p className="movies-content_SecondarySection-movie--box-info--text-title">
-                  {type === "movies" ? movie.title : movie.name}
-                </p>
-              </div> */}
-            </div>
+            <div className="movies-content_SecondarySection-movie--box-info"></div>
           </div>
           <p className="movies-content_SecondarySection-movie--title">
             {this.props.type === "/movies" ? movie.title : movie.name}
@@ -68,11 +62,6 @@ class Movie extends Component {
             <span>{movie.vote_average}/10</span>
           </div>
         </Link>
-        <div className="movies-content_SecondarySection-movie--action">
-          <button className="btn btn-secandry pad-small">
-            <IoIosAdd size={25} />
-          </button>
-        </div>
       </div>
     );
   }

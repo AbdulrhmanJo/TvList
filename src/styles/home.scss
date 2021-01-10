@@ -378,22 +378,22 @@
   background-color: #242424;
   box-shadow: 0 1rem 5rem rgb(0, 0, 0);
   position: absolute;
-  top: 88%;
   left: 50%;
+  top: 110%;
   width: 33rem;
   transform: translateX(-50%);
   border-radius: 0.5rem;
   padding: 1.5rem;
-  z-index: 100000;
+  z-index: 1000;
 
   &-search {
-    height: auto;
+    // height: s;
     width: 100%;
     position: relative;
 
     &--input {
       width: 100%;
-      padding: 1rem;
+      padding: 1.3rem;
       border-radius: 0.3rem;
       border: 0.05rem solid rgb(73, 73, 73);
       border: none;
@@ -403,7 +403,7 @@
       font-size: 1.8rem;
       position: absolute;
       top: 53%;
-      right: 4%;
+      right: 5%;
       color: gray;
       transform: translateY(-50%);
     }
@@ -424,6 +424,7 @@
       font-size: 1.4rem;
       padding: 1rem;
       text-align: center;
+      color: white;
     }
 
     &-list {
@@ -444,6 +445,7 @@
       &--title {
         flex: 1;
         padding-right: 1rem;
+        color: white;
       }
       &--btn {
         padding: 0.8rem 2rem;
@@ -459,4 +461,9 @@
       }
     }
   }
+}
+
+.up {
+  bottom: 110%;
+  top: auto;
 }

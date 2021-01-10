@@ -89,6 +89,9 @@ $bp-mobile: 27rem;
   &_SecondarySection {
     width: 100%;
     margin-bottom: 1rem;
+    & .slick-list {
+      // overflow: visible;
+    }
     // padding-bottom: 1rem;
     // height: 45rem;
     &-header {
@@ -129,9 +132,9 @@ $bp-mobile: 27rem;
           width: 100%;
           height: 100%;
 
-          &:hover {
-            box-shadow: 0rem 0rem 3rem rgba(0, 0, 0, 0.5);
-          }
+          // &:hover {
+          //   box-shadow: 0rem 10rem 3rem rgba(0, 0, 0, 1);
+          // }
         }
         position: relative;
 
@@ -165,25 +168,6 @@ $bp-mobile: 27rem;
             }
           }
         }
-      }
-
-      &--action {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 1.8rem 0.9rem;
-        opacity: 0;
-        transform: all 0.2s;
-        // width: 100%;
-      }
-
-      &:hover &--box-info {
-        opacity: 1;
-        background-image: linear-gradient(rgba(#000000, 0.5), rgba(#000000, 0));
-      }
-
-      &:hover &--action {
-        opacity: 1;
       }
 
       &:hover {

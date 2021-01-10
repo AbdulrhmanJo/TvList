@@ -17,6 +17,7 @@ class MoviePage extends Component {
     data: {},
     loading: true,
     type: this.props.match.path.indexOf("movies") !== -1 ? "movies" : "tvshows",
+    menuOffset: 0,
   };
 
   inList = (lists) => {
@@ -50,7 +51,29 @@ class MoviePage extends Component {
     this.handleClick();
   };
 
-  handleClick = () => {
+  getOffset(el) {
+    const rect = el.getBoundingClientRect();
+    console.log(rect, window.scrollY);
+    return {
+      top: rect.top - window.scrollY,
+    };
+  }
+
+  fixMenuPos = () => {
+    const menu = document.querySelector(".menu");
+    const top = this.getOffset(menu).top;
+    let widnowHeight = window.innerHeight;
+    let menuHeight = menu.clientHeight;
+
+    console.log(top, menuHeight, widnowHeight);
+    if (!(widnowHeight >= top + menuHeight)) {
+      menu.classList.add("up");
+    } else {
+      menu.classList.remove("up");
+    }
+  };
+
+  handleClick = (e) => {
     if (!this.state.openMenu) {
       document.addEventListener("click", this.closeMenu, false);
     } else {
@@ -76,16 +99,22 @@ class MoviePage extends Component {
       );
     }
 
+    // .addEventListener("mouseenter mouseleave", this.fixMenuPos);
     // if (this.state.data[2].results.length < 2) {
     //   const item = document.querySelector(".slick-track");
     //   console.log(item);
     // }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
       this.setState({ loading: true });
       this.componentDidMount();
+    }
+    console.log("hi");
+
+    if (this.state.openMenu) {
+      this.fixMenuPos();
     }
   }
 
@@ -137,7 +166,7 @@ class MoviePage extends Component {
   };
 
   render() {
-    let { data, loading, type } = this.state;
+    let { data, loading, type, openMenu } = this.state;
     !loading && console.log(this.props);
     if (!loading && data.details.success === false) return <Error />;
     const seasons =
@@ -357,17 +386,18 @@ class MoviePage extends Component {
                   )}
 
                   {/* <button className="btn btn-secandry">Share</button> */}
+                  <Menu
+                    open={this.state.openMenu}
+                    showData={{
+                      title: data.title,
+                      poster: data.poster_path,
+                      id: data.id,
+                    }}
+                    closeMenu={this.handleClick}
+                    place={type === "movies" ? "movie" : "show"}
+                  />
                 </div>
               </div>
-              <Menu
-                open={this.state.openMenu}
-                showData={{
-                  title: data.title,
-                  poster: data.poster_path,
-                  id: data.id,
-                }}
-                closeMenu={this.handleClick}
-              />
             </div>
           </div>
         </div>
