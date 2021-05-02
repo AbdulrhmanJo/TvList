@@ -5,6 +5,7 @@ import NowPlaying from "./nowPlaying";
 import SecondarySection from "./SecondraySection";
 import GenreSection from "./genreSection";
 import TrailerSection from "./trailerSection";
+import Abdulrahman from "./Abdulrahman";
 
 class MoviesPage extends Component {
   render() {
@@ -17,7 +18,7 @@ class MoviesPage extends Component {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: "100%"
+              height: "100%",
             }}
             loading={loading}
             size={45}
@@ -36,14 +37,12 @@ class MoviesPage extends Component {
                 movies={movies.nowPlaying}
                 seeAll={true}
                 nom={6}
-
               />
               <SecondarySection
                 name="trending"
                 movies={movies.trending}
                 seeAll={true}
                 nom={6}
-
               />
               <TrailerSection name="trailers" videos={videos} />
               <SecondarySection
@@ -51,30 +50,33 @@ class MoviesPage extends Component {
                 movies={movies.popular}
                 seeAll={true}
                 nom={6}
-
               />
               <SecondarySection
                 name="top rated"
                 movies={movies.topRated}
                 seeAll={true}
                 nom={6}
-
               />
-              <GenreSection name="Browse by genre" genres={genres.genres} num={6}/>
+              <GenreSection
+                name="Browse by genre"
+                genres={genres.genres}
+                num={6}
+              />
             </div>
           </div>
         )}
+        <Abdulrahman />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     loading: state.movies.genre === undefined,
     movies: state.movies,
     genres: state.movies.genre,
-    videos: state.movies.trailer
+    videos: state.movies.trailer,
   };
 };
 

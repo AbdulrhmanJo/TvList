@@ -1,0 +1,13 @@
+.listPage {
+  color: white;
+  margin-top: 5rem;
+
+  &-header {
+    display: flex;
+    align-items: flex-end ;
+
+    &-card {
+      width: 15%;
+    }
+  }
+}

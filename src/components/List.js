@@ -29,7 +29,7 @@ const Lists = ({ lists }) => {
       ) : (
         <div className="lists-content-grid">
           {Object.entries(lists).map((list, index) => (
-            <ListCard key={index} list={list} />
+            <ListCard key={index} list={list} showName={true} />
           ))}
         </div>
       )}

@@ -16,7 +16,7 @@ class Sidebar extends Component {
             <BiMovie className="logo-icon" />
           </div>
           <SidebarList
-            items={["home", "movies", "TV-shows"]}
+            items={["movies", "TV-shows"]}
             icons={[
               <AiOutlineHome size={20} className="sidebar-list_item--icon" />,
               <AiOutlineVideoCamera

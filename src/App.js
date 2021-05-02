@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  useHistory,
+} from "react-router-dom";
+import ListPage from "./components/listPage";
 import Sidebar from "./components/sideBar";
 import Navbar from "./components/Navbar";
 import MoviesPage from "./components/moviesPage.js";
@@ -12,6 +18,7 @@ import { handleInitialData } from "./Actions/shared";
 import BeatLoader from "react-spinners/BeatLoader";
 import Home from "./components/home";
 import "./styles/App.scss";
+import Abdulrahman from "./components/Abdulrahman";
 
 class App extends Component {
   componentDidMount() {
@@ -39,7 +46,11 @@ class App extends Component {
               />
             ) : (
               <div className="routes">
-                <Route exact path="/" component={Home} />
+                <Route
+                  exact
+                  path="/"
+                  render={() => <Redirect to="/movies" />}
+                />
                 <Route exact path="/search" component={Search} />
                 <Route exact path="/movies" component={MoviesPage} />
                 <Route exact path="/movies/:id" component={MoviePage} />
@@ -57,6 +68,7 @@ class App extends Component {
                 <Route exact path="/tv-shows/:id" component={MoviePage} />
                 <Route path="/tv-shows/discover/:id" component={SectionPage} />
                 <Route path="/tv-shows/genres/:id" component={SectionPage} />
+                <Route path="/lists/:id" component={ListPage} />
               </div>
             )}
           </div>

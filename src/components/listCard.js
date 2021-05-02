@@ -3,8 +3,9 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { BsPencil } from "react-icons/bs";
 import { AiOutlineFileImage } from "react-icons/ai";
 import Modal from "./modal";
+import { Link } from "react-router-dom";
 
-const ListCard = ({ list }) => {
+const ListCard = ({ list, showName }) => {
   const listData = list[1];
   const [isModalOpen, openModel] = React.useState(false);
   const handleClose = () => {
@@ -20,49 +21,47 @@ const ListCard = ({ list }) => {
         buttonLabel="save"
         data={{ name: listData.name, desc: listData.desc, id: list[0] }}
       />
-      <div className="list-card">
-        <div className="list-card--cover">
-          {listData.content.length >= 4 ? (
-            listData.content.map((item, index) => {
-              if (index < 4) {
-                return (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w342${item.poster}`}
-                    alt={item.title}
-                    key={index}
-                  />
-                );
-              }
-            })
-          ) : listData.content.length === 0 ? (
-            <div className="list-card--cover-noImg">
-              <AiOutlineFileImage />
-            </div>
-          ) : (
-            <img
-              src={`https://image.tmdb.org/t/p/w342${
-                listData.content[listData.content.length - 1].poster
-              }`}
-              alt={listData.content[listData.content.length - 1].title}
-            />
-          )}
-        </div>
-
-        <div className="list-card--overlay">
-          <div className="list-card--overlay-wrapper">
-            <button className="list-card--overlay-wrapper-dots">
-              <HiDotsHorizontal />
-            </button>
-            <button
-              onClick={() => openModel(true)}
-              className="list-card--overlay-wrapper-pencil"
-            >
-              <BsPencil />
-            </button>
+      <Link to={`/lists/${list[0]}`}>
+        <div className="list-card">
+          <div className="list-card--cover">
+            {listData.content.length >= 4 ? (
+              listData.content.map((item, index) => {
+                if (index < 4) {
+                  return (
+                    <img
+                      src={`https://image.tmdb.org/t/p/w342${item.poster}`}
+                      alt={item.title}
+                      key={index}
+                    />
+                  );
+                }
+              })
+            ) : listData.content.length === 0 ? (
+              <div className="list-card--cover-noImg">
+                <AiOutlineFileImage />
+              </div>
+            ) : (
+              <img
+                src={`https://image.tmdb.org/t/p/w342${
+                  listData.content[listData.content.length - 1].poster
+                }`}
+                alt={listData.content[listData.content.length - 1].title}
+              />
+            )}
           </div>
+          {/* <div className="list-card--overlay"></div> */}
         </div>
-      </div>
-      <p className="list-name">{listData.name}</p>
+      </Link>
+
+      {/* <div className="list-card--overlay-wrapper">
+        <button
+          onClick={() => openModel(true)}
+          className="list-card--overlay-wrapper-pencil"
+        >
+          <BsPencil />
+        </button>
+      </div> */}
+      {showName ? <p className="list-name">{listData.name}</p> : ""}
     </div>
   );
 };

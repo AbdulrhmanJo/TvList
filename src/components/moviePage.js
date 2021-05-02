@@ -11,6 +11,9 @@ import { AiTwotoneStar } from "react-icons/ai";
 import { AiOutlineFileImage } from "react-icons/ai";
 import Error from "./error";
 import Menu from "./menu";
+import Abdulrahman from "./Abdulrahman";
+import { AiOutlineTwitter } from "react-icons/ai";
+
 class MoviePage extends Component {
   state = {
     openMenu: false,
@@ -377,12 +380,29 @@ class MoviePage extends Component {
                         : `Added to ${this.inList(this.props.lists)} list`}
                     </button>
                   ) : (
-                    <button
+                    // <button
+                    //   className="btn btn-primary"
+                    //   onClick={this.handleClick}
+                    // >
+                    //   Add to list
+                    // </button>
+                    <a
                       className="btn btn-primary"
-                      onClick={this.handleClick}
+                      href={`https://twitter.com/intent/tweet?text=${
+                        type === "movies" ? data.title : data.name
+                      } on something&hashtags=something&url=${
+                        window.location.href
+                      }`}
+                      target="_blank"
+                      style={{
+                        textDecoration: "none",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
                     >
-                      Add to list
-                    </button>
+                      <span style={{ marginRight: "1rem" }}>share on</span>
+                      <AiOutlineTwitter size="3rem" />
+                    </a>
                   )}
 
                   {/* <button className="btn btn-secandry">Share</button> */}

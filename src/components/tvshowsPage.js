@@ -6,6 +6,7 @@ import SecondarySection from "./SecondraySection";
 import GenreSection from "./genreSection";
 import TrailerSection from "./trailerSection";
 import NetworkSection from "./networkSection";
+import Abdulrahman from "./Abdulrahman";
 class TVshows extends Component {
   render() {
     const { tvshows, genres, loading, videos } = this.props;
@@ -69,6 +70,7 @@ class TVshows extends Component {
             </div>
           </div>
         )}
+        <Abdulrahman />
       </div>
     );
   }

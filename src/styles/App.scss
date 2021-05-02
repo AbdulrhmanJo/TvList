@@ -7,6 +7,7 @@
 @import "SectionPage";
 @import "movie";
 @import "home";
+@import "listPage";
 
 $bp-m: 64.8rem;
 
@@ -194,4 +195,25 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.signature {
+  // margin-top: 7rem;
+  display: flex;
+  align-items: center;
+
+  &_logo {
+    width: 7rem;
+  }
+
+  &_text {
+    margin-top: 0rem;
+    margin-left: 1rem;
+    color: white;
+    width: 20rem;
+
+    & a {
+      color: #c41f43;
+    }
+  }
 }
