@@ -30,7 +30,7 @@ class App extends Component {
   render() {
     const { loading } = this.props;
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="container">
           <Sidebar />
           <div className="content">
