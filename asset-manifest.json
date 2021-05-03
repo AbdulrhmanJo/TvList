@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/TvList/static/css/main.75274ab5.chunk.css",
-    "main.js": "/TvList/static/js/main.49992282.chunk.js",
-    "main.js.map": "/TvList/static/js/main.49992282.chunk.js.map",
+    "main.js": "/TvList/static/js/main.6941448c.chunk.js",
+    "main.js.map": "/TvList/static/js/main.6941448c.chunk.js.map",
     "runtime-main.js": "/TvList/static/js/runtime-main.572679c9.js",
     "runtime-main.js.map": "/TvList/static/js/runtime-main.572679c9.js.map",
     "static/css/2.29c3c720.chunk.css": "/TvList/static/css/2.29c3c720.chunk.css",
@@ -36,6 +36,6 @@
     "static/css/2.29c3c720.chunk.css",
     "static/js/2.861c6067.chunk.js",
     "static/css/main.75274ab5.chunk.css",
-    "static/js/main.49992282.chunk.js"
+    "static/js/main.6941448c.chunk.js"
   ]
 }
