@@ -9,7 +9,7 @@ import thunk from "redux-thunk";
 const store = createStore(rootRuducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={store} basename={process.env.PUBLIC_URL}>
     <App />
   </Provider>,
   document.getElementById("root")
