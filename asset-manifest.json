@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/TvList/static/css/main.75274ab5.chunk.css",
+    "main.js": "/TvList/static/js/main.5a678894.chunk.js",
+    "main.js.map": "/TvList/static/js/main.5a678894.chunk.js.map",
+    "runtime-main.js": "/TvList/static/js/runtime-main.572679c9.js",
+    "runtime-main.js.map": "/TvList/static/js/runtime-main.572679c9.js.map",
+    "static/css/2.29c3c720.chunk.css": "/TvList/static/css/2.29c3c720.chunk.css",
+    "static/js/2.861c6067.chunk.js": "/TvList/static/js/2.861c6067.chunk.js",
+    "static/js/2.861c6067.chunk.js.map": "/TvList/static/js/2.861c6067.chunk.js.map",
+    "index.html": "/TvList/index.html",
+    "static/css/2.29c3c720.chunk.css.map": "/TvList/static/css/2.29c3c720.chunk.css.map",
+    "static/css/main.75274ab5.chunk.css.map": "/TvList/static/css/main.75274ab5.chunk.css.map",
+    "static/js/2.861c6067.chunk.js.LICENSE.txt": "/TvList/static/js/2.861c6067.chunk.js.LICENSE.txt",
+    "static/media/adventure.5779f784.png": "/TvList/static/media/adventure.5779f784.png",
+    "static/media/animation.ee4a8d0b.png": "/TvList/static/media/animation.ee4a8d0b.png",
+    "static/media/comedy.792d0dd7.png": "/TvList/static/media/comedy.792d0dd7.png",
+    "static/media/crime.3037ff5a.png": "/TvList/static/media/crime.3037ff5a.png",
+    "static/media/decumentary.291a9f1f.png": "/TvList/static/media/decumentary.291a9f1f.png",
+    "static/media/drama.f637e470.png": "/TvList/static/media/drama.f637e470.png",
+    "static/media/family.55f5a788.png": "/TvList/static/media/family.55f5a788.png",
+    "static/media/fantasy.51fc3504.png": "/TvList/static/media/fantasy.51fc3504.png",
+    "static/media/horror.6bc5aac4.png": "/TvList/static/media/horror.6bc5aac4.png",
+    "static/media/mystery.3d1cf587.png": "/TvList/static/media/mystery.3d1cf587.png",
+    "static/media/not_found.7e54bd75.svg": "/TvList/static/media/not_found.7e54bd75.svg",
+    "static/media/romance.1b909e76.png": "/TvList/static/media/romance.1b909e76.png",
+    "static/media/searchImg.c2702db8.svg": "/TvList/static/media/searchImg.c2702db8.svg",
+    "static/media/App.scss": "/TvList/static/media/slick.c94f7671.ttf",
+    "static/media/thriller.234cb0f3.png": "/TvList/static/media/thriller.234cb0f3.png",
+    "static/media/wait.1b763171.svg": "/TvList/static/media/wait.1b763171.svg",
+    "static/media/war.214ce879.png": "/TvList/static/media/war.214ce879.png",
+    "static/media/western.924744c8.png": "/TvList/static/media/western.924744c8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.572679c9.js",
+    "static/css/2.29c3c720.chunk.css",
+    "static/js/2.861c6067.chunk.js",
+    "static/css/main.75274ab5.chunk.css",
+    "static/js/main.5a678894.chunk.js"
+  ]
+}
