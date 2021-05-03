@@ -12,6 +12,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { connect } from "react-redux";
 import BeatLoader from "react-spinners/BeatLoader";
 import SyncLoader from "react-spinners/SyncLoader";
+import Error from "./error";
 
 class SectionPage extends Component {
   state = {
@@ -105,57 +106,92 @@ class SectionPage extends Component {
     if (this.props.genre.length > 0) {
       if (match.path.indexOf("movies") !== -1) {
         getMoviesOfCategory(this.props.genre[0].id, this.state.page).then(
-          (data) =>
+          (data) => {
+            if (data["results"]) {
+              this.setState({
+                data: data.results,
+                loading: false,
+                totalPages: data.total_pages,
+                page: this.state.page + 1,
+              });
+            } else {
+              this.setState({
+                loading: false,
+              });
+            }
+          }
+        );
+      } else {
+        getTvOfCategory(this.props.genre[0].id, this.state.page).then(
+          (data) => {
+            if (data["results"]) {
+              this.setState({
+                data: data.results,
+                loading: false,
+                totalPages: data.total_pages,
+                page: this.state.page + 1,
+              });
+            } else {
+              this.setState({
+                loading: false,
+              });
+            }
+          }
+        );
+      }
+    } else if (!isNaN(this.props.dest[1])) {
+      getTvOfNetwork(this.props.dest[1], this.state.page).then((data) => {
+        if (data["results"]) {
+          this.setState({
+            data: data.results,
+            loading: false,
+            totalPages: data.total_pages,
+            page: this.state.page + 1,
+          });
+        } else {
+          this.setState({
+            loading: false,
+          });
+        }
+      });
+    } else {
+      if (match.path.indexOf("movies") !== -1) {
+        getMoviesOfSection(match.params.id, this.state.page).then((data) => {
+          if (data["results"]) {
             this.setState({
               data: data.results,
               loading: false,
               totalPages: data.total_pages,
               page: this.state.page + 1,
-            })
-        );
+            });
+          } else {
+            this.setState({
+              loading: false,
+            });
+          }
+        });
       } else {
-        getTvOfCategory(this.props.genre[0].id, this.state.page).then((data) =>
-          this.setState({
-            data: data.results,
-            loading: false,
-            totalPages: data.total_pages,
-            page: this.state.page + 1,
-          })
-        );
-      }
-    } else if (!isNaN(this.props.dest[1])) {
-      getTvOfNetwork(this.props.dest[1], this.state.page).then((data) =>
-        this.setState({
-          data: data.results,
-          loading: false,
-          totalPages: data.total_pages,
-          page: this.state.page + 1,
-        })
-      );
-    } else {
-      if (match.path.indexOf("movies") !== -1) {
-        getMoviesOfSection(match.params.id, this.state.page).then((data) =>
-          this.setState({
-            data: data.results,
-            loading: false,
-            totalPages: data.total_pages,
-            page: this.state.page + 1,
-          })
-        );
-      } else {
-        getTvOfSection(match.params.id, this.state.page).then((data) =>
-          this.setState({
-            data: data.results,
-            loading: false,
-            totalPages: data.total_pages,
-            page: this.state.page + 1,
-          })
-        );
+        getTvOfSection(match.params.id, this.state.page).then((data) => {
+          if (data["results"]) {
+            this.setState({
+              data: data.results,
+              loading: false,
+              totalPages: data.total_pages,
+              page: this.state.page + 1,
+            });
+          } else {
+            this.setState({
+              loading: false,
+            });
+          }
+        });
       }
     }
   }
 
   render() {
+    let { data } = this.state;
+    if (!this.state.loading && data.length <= 0) return <Error />;
     const { match } = this.props;
     const name = match.params.id
       .split("_")

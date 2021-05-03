@@ -94,9 +94,25 @@ class Seasons extends Component {
     const settings = {
       speed: 700,
       rows: 2,
-      slidesPerRow: 3,
+      // slidesPerRow: 3,
       prevArrow: <Arrow type="prev" />,
       nextArrow: <Arrow type="next" />,
+      responsive: [
+        {
+          breakpoint: 2000,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+          },
+        },
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          },
+        },
+      ],
     };
     const { data } = this.props;
     const { season_number } = this.state;

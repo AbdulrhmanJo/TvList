@@ -4,25 +4,25 @@ import { FiUser } from "react-icons/fi";
 
 const Slide = ({ person }) => {
   return (
-    <Link to={`/person/${person.id}`} className="cast-person">
-      <div className="cast-person--box">
-        <div className="cast-person--box-img">
-          {person.profile_path ? (
-            <img
-              src={`https://image.tmdb.org/t/p/w342${person.profile_path}`}
-              alt={person.name}
-              width="100%"
-            />
-          ) : (
-            <FiUser size={55} color="#f32d58" />
-          )}
-        </div>
-        <div className="cast-person--box-text">
-          <p className="cast-person--box-text--name">{person.name}</p>
-          <p className="cast-person--box-text--role">{person.character}</p>
-        </div>
+    // <Link to={`/person/${person.id}`} className="cast-person">
+    <div className="cast-person--box">
+      <div className="cast-person--box-img">
+        {person.profile_path ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w342${person.profile_path}`}
+            alt={person.name}
+            width="100%"
+          />
+        ) : (
+          <FiUser size={55} color="#f32d58" />
+        )}
       </div>
-    </Link>
+      <div className="cast-person--box-text">
+        <p className="cast-person--box-text--name">{person.name}</p>
+        <p className="cast-person--box-text--role">{person.character}</p>
+      </div>
+    </div>
+    // </Link>
   );
 };
 

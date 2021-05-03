@@ -15,7 +15,7 @@ const Abdulrahman = () => {
         <img src="./mylogo.png" href="logo" className="signature_logo" />
         <h1 className="signature_text">
           This project is built by{" "}
-          <a href="https://github.com/AbdulrhmanJo">AbdulrahmnaJo</a>
+          <a href="https://github.com/AbdulrhmanJo">AbdulrahmanJo</a>
         </h1>
       </div>
       <TMDB />

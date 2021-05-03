@@ -143,14 +143,17 @@ export async function getTvDetails(id) {
     `${API}/tv/${id}?api_key=${KEY}&append_to_response=credits%2Csimilar%2Cvideos%2Crecommendations`
   );
   const tvshow = await response.json();
-
-  const seasons = await Promise.all(
-    tvshow.seasons.map((season) =>
-      fetch(
-        `${API}/tv/${tvshow.id}/season/${season.season_number}?api_key=${KEY}`
-      ).then((response) => response.json())
-    )
-  ).then((seasons) => seasons);
+  console.log(tvshow);
+  let seasons;
+  if (tvshow["id"]) {
+    seasons = await Promise.all(
+      tvshow.seasons.map((season) =>
+        fetch(
+          `${API}/tv/${tvshow.id}/season/${season.season_number}?api_key=${KEY}`
+        ).then((response) => response.json())
+      )
+    ).then((seasons) => seasons);
+  }
 
   return { details: tvshow, seasons };
 }

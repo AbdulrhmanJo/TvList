@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Redirect,
   Route,
+  Switch,
   useHistory,
 } from "react-router-dom";
 import ListPage from "./components/listPage";
@@ -19,6 +20,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 import Home from "./components/home";
 import "./styles/App.scss";
 import Abdulrahman from "./components/Abdulrahman";
+import Error from "./components/error";
 
 class App extends Component {
   componentDidMount() {
@@ -46,29 +48,35 @@ class App extends Component {
               />
             ) : (
               <div className="routes">
-                <Route
-                  exact
-                  path="/"
-                  render={() => <Redirect to="/movies" />}
-                />
-                <Route exact path="/search" component={Search} />
-                <Route exact path="/movies" component={MoviesPage} />
-                <Route exact path="/movies/:id" component={MoviePage} />
-                <Route
-                  exact
-                  path="/movies/discover/:id"
-                  component={SectionPage}
-                />
-                <Route
-                  exact
-                  path="/movies/genres/:id"
-                  component={SectionPage}
-                />
-                <Route exact path="/tv-shows" component={TVshows} />
-                <Route exact path="/tv-shows/:id" component={MoviePage} />
-                <Route path="/tv-shows/discover/:id" component={SectionPage} />
-                <Route path="/tv-shows/genres/:id" component={SectionPage} />
-                <Route path="/lists/:id" component={ListPage} />
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    render={() => <Redirect to="/movies" />}
+                  />
+                  <Route exact path="/search" component={Search} />
+                  <Route exact path="/movies" component={MoviesPage} />
+                  <Route exact path="/movies/:id" component={MoviePage} />
+                  <Route
+                    exact
+                    path="/movies/discover/:id"
+                    component={SectionPage}
+                  />
+                  <Route
+                    exact
+                    path="/movies/genres/:id"
+                    component={SectionPage}
+                  />
+                  <Route exact path="/tv-shows" component={TVshows} />
+                  <Route exact path="/tv-shows/:id" component={MoviePage} />
+                  <Route
+                    path="/tv-shows/discover/:id"
+                    component={SectionPage}
+                  />
+                  <Route path="/tv-shows/genres/:id" component={SectionPage} />
+                  <Route component={Error} />
+                </Switch>
+                {/* <Route path="/lists/:id" component={ListPage} /> */}
               </div>
             )}
           </div>

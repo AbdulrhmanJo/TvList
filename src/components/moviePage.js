@@ -114,7 +114,6 @@ class MoviePage extends Component {
       this.setState({ loading: true });
       this.componentDidMount();
     }
-    console.log("hi");
 
     if (this.state.openMenu) {
       this.fixMenuPos();
@@ -170,7 +169,6 @@ class MoviePage extends Component {
 
   render() {
     let { data, loading, type, openMenu } = this.state;
-    !loading && console.log(this.props);
     if (!loading && data.details.success === false) return <Error />;
     const seasons =
       !loading &&
@@ -209,6 +207,10 @@ class MoviePage extends Component {
         </div>
         <div className="movie-content">
           <div className="movie-mainSection">
+            <p className="movie-mainSection--overview-header trailer">
+              Trailer
+            </p>
+
             {trailer.length > 0 ? (
               <div className="movie-mainSection--trailer">
                 <ReactPlayer
