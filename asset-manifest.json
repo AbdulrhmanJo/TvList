@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/TvList/static/css/main.75274ab5.chunk.css",
-    "main.js": "/TvList/static/js/main.6941448c.chunk.js",
-    "main.js.map": "/TvList/static/js/main.6941448c.chunk.js.map",
+    "main.css": "/TvList/static/css/main.eb201074.chunk.css",
+    "main.js": "/TvList/static/js/main.0605d292.chunk.js",
+    "main.js.map": "/TvList/static/js/main.0605d292.chunk.js.map",
     "runtime-main.js": "/TvList/static/js/runtime-main.572679c9.js",
     "runtime-main.js.map": "/TvList/static/js/runtime-main.572679c9.js.map",
     "static/css/2.29c3c720.chunk.css": "/TvList/static/css/2.29c3c720.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.861c6067.chunk.js.map": "/TvList/static/js/2.861c6067.chunk.js.map",
     "index.html": "/TvList/index.html",
     "static/css/2.29c3c720.chunk.css.map": "/TvList/static/css/2.29c3c720.chunk.css.map",
-    "static/css/main.75274ab5.chunk.css.map": "/TvList/static/css/main.75274ab5.chunk.css.map",
+    "static/css/main.eb201074.chunk.css.map": "/TvList/static/css/main.eb201074.chunk.css.map",
     "static/js/2.861c6067.chunk.js.LICENSE.txt": "/TvList/static/js/2.861c6067.chunk.js.LICENSE.txt",
     "static/media/adventure.5779f784.png": "/TvList/static/media/adventure.5779f784.png",
     "static/media/animation.ee4a8d0b.png": "/TvList/static/media/animation.ee4a8d0b.png",
@@ -35,7 +35,7 @@
     "static/js/runtime-main.572679c9.js",
     "static/css/2.29c3c720.chunk.css",
     "static/js/2.861c6067.chunk.js",
-    "static/css/main.75274ab5.chunk.css",
-    "static/js/main.6941448c.chunk.js"
+    "static/css/main.eb201074.chunk.css",
+    "static/js/main.0605d292.chunk.js"
   ]
 }
