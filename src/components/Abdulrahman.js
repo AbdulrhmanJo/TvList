@@ -3,6 +3,7 @@ import React from "react";
 const Abdulrahman = () => {
   return (
     <div
+      className="signature_wrapper"
       style={{
         display: "flex",
         alignItems: "center",
